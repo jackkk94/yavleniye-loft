@@ -92,6 +92,12 @@ let initialFormValue = {};
 
 FORM?.addEventListener('change', handleCalculatorFormChange);
 
+
+document.addEventListener('DOMContentLoaded', function() {
+    handleCalculatorFormChange();
+});
+
+
 function handleCalculatorFormChange() {
   const formData = new FormData(FORM);
 
