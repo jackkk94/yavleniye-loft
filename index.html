@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+	<meta charset='UTF-8' />
+	<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+
+	<link rel="stylesheet" type="text/css" href="./js/slick/slick.css">
+	<link rel="stylesheet" type="text/css" href="./js/slick/slick-theme.css">
+	<link rel='stylesheet' href='./style.css'>
+	<link rel="icon" href="favicon.ico">
+	<link rel="icon" href="favicon.svg" type="image/svg+xml">
+	<title>Лофт Явление</title>
+</head>
+
+<body>
+	<header class='header'>
+		<nav class='navigation'>
+			<a href='#' class="logo">
+				<svg class="logo-img" width="34" height="34" viewBox="0 0 34 34" fill="none"
+					xmlns="http://www.w3.org/2000/svg">
+					<path
+						d="M33.9942 7.51473C33.9865 3.36028 30.6278 0 26.486 0H18.4038C18.345 0 18.2978 0.0473415 18.2978 0.106277V7.80071C18.2978 7.90119 18.1697 7.94177 18.109 7.86158C16.1017 5.22399 14.7898 3.60858 11.408 3.5139C7.89904 3.41535 5.10381 4.85009 3.12828 7.73308C0.570965 11.4653 0.946616 16.5637 4.25812 19.9414C4.90058 20.5964 5.65091 21.1887 6.51491 21.6921C6.57752 21.7288 6.58715 21.8157 6.53321 21.865C6.29434 22.0862 6.07087 22.2959 5.84163 22.4988C5.31379 22.9674 4.78596 23.435 4.25812 23.9036C2.85665 25.148 1.45423 26.3914 0.0373488 27.6184C0.0036366 27.6474 -0.00888509 27.6957 0.00652621 27.7373C0.798282 29.8928 2.34519 31.6202 4.25812 32.7101C5.58734 33.4675 7.09283 33.9129 8.64841 33.9786H10.2627C14.3708 33.9786 17.7006 30.6386 17.7006 26.518V25.5518C17.7006 23.8823 17.0938 22.3577 16.093 21.179C15.2233 20.0989 14.0038 19.3192 12.6004 19.0071C12.3654 18.9482 11.0458 18.6438 10.1732 18.5028C10.0711 18.4864 10.072 18.3395 10.1751 18.3221L13.0628 17.8448C15.4015 17.4584 17.2344 15.6198 17.6197 13.274L18.0821 10.4557C18.1013 10.3369 18.2708 10.3369 18.2911 10.4557L18.7534 13.274C19.1387 15.6198 20.9717 17.4584 23.3103 17.8448L26.12 18.3086C26.2385 18.3279 26.2385 18.498 26.12 18.5182L23.8064 18.9008C21.2915 19.3163 19.6039 21.1848 19.0501 23.6562C19.0491 23.662 19.0125 24.0205 19.0125 24.1963V27.2581C19.0125 27.2581 19.0125 27.2648 19.0125 27.2687C19.3911 32.2975 25.2705 35.5196 29.8707 33.2714C32.4579 32.0067 33.9499 29.8628 33.9701 26.9663C34.0058 21.7964 34.0039 13.5319 33.9933 7.51377L33.9942 7.51473Z"
+						fill="#0000FF" />
+				</svg>
+				<svg class="logo-text" width="77" height="14" viewBox="0 0 77 14" fill="none"
+					xmlns="http://www.w3.org/2000/svg">
+					<path
+						d="M10.3128 0.232422V13.7684H7.86728V8.838H4.91175L2.61521 13.7684H0L2.53035 8.25737C1.77838 7.90971 1.16181 7.40674 0.680658 6.74936C0.226586 6.07934 0 5.33797 0 4.52528C0 3.33964 0.460392 2.32738 1.38208 1.4894C2.30376 0.651413 3.41593 0.232422 4.72037 0.232422H10.3128ZM7.86728 2.45651H4.72037C4.09658 2.45651 3.56488 2.65697 3.12525 3.0561C2.67117 3.46877 2.44459 3.95819 2.44459 4.52528C2.44459 5.09236 2.67117 5.58269 3.12525 5.99446C3.56488 6.40713 4.09568 6.61301 4.72037 6.61301H7.86728V2.4556V2.45651Z"
+						fill="white" />
+					<path
+						d="M20.2004 1.12152C21.0363 1.86921 21.4552 2.7722 21.4552 3.82871C21.4552 4.34432 21.3342 4.84729 21.0941 5.33672C20.9948 5.52996 20.8774 5.71417 20.7429 5.88755C20.6084 6.06183 20.4558 6.22617 20.2861 6.38059C20.853 6.7156 21.3071 7.14091 21.6474 7.65652C22.0437 8.26243 22.2432 8.95233 22.2432 9.72529C22.2432 10.8983 21.7828 11.9042 20.8612 12.7413C19.9259 13.5793 18.7912 13.9983 17.4588 13.9983C16.4378 13.9983 15.5098 13.7346 14.673 13.2054C13.8361 12.6772 13.2837 11.9873 13.0146 11.1367C12.8016 10.454 12.6454 9.74426 12.547 9.01012C12.4477 8.27508 12.4053 7.50843 12.4197 6.70928C12.4477 5.13625 12.668 3.77634 13.0787 2.62953C13.3477 1.84302 13.8659 1.2055 14.6314 0.715175C15.3681 0.238391 16.2049 0 17.1401 0C18.3453 0 19.3653 0.373841 20.2022 1.12152H20.2004ZM15.331 10.5389C15.4159 10.7195 15.5296 10.8838 15.6714 11.0319C15.8131 11.18 15.9765 11.3128 16.1607 11.4283C16.5569 11.6604 16.9903 11.776 17.4579 11.776C18.1241 11.776 18.6838 11.5764 19.1378 11.1764C19.5775 10.7637 19.7968 10.2743 19.7968 9.70723C19.7968 9.14015 19.563 8.65705 19.0954 8.25702C18.6278 7.87053 18.0537 7.67729 17.373 7.67729H14.8634C14.877 8.94059 15.0331 9.89506 15.331 10.5389ZM16.0966 2.49498C15.9404 2.59793 15.8095 2.70809 15.703 2.82368C15.5964 2.93926 15.508 3.07471 15.4376 3.23003C15.3238 3.47474 15.2173 3.79079 15.1189 4.17727C15.0196 4.56375 14.9411 4.98907 14.8851 5.45321H17.0543C17.5933 5.45321 18.0537 5.29879 18.4364 4.98907C18.8192 4.67934 19.0106 4.29917 19.0106 3.84858C19.0106 3.39798 18.8327 3.0106 18.4789 2.68823C18.1241 2.3785 17.6781 2.22408 17.1392 2.22408C16.7564 2.22408 16.4089 2.31438 16.0975 2.49498H16.0966Z"
+						fill="white" />
+					<path
+						d="M22.4531 13.7679L26.6851 4.09952H29.3003L33.5314 13.7679H30.8945L27.9814 7.11644L25.0683 13.7679H22.4531Z"
+						fill="white" />
+					<path
+						d="M36.1271 9.80391C36.2688 10.3584 36.5667 10.8162 37.0199 11.1765C37.5444 11.5765 38.161 11.7761 38.8696 11.7761C39.9465 11.7761 40.7906 11.4988 41.3999 10.9444L43.1223 12.5301C42.0445 13.5098 40.6272 13.9992 38.8696 13.9992C37.3386 13.9992 36.0413 13.5035 34.9779 12.5102C33.9145 11.5178 33.3828 10.3249 33.3828 8.93252C33.3828 7.5401 33.9001 6.31563 34.9355 5.33588C35.9565 4.35612 37.232 3.8667 38.7631 3.8667C40.2941 3.8667 41.4559 4.3498 42.4209 5.31692C43.3562 6.27138 43.8247 7.47598 43.8247 8.93252V9.80301H36.1271V9.80391ZM36.935 6.57479C36.4954 6.94863 36.212 7.41277 36.0847 7.96721H41.1454C41.0181 7.37485 40.7554 6.90348 40.3582 6.55583C39.9465 6.18199 39.4013 5.99507 38.7206 5.99507C38.04 5.99507 37.4306 6.18831 36.9341 6.57479H36.935Z"
+						fill="white" />
+					<path
+						d="M44.7168 4.09952H47.1623V7.81174H51.0539V4.09952H53.4994V13.7679H51.0539V10.0358H47.1623V13.7679H44.7168V4.09952Z"
+						fill="white" />
+					<path
+						d="M57.4318 4.09952V9.243C57.4318 10.0033 57.6656 10.6156 58.1332 11.0797C58.5864 11.5438 59.1606 11.7759 59.8557 11.7759C60.5508 11.7759 61.1032 11.5438 61.5564 11.0797C62.0096 10.6156 62.2371 10.0033 62.2371 9.243V4.09952H64.6825V13.7679H62.3643V12.743C62.3219 12.7945 62.2795 12.8433 62.2371 12.8884C62.1946 12.9335 62.1522 12.9751 62.1098 13.0139C61.4436 13.6713 60.5643 14 59.4729 14C58.126 14 57.0418 13.5485 56.2195 12.6464C55.3971 11.7696 54.9863 10.6101 54.9863 9.16624V4.10042H57.4318V4.09952Z"
+						fill="white" />
+					<path
+						d="M68.5529 9.80391C68.6946 10.3584 68.9925 10.8162 69.4457 11.1765C69.9702 11.5765 70.5867 11.7761 71.2954 11.7761C72.3723 11.7761 73.2164 11.4988 73.8257 10.9444L75.5481 12.5301C74.4703 13.5098 73.053 13.9992 71.2954 13.9992C69.7644 13.9992 68.4671 13.5035 67.4037 12.5102C66.3403 11.5178 65.8086 10.3249 65.8086 8.93252C65.8086 7.5401 66.3259 6.31563 67.3613 5.33588C68.3823 4.35612 69.6578 3.8667 71.1889 3.8667C72.7199 3.8667 73.8817 4.3498 74.8467 5.31692C75.7819 6.27138 76.2505 7.47598 76.2505 8.93252V9.80301H68.5529V9.80391ZM69.3617 6.57479C68.9221 6.94863 68.6387 7.41277 68.5114 7.96721H73.5721C73.4448 7.37485 73.1821 6.90348 72.7849 6.55583C72.3732 6.18199 71.828 5.99507 71.1473 5.99507C70.4667 5.99507 69.8573 6.18831 69.3608 6.57479H69.3617Z"
+						fill="white" />
+				</svg>
+
+			</a>
+			<ul class="navigation-list hidden-sm">
+				<li><a href='#photos'>фото</a></li>
+				<li><a target="_blank" href="./assets/docs/equipment.pdf">оборудование</a></li>
+				<li><a href='#calculator'>цены</a></li>
+				<li><a href='#contacts'>контакты</a></li>
+			</ul>
+
+			<a href="tel:79292794242" class='btn btn-primary t-transform-uppercase'>позвонить</a>
+
+			<span id="menuToggler" class="icon-menu visible-sm"></span>
+
+			<div class="visible-sm menu-mobile">
+				<ul class="navigation-list">
+					<li><a href='#photos'>фото</a></li>
+					<li><a target="_blank" href="./assets/docs/equipment.pdf">оборудование</a></li>
+					<li><a href='#calculator'>цены</a></li>
+					<li><a href='#contacts'>контакты</a></li>
+				</ul>
+				<ul class='socials-list'>
+					<li><a href='https://t.me/yavleniechurch' class='social-item' target="_blank">Telegram</a></li>
+					<li><a href='https://vk.com/yavleniechurch?from=groups' class='social-item'
+							target="_blank">Vkontakte</a></li>
+					<li><a href='https://www.instagram.com/yavleniechurch?igsh=MXgwcHVvNGJ1ejF1bA==' target="_blank"
+							class='social-item'>Instagram*</a></li>
+				</ul>
+
+				<div class="telephone">+7 929 279-42-42</div>
+				<a href="tel:79292794242" class='btn btn-primary'>позвонить</a>
+			</div>
+		</nav>
+
+		<div class='banner-wrapper'>
+			<div class='banner'>
+				<img class="img" src='./assets/img/header-bg.png' alt='Лофт Явление'>
+				<div class="content">
+					<h1 class='title'>Лофт<br>Явление</h1>
+					<div class='description'>Аренда арт-пространства<br>в Санкт-Петербурге</div>
+					<a href="#reservation" class='btn btn-primary btn-lg t-transform-uppercase'>бронировать</a>
+				</div>
+			</div>
+		</div>
+
+	</header>
+
+	<main class="main-content">
+		<section id="photos" class='section section-advantages'>
+			<h2 class='section-title'>
+				Наши преимущества
+			</h2>
+
+			<div class="content">
+				<div class="item">
+					<div class="title">Вместимость</div>
+					<div class="description">До 180 человек</div>
+				</div>
+				<div class="item">
+					<div class="title">Площадь помещения</div>
+					<div class="description">240 кв.м.</div>
+				</div>
+				<div class="item">
+					<div class="title">Высокий потолок</div>
+					<div class="description">Высота 5 метров</div>
+				</div>
+				<div class="item">
+					<div class="title">Доступность</div>
+					<div class="description">24/7</div>
+				</div>
+				<div class="item">
+					<div class="title">Паркинг</div>
+					<div class="description">Охраняемая бесплатная <br> парковка на 50 машиномест</div>
+				</div>
+				<div class="item">
+					<div class="title">Зонирование</div>
+					<div class="description">Собственный санузел и <br> дополнительные помещения</div>
+				</div>
+			</div>
+		</section>
+
+		<section class='d-flex section-place'>
+			<div class="carousel-wrapper">
+				<div class="carousel-gradient carousel-gradient--left"></div>
+				<div class="carousel-gradient carousel-gradient--right"></div>
+				<div class='carousel'>
+					<div class="slide-card">
+						<img src="./assets/img/slides/slide-1.jpg">
+					</div>
+					<div class="slide-card">
+						<img src="./assets/img/slides/slide-2.jpg">
+					</div>
+					<div class="slide-card">
+						<img src="./assets/img/slides/slide-3.jpg">
+					</div>
+					<div class="slide-card">
+						<img src="./assets/img/slides/slide-4.jpg">
+					</div>
+					<div class="slide-card">
+						<img src="./assets/img/slides/slide-5.jpg">
+					</div>
+					<div class="slide-card">
+						<img src="./assets/img/slides/slide-6.jpg">
+					</div>
+				</div>
+			</div>
+
+			<div class="carousel-nav">
+				<div class="carousel-prev"></div>
+				<div class="carousel-next"></div>
+			</div>
+		</section>
+
+		<section class='section section-events'>
+			<h2 class='section-title'>
+				Наши мероприятия
+			</h2>
+			<div class="content">
+				<div class="item">
+					<div class="img-wrapper">
+						<img src='./assets/img/events/event-1.png' class='img' alt=''>
+					</div>
+					<div class="title">Музыкальный вечер</div>
+					<div class="description">Сцена будет там,<br> где захотите,<br> хоть в середине зала!</div>
+				</div>
+				<div class="item">
+					<div class="img-wrapper">
+						<img src='./assets/img/events/event-2.png' class='img' alt=''>
+					</div>
+					<div class="title">Свадьба</div>
+					<div class="description">Каждая пара уникальна<br> и мы поможем сделать<br> свадьбу<br>
+						такой же уникальной!</div>
+				</div>
+				<div class="item">
+					<div class="img-wrapper">
+						<img src='./assets/img/events/event-3.png' class='img' alt=''>
+					</div>
+					<div class="title">Мастер-класс</div>
+					<div class="description">Проведите продуктивно<br> мероприятие со своей<br> аудиторией в уютном
+						месте
+					</div>
+				</div>
+				<div class="item">
+					<div class="img-wrapper">
+						<img src='./assets/img/events/event-4.png' class='img' alt=''>
+					</div>
+					<div class="title">Детский праздник</div>
+					<div class="description">Когда счастливы дети, счастливы все!</div>
+				</div>
+			</div>
+			<div class="mt-36 d-flex justify-center">
+				<a target="_blank" href="https://vk.com/albums-172807041" class='btn btn-primary btn-lg'>Смотреть
+					все фотографии</a>
+			</div>
+		</section>
+
+		<section class="section-technical-environment">
+			<div class='banner'>
+				<img class="img" src='./assets/img/technical-env.png' alt='Техническое оснащение'>
+				<div class="content">
+					<h1 class='title'>Техническое<br>оснащение</h1>
+					<div class='description'>Зал оборудован всем необходимым<br>для проведения любого мероприятия</div>
+					<a target="_blank" href="./assets/docs/equipment.pdf" class='btn btn-primary btn-lg'>Подробнее</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="calculator" class="section section-calculator">
+			<h2 class='section-title'>Калькулятор</h2>
+			<div class="calculator-wrapper">
+				<div class="calculator">
+					<form class="calculator-config" id="CALCULATOR_FORM">
+						<h4 class="calculator-title">Желаемый тариф</h4>
+
+						<div class="form-row form-row--radio">
+							<div class="radio">
+								<input type="radio" id="WITH_EQUIPMENT" name="Tariff" value="withEquipment">
+								<label class="radio-label" for="WITH_EQUIPMENT">С аппаратурой</label>
+							</div>
+							<div class="radio">
+								<input type="radio" checked id="WithoutEquipment" name="Tariff"
+									value="withoutEquipment">
+								<label class="radio-label" for="WithoutEquipment">Без аппаратуры</label>
+							</div>
+						</div>
+
+						<h4 class="calculator-title">Количество часов аренды</h4>
+						<div class="ui-range" style="--offset-x: -16px">
+							<div class="track"></div>
+							<input name="Time" class="range-input" id="hoursRent" type="range" min="3" max="15"
+								value="3" step="1" aria-valuemin="3" aria-valuemax="15" list="hoursRentList">
+							<output class="range-output" id="hoursRentOutput" for="hoursRent">3 ч</output>
+							<div id="hoursRentList" class="tickmarks">
+								<span class="tickmarks-option">3</span>
+								<span class="tickmarks-option">6</span>
+								<span class="tickmarks-option">9</span>
+								<span class="tickmarks-option">12</span>
+								<span class="tickmarks-option">15</span>
+							</div>
+						</div>
+
+						<h4 class="calculator-title">Количество технических часов</h4>
+
+						<div class="ui-range" style="--offset-x: -16px">
+							<div class="track"></div>
+							<input name="TechTime" class="range-input" id="hoursTech" type="range" min="0" max="9"
+								value="0" step="1" aria-valuemin="0" aria-valuemax="9" list="hoursTechList">
+							<output class="range-output" id="hoursTechListOutput" for="hoursTech">0 ч</output>
+							<div id="hoursTechList" class="tickmarks">
+								<span class="tickmarks-option">0</span>
+								<span class="tickmarks-option">3</span>
+								<span class="tickmarks-option">6</span>
+								<span class="tickmarks-option">9</span>
+							</div>
+						</div>
+						<div class="additional-services">
+							<div class="checkbox-wrapper">
+								<div class="checkbox">
+									<input name="Technician" type="checkbox" id="TECHNICIAN_ON_DUTY" disabled>
+									<label class="checkbox-label" for="TECHNICIAN_ON_DUTY">Услуги дежурного
+										техника</label>
+								</div>
+								<span aria-describedby="tooltip1" class="icon-tooltip"></span>
+
+								<div id="tooltip1" class="ui-tooltip" role="tooltip">Придёте со своим звукорежиссёром?
+									<br>
+									Наш дежурный техник поможет ему быстро разобраться с нашим оборудованием,
+									подключиться и
+									настроиться. А ещё проследит, чтобы с техникой обращались бережно и аккуратно. Всё
+									под
+									контролем.
+								</div>
+							</div>
+							<div class="checkbox-wrapper">
+								<div class="checkbox">
+									<input name="LightOperator" type="checkbox" id="LIGHT_OPERATOR" disabled>
+									<label class="checkbox-label" for="LIGHT_OPERATOR">Услуги светооператора</label>
+								</div>
+								<span aria-describedby="tooltip2" class="icon-tooltip"></span>
+
+								<div id="tooltip2" class="ui-tooltip" role="tooltip">Отвечаем за идеальный звук! Наш
+									звукорежиссёр настроит акустику под формат вашего мероприятия, чтобы голоса и музыка
+									звучали чисто, мощно и без сюрпризов. Он будет с вами на протяжении всего события и
+									оперативно решит любые вопросы.</div>
+							</div>
+							<div class="checkbox-wrapper">
+								<div class="checkbox">
+									<input name="SoundEngineer" type="checkbox" id="SOUND_ENGINEER" disabled>
+									<label class="checkbox-label" for="SOUND_ENGINEER">Услуги звукорежиссёра</label>
+								</div>
+								<span aria-describedby="tooltip3" class="icon-tooltip"></span>
+
+								<div id="tooltip3" class="ui-tooltip" role="tooltip">Хотите, чтобы свет «играл» под ваш
+									сценарий? Наш светорежиссёр воплотит ваши идеи: создаст световые сцены, настроит
+									цвета и
+									динамику, включит эффекты точно в нужный момент. Полное световое сопровождение от
+									начала
+									до финала.</div>
+							</div>
+						</div>
+					</form>
+					<div class="separator"></div>
+					<div class="calculator-result">
+						<div>
+							<h4 class="calculator-title">Вы выбрали</h4>
+							<div class="result-list">
+								<div class="result-item">
+									<span class="result-item-title">Количество часов: <span class="result-item-measure"
+											id="RENT_TIME">0</span></span>
+									<span class="result-item-price" id="RENT_TOTAL">0 ₽</span>
+								</div>
+								<div class="result-item">
+									<span class="result-item-title">Технические часы: <span class="result-item-measure"
+											id="TECH_TIME">0</span></span>
+									<span class="result-item-price" id="TECH_TOTAL">0 ₽</span>
+								</div>
+								<div class="result-item">
+									<span class="result-item-title">Услуги дежурного техника</span>
+									<span class="result-item-price" id="TECHNICIAN_ON_DUTY_TOTAL">0 ₽</span>
+								</div>
+								<div class="result-item">
+									<span class="result-item-title">Услуги светооператора</span>
+									<span class="result-item-price" id="LIGHT_OPERATOR_TOTAL">0 ₽</span>
+								</div>
+								<div class="result-item">
+									<span class="result-item-title">Услуги звукорежиссёра</span>
+									<span class="result-item-price" id="SOUND_ENGINEER_TOTAL">0 ₽</span>
+								</div>
+							</div>
+						</div>
+						<div class="calculator-result-actions">
+							<div class="btn calculator-total-price" id="TOTAL_PRICE">
+								0 ₽
+							</div>
+							<a href="#reservation" class='btn btn-primary btn-lg'>Забронировать дату</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section section-questions">
+			<h2 class='section-title'>Часто задаваемые<br>вопросы:</h2>
+			<div class="accordeon">
+				<div class="accordeon-item">
+					<div class="title">Сколько минут идти от метро?</div>
+					<div class="description">Примерно 10 минут неспешным шагом от метро «Елизаровская». Успеете и кофе
+						взять
+						по дороге, и настроиться на мероприятие.</div>
+				</div>
+				<div class="accordeon-item">
+					<div class="title">Есть парковка?</div>
+					<div class="description">Да, конечно. Прямо напротив главного входа в КЦ «Крупа» есть парковка —
+						места
+						хватит на 30–40 автомобилей. Должны вписаться все.</div>
+				</div>
+				<div class="accordeon-item">
+					<div class="title">В чём разница в тарифах?</div>
+					<div class="description">Разница только в том, какое оборудование вы сможете использовать. Чтобы не
+						запутать цифрами, вот тут перечень оборудования.</div>
+				</div>
+				<div class="accordeon-item">
+					<div class="title">Есть комнаты для организаторов?</div>
+					<div class="description">Да, у нас есть две организаторские. И одна из них очень легко превращается
+						в
+						детскую комнату. Так что если планируете мероприятие с детьми — это прям идеальный вариант.
+					</div>
+				</div>
+				<div class="accordeon-item">
+					<div class="title">Как забронировать дату?</div>
+					<div class="description">Всё по-взрослому, но без лишнего пафоса: заключаем договор и вносим
+						предоплату
+						50%. И дата ваша.</div>
+				</div>
+				<div class="accordeon-item">
+					<div class="title">У нас будет громкая вечеринка, шуметь можно?</div>
+					<div class="description">Шуметь — можно! Главное, чтобы это было в рамках закона. Единственная
+						просьба к
+						организаторам: следите, пожалуйста, чтобы дверь в амфитеатр была закрыта, тогда звук остается
+						внутри
+						и всем комфортно.</div>
+				</div>
+				<div class="accordeon-item">
+					<div class="title">До скольки можно проводить мероприятие?</div>
+					<div class="description">Ограничений по времени у нас нет. Единственный момент: если засидитесь
+						допоздна, выход гостей будет организован всем вместе, в сопровождении администратора. Это
+						требование
+						Культурного центра.</div>
+				</div>
+				<div class="accordeon-item">
+					<div class="title">Какое у вас есть оборудование?</div>
+					<div class="description">Сразу всё и не перечислишь. Вот тут полный список — там и фото, и
+						характеристики.</div>
+				</div>
+				<div class="accordeon-item">
+					<div class="title">По каким ориентирам можно вас найти?</div>
+					<div class="description">Лучше один раз увидеть — вот тут классное видео-инструкция, как добраться.
+						А если кратко: ищите главный вход КЦ «Крупа» и вывеску «вход в крупицы». Поднимаетесь на второй
+						этаж,
+						проходите через амфитеатр и ищите нашу вывеску. По пути будут указатели — не потеряетесь!</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section section-reviews">
+			<h2 class='section-title d-flex justify-space-between'>
+				<span>Отзывы на Яндекс</span>
+				<span class="counter">5,0</span>
+			</h2>
+			<div class="content">
+				<div class="item">
+					<div class="user">
+						<div class="name">Виктория<br>Ланина</div>
+						<div class="meta">Знаток города 6 уровня</div>
+						<div class="img-wrapper">
+							<img src='./assets/img/reviews/review-1.png' class='img' alt=''>
+						</div>
+					</div>
+					<div class="message">Лучший зал для мероприятий любого формата! Обожаю их и всем знакомым советую.
+						И день рождения и свадьба на любое количество человек. Все будет комфортно и душевно.
+						Администраторы — просто супер! Спасибо за отличную работу и красивый зал!</div>
+				</div>
+
+				<div class="item">
+					<div class="user">
+						<div class="name">705541<br>Барбарош</div>
+						<div class="meta">Знаток города 4 уровня</div>
+						<div class="img-wrapper">
+							<img src='./assets/img/reviews/review-2.png' class='img' alt=''>
+						</div>
+					</div>
+					<div class="message">Очень интересный дизайн помещения. Была на презентации новинок фирмы LAMARTI.
+						Парковка большая. Вкусный фуршет)))</div>
+				</div>
+			</div>
+			<div class="mt-2 d-flex justify-center">
+				<a target="_blank"
+					href="https://yandex.ru/maps/org/yavleniye/126556948307/reviews/?ll=30.434078%2C59.895227&z=16"
+					class='btn btn-primary btn-lg'>Смотреть отзывы</a>
+			</div>
+		</section>
+
+		<section id="reservation" class="section section-request">
+			<div class="content">
+				<div class="img-wrapper">
+					<img src='./assets/img/request/bg.png' class='img' alt=''>
+				</div>
+				<div class="form-wrapper">
+					<h3 class="form-title">Оставь заявку</h3>
+					<div class="form-description">
+						Менеджер поможет выбрать тариф под ваше <br>мероприятие
+					</div>
+					<form class="form" id="requestForm">
+						<input type="text" id="fullName" name="fullName" placeholder="Ф.И.О" required>
+
+						<input type="tel" id="phone" name="phone" placeholder="+7 (___) ___ __ __" required>
+
+						<input type="date" id="date" name="date" placeholder="Выберите дату" required>
+
+
+						<textarea id="comments" name="comments" rows="5" cols="40"
+							placeholder="Какое планируется мероприятие, сколько человек, комментарии"></textarea>
+					</form>
+
+					<div class="request-policy">Оставляя заявку, вы соглашаетесь с политикой конфиденциальности <br>
+						и пользовательским соглашением</div>
+					<a href="#about" class='btn btn-primary btn-lg'>Отправить заявку</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="contacts" class="section section-contacts">
+			<h2 class='section-title'>
+				Контакты
+			</h2>
+			<div class="content">
+				<div class="column">
+					<div class="item">
+						<div class="label">Контактный телефон</div>
+						<div class="description"><a class="link" href="tel:79292794242">+7 929 279-42-42</a></div>
+					</div>
+					<div class="item">
+						<div class="label">Адрес</div>
+						<div class="description">Обуховской обороны 105,<br>
+							3 этаж</div>
+					</div>
+					<div class="item">
+						<div class="label">Почта</div>
+						<div class="description"><a class="link link--underlined"
+								href="mailto:sales@artyavlenie.com">sales@artyavlenie.com</a></div>
+					</div>
+				</div>
+
+				<div class="column text-right">
+					<div class="item">
+						<div class="label">Режим работы лофта</div>
+						<div class="description">24/7</div>
+					</div>
+					<div class="item">
+						<div class="label">Режим приёма звонков</div>
+						<div class="description">9:00–19:00</div>
+					</div>
+
+					<div class="socials-list">
+						<a href="" class="social-item social-item--vk"></a>
+						<a href="" class="social-item social-item--tg"></a>
+						<a href="" class="social-item social-item--inst"></a>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class='footer'>
+		<div class="footer-content">
+			<img src="./assets/img/logo-footer.png" alt="" class="logo" />
+			<div class="content">
+				<div class="content-col">
+					<div class="title">Навигация</div>
+					<ul class="list">
+						<li class="list-item"><a href="#">Главная</a></li>
+						<li class="list-item"><a href="#calculator">Цены</a></li>
+						<li class="list-item"><a href="#photos">Фото</a></li>
+						<li class="list-item"><a target="_blank" href="./assets/docs/equipment.pdf">Оборудование</a>
+						</li>
+						<li class="list-item"><a href="#contacts">Контакты</a></li>
+						<li class="list-item"><a href="">Документы</a></li>
+					</ul>
+				</div>
+				<div class="content-col">
+					<div class="title">Контакты</div>
+					<ul class="list">
+						<li class="list-item">Контактный телефон</li>
+						<li class="list-item"><a href="tel:79292794242">+7 929 279-42-42</a></li>
+						<li class="list-item">Адрес:</li>
+						<li class="list-item">Обуховской обороны<br>
+							105, 3 этаж</li>
+					</ul>
+				</div>
+				<div class="content-col">
+					<div class="title">Социальные сети</div>
+
+
+					<div class="socials-list">
+						<a href="" class="social-item social-item--vk"></a>
+						<a href="" class="social-item social-item--tg"></a>
+						<a href="" class="social-item social-item--inst"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="./js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+	<script src='./index.js'></script>
+	<script src='./calculator.js'></script>
+</body>
+
+</html>

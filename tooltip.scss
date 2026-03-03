@@ -1,0 +1,18 @@
+@use "mixins.scss";
+@use "utils.scss";
+
+$max-width: 350px;
+.ui-tooltip {
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    display: none;
+    max-width: $max-width;
+    z-index: 999999;
+    @include mixins.text(14px, 1.4, 300, white);
+}
+
+.ui-tooltip[data-show] {
+    display: block;
+}
