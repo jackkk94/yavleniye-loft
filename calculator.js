@@ -90,13 +90,11 @@ const FORM = getElById(CALCULATOR_VIEW_IDS.CALCULATOR_FORM);
 const tariffControl = getElById(CALCULATOR_VIEW_IDS.WITH_EQUIPMENT);
 let initialFormValue = {};
 
-FORM?.addEventListener('change', handleCalculatorFormChange);
+FORM?.addEventListener('input', handleCalculatorFormChange);
 
-
-document.addEventListener('DOMContentLoaded', function() {
-    handleCalculatorFormChange();
+document.addEventListener('DOMContentLoaded', function () {
+  handleCalculatorFormChange();
 });
-
 
 function handleCalculatorFormChange() {
   const formData = new FormData(FORM);
@@ -138,7 +136,13 @@ function handleCalculatorFormChange() {
   const technicCheckbox = getElById(CALCULATOR_VIEW_IDS.TECHNICIAN_ON_DUTY);
   const soundEngineerCheckbox = getElById(CALCULATOR_VIEW_IDS.SOUND_ENGINEER);
 
-  if (initialFormValue.Tariff !== values.Tariff && isTariffWithEquipment) {
+  if (isTariffWithEquipment && !values.Technician && initialFormValue.Technician && !values.SoundEngineer) {// дежурный техник по-умолчанию включен, если не выбран звуковик
+    technicCheckbox.checked = true;
+    values.Technician = 'on';
+  }
+
+
+  if (initialFormValue.Tariff !== values.Tariff && isTariffWithEquipment) { 
     technicCheckbox.checked = true;
     values.Technician = 'on';
   }
@@ -149,6 +153,12 @@ function handleCalculatorFormChange() {
   } else if (values.Technician && !initialFormValue.Technician) {
     values.SoundEngineer = undefined;
     soundEngineerCheckbox.checked = false;
+  }
+
+
+  if (isTariffWithEquipment && !values.SoundEngineer && initialFormValue.SoundEngineer && !values.Technician) { //Если отключить звуковика, должен включиться дежурный техник
+    technicCheckbox.checked = true;
+    values.Technician = 'on';
   }
 
   const technicsPrice = {};
