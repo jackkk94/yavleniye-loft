@@ -1,19 +1,11 @@
 @use "normalize.scss";
 @use "fonts.scss";
 @use "mixins.scss";
-@use "utils.scss";
+@use "utils.scss" as utils;
 @use "controls.scss";
 @use "tooltip.scss";
 
 $gold: #d4c6a5;
-
-$desktop-large: 1919px;
-$desktop-medium: 1439px;
-$desktop-small: 1200px;
-$tablet: 1024px;
-$tablet-small: 970px;
-$mobile: 680px;
-$mobile-small: 450px;
 
 $transition: all 0.3s ease-in-out;
 
@@ -89,22 +81,23 @@ dialog + .backdrop {
 }
 
 .main-content,
-.header {
+.header,
+.footer-content {
     width: 100%;
     max-width: $content-lg;
-    @media only screen and (max-width: $desktop-large) {
+    @media only screen and (max-width: utils.$desktop-large) {
         max-width: $content-md;
     }
 
-    @media only screen and (max-width: $desktop-medium) {
+    @media only screen and (max-width: utils.$desktop-medium) {
         max-width: $content-sm;
     }
 
-    @media only screen and (max-width: $tablet) {
+    @media only screen and (max-width: utils.$tablet) {
         max-width: $content-xs;
     }
 
-    @media only screen and (max-width: $mobile) {
+    @media only screen and (max-width: utils.$mobile) {
         max-width: $content-xxs;
     }
 }
@@ -114,14 +107,14 @@ dialog + .backdrop {
     .navigation {
         width: 100%;
         padding: 46px 0 43px 0;
-        @media only screen and (max-width: $desktop-large) {
+        @media only screen and (max-width: utils.$desktop-large) {
             padding-top: 48px;
         }
-        @media only screen and (max-width: $desktop-medium) {
+        @media only screen and (max-width: utils.$desktop-medium) {
             padding-top: 52px;
         }
 
-        @media only screen and (max-width: $tablet) {
+        @media only screen and (max-width: utils.$tablet) {
             padding: 26px 0;
         }
 
@@ -130,22 +123,22 @@ dialog + .backdrop {
         justify-content: space-between;
         z-index: 1111;
         @include mixins.text(20px, 20px, 500, #231f1f);
-        @media only screen and (max-width: $desktop-medium) {
+        @media only screen and (max-width: utils.$desktop-medium) {
             font-size: 18px;
         }
 
-        @media only screen and (max-width: $tablet) {
+        @media only screen and (max-width: utils.$tablet) {
             font-size: 14px;
         }
 
         .btn {
             @include mixins.text(19px, 1, 500, white);
-            @media only screen and (max-width: $desktop-medium) {
+            @media only screen and (max-width: utils.$desktop-medium) {
                 font-size: 18px;
                 padding: 14px 23px;
             }
 
-            @media only screen and (max-width: $tablet) {
+            @media only screen and (max-width: utils.$tablet) {
                 font-size: 14px;
                 padding: 8px 14px;
             }
@@ -153,7 +146,7 @@ dialog + .backdrop {
 
         text-transform: uppercase;
         .navigation-list {
-            @media only screen and (max-width: $desktop-medium) {
+            @media only screen and (max-width: utils.$desktop-medium) {
                 gap: 20px;
             }
             a {
@@ -164,8 +157,12 @@ dialog + .backdrop {
                 //     color: $gold;
                 // }
             }
+
+             @media only screen and (max-width: utils.$mobile) {
+                display: none;
+             }
         }
-        // @media only screen and (max-width: $desktop-medium) {
+        // @media only screen and (max-width: utils.$desktop-medium) {
         //     padding: 0 48px 0 18px;
         //     @include mixins.text(12px, 12px, 700, white);
         //     .navigation-list {
@@ -174,7 +171,7 @@ dialog + .backdrop {
         //     width: 1000px;
         // }
 
-        // @media only screen and (max-width: $tablet) {
+        // @media only screen and (max-width: utils.$tablet) {
         //     padding: 0 42px 0 32px;
         //     @include mixins.text(10px, 10px, 700, white);
         //     .navigation-list {
@@ -183,7 +180,9 @@ dialog + .backdrop {
         //     width: 100%;
         // }
 
-        @media only screen and (max-width: $mobile) {
+        @media only screen and (max-width: utils.$mobile) {
+            position: absolute;
+            top: 0;
             .icon-menu {
                 display: inline-block;
                 background-image: url(./assets/img/icon-menu.svg);
@@ -263,12 +262,16 @@ dialog + .backdrop {
         &-wrapper {
             padding: 42px 0;
             border-top: 1px solid black;
-            @media only screen and (max-width: $desktop-medium) {
+            @media only screen and (max-width: utils.$desktop-medium) {
                 padding: 46px 0;
             }
 
-            @media only screen and (max-width: $tablet) {
+            @media only screen and (max-width: utils.$tablet) {
                 padding: 36px 0 39px;
+            }
+            @media only screen and (max-width: utils.$mobile) {
+                padding-top: 0;
+                border-top: 0;
             }
         }
 
@@ -280,20 +283,24 @@ dialog + .backdrop {
         border-radius: 30px;
         padding: 0 150px;
 
-        @media only screen and (max-width: $desktop-large) {
+        @media only screen and (max-width: utils.$desktop-large) {
             padding: 0 102px;
         }
 
-        @media only screen and (max-width: $desktop-medium) {
+        @media only screen and (max-width: utils.$desktop-medium) {
             padding: 0 67px;
             height: 603px;
         }
 
-        @media only screen and (max-width: $tablet) {
+        @media only screen and (max-width: utils.$tablet) {
             padding: 0 52px;
             height: 469px;
             border-radius: 20px;
         }
+
+        @media only screen and (max-width: utils.$mobile) {
+                border-radius: 0;
+            }
 
         .img {
             position: absolute;
@@ -305,13 +312,13 @@ dialog + .backdrop {
             transform: translateX(-50%);
             object-fit: cover;
 
-            // @media only screen and (max-width: $tablet) {
+            // @media only screen and (max-width: utils.$tablet) {
             //     width: auto;
             //     height: 100%;
             //     transform: translateX(-69%);
             // }
 
-            // @media only screen and (max-width: $tablet) and (max-height: 600px) and (min-width: $mobile) {
+            // @media only screen and (max-width: utils.$tablet) and (max-height: 600px) and (min-width: utils.$mobile) {
             //     width: 100%;
             //     transform: translateX(-50%);
             // }
@@ -326,11 +333,11 @@ dialog + .backdrop {
 
             .title {
                 @include mixins.text(100px, 108px, 400, white);
-                @media only screen and (max-width: $desktop-medium) {
+                @media only screen and (max-width: utils.$desktop-medium) {
                     font-size: 90px;
                 }
 
-                @media only screen and (max-width: $tablet) {
+                @media only screen and (max-width: utils.$tablet) {
                     @include mixins.text(60px, 68px, 400, white);
                 }
             }
@@ -338,7 +345,7 @@ dialog + .backdrop {
             .description {
                 margin-top: 16px;
                 @include mixins.text(24px, 38px, 400, white);
-                @media only screen and (max-width: $tablet) {
+                @media only screen and (max-width: utils.$tablet) {
                     @include mixins.text(16px, 28px, 400, white);
                     margin-top: 4px;
                 }
@@ -347,31 +354,31 @@ dialog + .backdrop {
             .btn {
                 margin-top: 103px;
 
-                @media only screen and (max-width: $desktop-medium) {
+                @media only screen and (max-width: utils.$desktop-medium) {
                     margin-top: 53px;
                 }
-                @media only screen and (max-width: $tablet) {
+                @media only screen and (max-width: utils.$tablet) {
                     padding: 11px 37px;
                     @include mixins.text(14px, 1, 400, white);
                     margin-top: 42px;
                 }
             }
 
-            // @media only screen and (max-width: $desktop-large) {
+            // @media only screen and (max-width: utils.$desktop-large) {
             //     width: 1000px;
             // }
 
-            // @media only screen and (max-width: $desktop-medium) {
+            // @media only screen and (max-width: utils.$desktop-medium) {
             //     width: 762px;
             // }
 
-            // @media only screen and (max-width: $tablet) {
+            // @media only screen and (max-width: utils.$tablet) {
             //     text-align: center;
             //     width: 100%;
             //     margin: 0 auto;
             // }
 
-            // @media only screen and (max-width: $tablet) {
+            // @media only screen and (max-width: utils.$tablet) {
             //     margin-top: 10%;
             // }
         }
@@ -381,19 +388,19 @@ dialog + .backdrop {
         align-items: center;
         gap: 12px;
 
-        @media only screen and (max-width: $tablet) {
+        @media only screen and (max-width: utils.$tablet) {
             gap: 8px;
         }
         &-img {
             height: 58px;
             width: 58px;
 
-            @media only screen and (max-width: $desktop-medium) {
+            @media only screen and (max-width: utils.$desktop-medium) {
                 width: 47px;
                 height: 47px;
             }
 
-            @media only screen and (max-width: $tablet) {
+            @media only screen and (max-width: utils.$tablet) {
                 width: 32px;
                 height: 32px;
             }
@@ -401,10 +408,10 @@ dialog + .backdrop {
 
         &-text {
             width: 138px;
-            @media only screen and (max-width: $desktop-medium) {
+            @media only screen and (max-width: utils.$desktop-medium) {
                 width: 113px;
             }
-            @media only screen and (max-width: $tablet) {
+            @media only screen and (max-width: utils.$tablet) {
                 width: 76px;
             }
 
@@ -414,7 +421,7 @@ dialog + .backdrop {
             }
         }
 
-        @media only screen and (max-width: $mobile) {
+        @media only screen and (max-width: utils.$mobile) {
             width: 98px;
         }
     }
@@ -422,13 +429,17 @@ dialog + .backdrop {
 
 .section-title {
     @include mixins.text(100px, 1.4, 300, #231f1f);
-    @media only screen and (max-width: $desktop-medium) {
+    @media only screen and (max-width: utils.$desktop-medium) {
         font-size: 74px;
     }
 
-    @media only screen and (max-width: $tablet) {
+    @media only screen and (max-width: utils.$tablet) {
         font-size: 64px;
         line-height: 1.2;
+    }
+
+    @media only screen and (max-width: utils.$mobile) {
+        font-size: 36px;
     }
 }
 
@@ -469,9 +480,42 @@ dialog + .backdrop {
     }
     &-request {
         padding: 88px 0;
+
+        .actions {
+            width: 100%;
+            margin-top: 58px;
+            text-align: center;
+            .btn {
+                width: max-content;
+                padding: 11px 22px;
+
+                font-weight: 300;
+                font-size: 14px;
+            }
+        }
+
+        @media only screen and (max-width: utils.$desktop-medium) {
+            padding: 68px 0 52px;
+        }
+
+        @media only screen and (max-width: utils.$tablet) {
+            padding: 52px 0;
+        }
+
+        @media only screen and (max-width: utils.$mobile) {
+            padding-top: 36px;
+            .actions {
+                margin-top: 51px;
+                .btn {
+                    font-size: 13px;
+                    padding: 9px 13px;
+                }
+            }
+        }
+
         .content {
             display: flex;
-            gap: 70px;
+            gap: 62px;
 
             .img-wrapper {
                 position: relative;
@@ -529,26 +573,171 @@ dialog + .backdrop {
                     font-weight: 300;
                 }
             }
+
+            @media only screen and (max-width: utils.$desktop-large) {
+                .img-wrapper {
+                    width: 625px;
+                }
+                .form-wrapper .btn {
+                    width: 289px;
+                }
+            }
+            @media only screen and (max-width: utils.$desktop-medium) {
+                .img-wrapper {
+                    width: 460px;
+                    height: 420px;
+                }
+
+                .form-wrapper {
+                    .form-title {
+                        line-height: 1;
+                        font-size: 42px;
+                    }
+                    .form-description {
+                        margin-top: 12px;
+                        font-size: 12px;
+                    }
+                    .request-policy {
+                        margin-top: 8px;
+                        font-size: 12px;
+                    }
+                    .form {
+                        margin-top: 16px;
+                        gap: 16px;
+                    }
+
+                    .btn {
+                        font-size: 16px;
+                        width: auto;
+                        padding: 12px 15px;
+                    }
+                }
+            }
+
+            @media only screen and (max-width: utils.$tablet) {
+                gap: 33px;
+                .img-wrapper {
+                    width: 354px;
+                    height: 310px;
+                }
+
+                .form-wrapper {
+                    .form-description {
+                        margin-top: 6px;
+                        font-size: 10px;
+                    }
+                    .request-policy {
+                        margin-top: 8px;
+                        font-size: 10px;
+                    }
+                    .form {
+                        margin-top: 10px;
+                        gap: 6px;
+                    }
+
+                    .btn {
+                        display: none;
+                    }
+                }
+            }
+
+            @media only screen and (max-width: utils.$mobile) {
+                .img-wrapper {
+                    display: none;
+                }
+
+                .form-wrapper {
+                    .form-title {
+                        font-size: 36px;
+                    }
+                    .form-description {
+                        margin-top: 10px;
+                        font-size: 11px;
+                    }
+                    .request-policy {
+                        font-size: 9px;
+                    }
+                    .form {
+                        margin-top: 16px;
+                        margin-left: 0;
+                        margin-top: 16px;
+                    }
+
+                    .btn {
+                    }
+                }
+            }
         }
     }
     &-calculator {
         padding: 12px 0 64px;
+
+        @media only screen and (max-width: utils.$desktop-large) {
+            padding: 24px 0 92px;
+        }
+
+        @media only screen and (max-width: utils.$desktop-medium) {
+            padding: 12px 0 68px;
+        }
+
+        @media only screen and (max-width: utils.$tablet) {
+            padding-bottom: 52px;
+        }
+
+        @media only screen and (max-width: utils.$mobile) {
+            padding-bottom: 0;
+        }
+
         .calculator-wrapper {
             margin-top: 32px;
-            width: 100%;
+            width: 100%;  
             border-radius: 50px;
             background-color: #ededed;
             padding: 82px 152px 58px;
+
+            @media only screen and (max-width: utils.$desktop-large) {
+                margin-top: 52px;
+                padding: 30px 42px 26px;
+            }
+
+            @media only screen and (max-width: utils.$desktop-medium) {
+                margin-top: 18px;
+                padding: 26px 22px 24px 34px;
+            }
+
+            @media only screen and (max-width: utils.$tablet) {
+                border-radius: 20px;
+                margin-top: 26px;
+                padding: 26px 32px 28px 37px;
+            }
+
+            @media only screen and (max-width: utils.$mobile) {
+                margin-top: 26px;
+                padding: 42px 36px 36px;
+            }
 
             .calculator {
                 display: grid;
                 grid-template-columns: 1fr 1px 1fr;
                 gap: 84px;
 
+                @media only screen and (max-width: utils.$desktop-large) {
+                    gap: 32px;
+                }
+
+                @media only screen and (max-width: utils.$desktop-medium) {
+                    gap: 21px;
+                }
+
+                @media only screen and (max-width: utils.$mobile) {
+                    display: flex;
+                    flex-direction: column;
+                }
+
                 &-config {
                     .form-row {
                         &--radio {
-                            gap: 50px;
+                            gap: 55px;
                             margin-top: 18px;
                             margin-bottom: 30px;
                         }
@@ -556,6 +745,49 @@ dialog + .backdrop {
 
                     .ui-range {
                         margin: 8px 0 20px;
+                        @media only screen and (max-width: utils.$desktop-medium) {
+                            margin-bottom: 14px;
+                        }
+                        @media only screen and (max-width: utils.$tablet) {
+                            margin: 7px 0 19px;
+                        }
+                    }
+
+                    @media only screen and (max-width: utils.$desktop-large) {
+                        .form-row {
+                            &--radio {
+                                gap: 35px;
+                                margin-bottom: 24px;
+                            }
+                        }
+                    }
+
+                    @media only screen and (max-width: utils.$desktop-medium) {
+                        .form-row {
+                            &--radio {
+                                gap: 22px;
+                            }
+                        }
+                    }
+
+                    @media only screen and (max-width: utils.$tablet) {
+                        .form-row {
+                            &--radio {
+                                gap: 14px;
+                            }
+                        }
+                    }
+
+                    @media only screen and (max-width: utils.$mobile) {
+                        .form-row {
+                            &--radio {
+                                margin-bottom: 28px;
+                                gap: 22px;
+                            }
+                        }
+
+                        .ui-range {
+                        }
                     }
                 }
                 &-result {
@@ -563,6 +795,9 @@ dialog + .backdrop {
                     flex-direction: column;
                     gap: 16px;
                     justify-content: space-between;
+                    @media only screen and (max-width: utils.$mobile) {
+                        gap: 36px;
+                    }
                     .result-list {
                         margin-top: 20px;
 
@@ -587,6 +822,30 @@ dialog + .backdrop {
                             &-price {
                             }
                         }
+
+                        @media only screen and (max-width: utils.$desktop-medium) {
+                            margin-top: 16px;
+
+                            .result-item {
+                                margin-top: 6px;
+                            }
+                        }
+
+                        @media only screen and (max-width: utils.$tablet) {
+                            margin-top: 19px;
+                            .result-item {
+                                margin-top: 9px;
+                                font-size: 16px;
+                            }
+                        }
+
+                        @media only screen and (max-width: utils.$mobile) {
+                            margin-top: 4px;
+                            .result-item {
+                                margin-top: 12px;
+                                font-size: 12px;
+                            }
+                        }
                     }
 
                     &-actions {
@@ -595,7 +854,7 @@ dialog + .backdrop {
                         gap: 10px;
                         flex-direction: column;
                         margin: 0 auto;
-                        margin-bottom: 68px;
+                        margin-bottom: 48px;
                         .btn {
                             height: 48px;
                             padding: 10px;
@@ -605,6 +864,42 @@ dialog + .backdrop {
                             cursor: default;
                             border: 1px solid black;
                             @include mixins.text(20px, 1.2, 300, #231f1f);
+                        }
+
+                        @media only screen and (max-width: utils.$desktop-large) {
+                            width: 246px;
+                        }
+
+                        @media only screen and (max-width: utils.$desktop-medium) {
+                            gap: 20px;
+                            width: 210px;
+                            .btn,
+                            .calculator-total-price {
+                                font-size: 17px;
+                                height: 44px;
+                            }
+                        }
+
+                        @media only screen and (max-width: utils.$tablet) {
+                            width: 150px;
+                            margin-bottom: 16px;
+
+                            .btn,
+                            .calculator-total-price {
+                                font-size: 16px;
+                                height: 38px;
+                            }
+                        }
+
+                        @media only screen and (max-width: utils.$tablet-small) {
+                            .btn,
+                            .calculator-total-price {
+                                font-size: 12px;
+                            }
+                        }
+
+                        @media only screen and (max-width: utils.$mobile) {
+                            margin-bottom: 0;
                         }
                     }
                 }
@@ -617,6 +912,30 @@ dialog + .backdrop {
 
                 &-title {
                     @include mixins.text(30px, 1.2, 300, #231f1f);
+
+                    @media only screen and (max-width: utils.$tablet) {
+                        font-size: 24px;
+                    }
+
+                    @media only screen and (max-width: utils.$mobile) {
+                        font-size: 16px;
+                    }
+                }
+
+                &-section-title {
+                    @include mixins.text(30px, 1.2, 300, #231f1f);
+
+                    @media only screen and (max-width: utils.$desktop-medium) {
+                        font-size: 26px;
+                    }
+
+                    @media only screen and (max-width: utils.$tablet) {
+                        font-size: 18px;
+                    }
+
+                    @media only screen and (max-width: utils.$mobile) {
+                        font-size: 16px;
+                    }
                 }
 
                 .additional-services {
@@ -625,10 +944,18 @@ dialog + .backdrop {
                     flex-direction: column;
                     gap: 10px;
 
+                    @media only screen and (max-width: utils.$desktop-medium) {
+                        gap: 8px;
+                    }
+
                     .checkbox-wrapper {
                         display: flex;
                         align-items: center;
                         gap: 12px;
+
+                        @media only screen and (max-width: utils.$desktop-medium) {
+                            gap: 6px;
+                        }
                     }
 
                     .icon-tooltip {
@@ -640,21 +967,27 @@ dialog + .backdrop {
                         background-repeat: no-repeat;
                         cursor: pointer;
                         margin-top: 6px;
+
+                        @media only screen and (max-width: utils.$desktop-medium) {
+                            width: 11px;
+                            height: 11px;
+                            margin-top: 3px;
+                        }
                     }
                 }
             }
         }
     }
     &-advantages {
-        @media only screen and (max-width: $desktop-large) {
+        @media only screen and (max-width: utils.$desktop-large) {
             padding: 0 110px;
         }
 
-        @media only screen and (max-width: $desktop-medium) {
+        @media only screen and (max-width: utils.$desktop-medium) {
             padding: 0 0 0 72px;
         }
 
-        @media only screen and (max-width: $tablet) {
+        @media only screen and (max-width: utils.$tablet) {
             padding: 0;
         }
 
@@ -666,16 +999,16 @@ dialog + .backdrop {
             grid-template-rows: repeat(2, 1fr);
             row-gap: 56px;
             column-gap: 32px;
-            @media only screen and (max-width: $desktop-large) {
+            @media only screen and (max-width: utils.$desktop-large) {
                 padding-bottom: 68px;
             }
 
-            @media only screen and (max-width: $desktop-medium) {
+            @media only screen and (max-width: utils.$desktop-medium) {
                 padding: 27px 0 72px;
                 column-gap: 12px;
             }
 
-            @media only screen and (max-width: $tablet) {
+            @media only screen and (max-width: utils.$tablet) {
                 row-gap: 63px;
                 column-gap: 32px;
                 padding: 46px 0 54px;
@@ -684,10 +1017,10 @@ dialog + .backdrop {
             .item {
                 .title {
                     @include mixins.text(30px, 1.2, 400, #231f1f);
-                    @media only screen and (max-width: $desktop-medium) {
+                    @media only screen and (max-width: utils.$desktop-medium) {
                         white-space: nowrap;
                     }
-                    @media only screen and (max-width: $tablet) {
+                    @media only screen and (max-width: utils.$tablet) {
                         white-space: pre-line;
                         font-size: 25px;
                     }
@@ -695,7 +1028,7 @@ dialog + .backdrop {
                 .description {
                     margin-top: 4px;
                     @include mixins.text(20px, 1.3, 400, #231f1f);
-                    @media only screen and (max-width: $tablet) {
+                    @media only screen and (max-width: utils.$tablet) {
                         font-size: 16px;
                         margin-top: 10px;
                     }
@@ -704,8 +1037,27 @@ dialog + .backdrop {
         }
     }
     &-questions {
+        @media only screen and (max-width: utils.$mobile) {
+            border-top: 0;
+        }
         .section-title {
-            margin-top: 56px;
+            margin-top: 54px;
+
+            @media only screen and (max-width: utils.$desktop-large) {
+                margin-top: 60px;
+            }
+
+            @media only screen and (max-width: utils.$desktop-medium) {
+                margin-top: 26px;
+            }
+
+            @media only screen and (max-width: utils.$tablet) {
+                margin-top: 24px;
+            }
+
+            @media only screen and (max-width: utils.$mobile) {
+                margin-top: 36px;
+            }
         }
 
         .accordeon {
@@ -713,6 +1065,24 @@ dialog + .backdrop {
             flex-direction: column;
             gap: 24px;
             padding: 56px 0 124px;
+
+            @media only screen and (max-width: utils.$desktop-large) {
+                padding-bottom: 131px;
+            }
+
+            @media only screen and (max-width: utils.$desktop-medium) {
+                padding-bottom: 84px;
+            }
+
+            @media only screen and (max-width: utils.$tablet) {
+                gap: 32px;
+                padding: 36px 0 40px;
+            }
+
+            @media only screen and (max-width: utils.$mobile) {
+                gap: 35px;
+                padding: 22px 0 45px;
+            }
 
             &-item {
                 position: relative;
@@ -733,16 +1103,36 @@ dialog + .backdrop {
                     background-position: center;
                     background-repeat: no-repeat;
                     transition: all 0.1s ease-in;
+
+                    @media only screen and (max-width: utils.$tablet) {
+                        width: 27px;
+                        height: 12px;
+                    }
                 }
                 .title {
                     cursor: pointer;
                     @include mixins.text(30px, 1.2, 300, #231f1f);
+                    @media only screen and (max-width: utils.$tablet) {
+                        font-size: 24px;
+                    }
+
+                    @media only screen and (max-width: utils.$mobile) {
+                        font-size: 18px;
+                    }
                 }
                 .description {
                     @include mixins.text(20px, 1.2, 300, #231f1f);
                     padding-top: 0;
                     max-height: 0;
                     transition: all 0.1s ease-in-out;
+
+                    @media only screen and (max-width: utils.$tablet) {
+                        font-size: 18px;
+                    }
+
+                    @media only screen and (max-width: utils.$mobile) {
+                        font-size: 13px;
+                    }
                 }
 
                 .title,
@@ -754,6 +1144,14 @@ dialog + .backdrop {
                     .description {
                         padding-top: 18px;
                         max-height: 1000px;
+
+                        @media only screen and (max-width: utils.$tablet) {
+                            padding-top: 9px;
+                        }
+
+                        @media only screen and (max-width: utils.$mobile) {
+                            padding-top: 7px;
+                        }
                     }
 
                     &:after {
@@ -765,15 +1163,58 @@ dialog + .backdrop {
     }
 
     &-events {
+        @media only screen and (max-width: utils.$mobile) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
         .section-title {
             margin-top: 35px;
+
+            @media only screen and (max-width: utils.$desktop-medium) {
+                margin-top: 14px;
+            }
+
+            @media only screen and (max-width: utils.$tablet) {
+                margin-top: 8px;
+            }
+
+            @media only screen and (max-width: utils.$mobile) {
+                margin-top: 12px;
+            }
         }
+
+        .actions {
+            margin-top: 36px;
+            @media only screen and (max-width: utils.$mobile) {
+                margin-top: 18px;
+            }
+        }
+
         .content {
             padding: 74px 0 20px;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
 
+            @media only screen and (max-width: utils.$desktop-large) {
+                padding: 80px 0 0;
+            }
+
+            @media only screen and (max-width: utils.$desktop-medium) {
+                padding-top: 36px;
+            }
+
+            @media only screen and (max-width: utils.$tablet) {
+                padding-top: 50px;
+            }
+
+            @media only screen and (max-width: utils.$mobile) {
+                padding-top: 20px;
+                grid-template-columns: repeat(2, 156px);
+                grid-template-rows: repeat(2, 1fr);
+                row-gap: 30px;
+            }
 
             .item {
                 .img-wrapper {
@@ -792,11 +1233,54 @@ dialog + .backdrop {
 
                 .title {
                     margin-top: 10px;
-                    @include mixins.text(30px, 30px, 400, #231f1f);
+                    @include mixins.text(30px, 1, 400, #231f1f);
                 }
                 .description {
                     margin-top: 18px;
-                    @include mixins.text(20px, 20px, 300, #231f1f);
+                    @include mixins.text(20px, 1, 300, #231f1f);
+                }
+
+                @media only screen and (max-width: utils.$desktop-medium) {
+                    .title {
+                        line-height: 35px;
+                    }
+
+                    .description {
+                        margin-top: 14px;
+                        font-size: 18px;
+                    }
+                }
+
+                @media only screen and (max-width: utils.$tablet) {
+                    .img-wrapper {
+                        border-radius: 13px;
+                        height: 165px;
+                    }
+
+                    .title {
+                        margin-top: 8px;
+                        font-size: 23px;
+                        line-height: 30px;
+                    }
+
+                    .description {
+                        margin-top: 14px;
+                        font-size: 13px;
+                    }
+                }
+
+                @media only screen and (max-width: utils.$mobile) {
+                    .title {
+                        margin-top: 6px;
+                        font-size: 21px;
+                        line-height: 1;
+                    }
+
+                    .description {
+                        margin-top: 4px;
+                        font-size: 13px;
+                        line-height: 1;
+                    }
                 }
             }
         }
@@ -804,16 +1288,64 @@ dialog + .backdrop {
         .btn {
             font-weight: 300;
             padding: 10px 21px;
+
+            @media only screen and (max-width: utils.$desktop-large) {
+                padding: 15px 19px;
+            }
+
+            @media only screen and (max-width: utils.$tablet) {
+                font-size: 16px;
+                padding: 12px 15px;
+            }
+
+            @media only screen and (max-width: utils.$mobile) {
+                font-size: 10px;
+                padding: 8px 15px;
+                min-width: 135px;
+            }
         }
     }
 
     &-reviews {
         padding: 20px 0 70px;
+        @media only screen and (max-width: utils.$desktop-medium) {
+            padding: 18px 0 50px;
+        }
+
+        @media only screen and (max-width: utils.$tablet) {
+            padding: 34px 0 45px;
+        }
+
+        @media only screen and (max-width: utils.$mobile) {
+            padding: 26px 0 54px;
+        }
         .content {
             padding: 64px 0;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20%;
+
+            @media only screen and (max-width: utils.$desktop-large) {
+                padding-bottom: 98px;
+            }
+
+            @media only screen and (max-width: utils.$desktop-medium) {
+                gap: 5%;
+                padding: 62px 0 42px;
+            }
+
+            @media only screen and (max-width: utils.$tablet) {
+                gap: 20px;
+                padding-top: 32px;
+            }
+
+            @media only screen and (max-width: utils.$mobile) {
+                gap: 40px;
+                padding-bottom: 52px;
+                grid-template-rows: repeat(2, 1fr);
+                grid-template-columns: unset;
+            }
+
             .item {
                 display: flex;
                 gap: 20px;
@@ -846,18 +1378,104 @@ dialog + .backdrop {
                 .message {
                     @include mixins.text(18px, 25px, 300, #231f1f);
                 }
+
+                @media only screen and (max-width: utils.$desktop-large) {
+                    .user {
+                        .img-wrapper {
+                            height: 93px;
+                            width: 93px;
+                        }
+                    }
+                }
+
+                @media only screen and (max-width: utils.$desktop-medium) {
+                    gap: 24px;
+                    .user {
+                        .meta {
+                            margin-top: 18px;
+                        }
+
+                        .img-wrapper {
+                            height: 65px;
+                            width: 65px;
+                        }
+                    }
+
+                    .message {
+                        font-size: 15px;
+                    }
+                }
+
+                @media only screen and (max-width: utils.$tablet) {
+                    gap: 40px;
+                    .user {
+                        .img-wrapper {
+                            height: 44px;
+                            width: 44px;
+                        }
+                    }
+
+                    .message {
+                        font-size: 14px;
+                    }
+                }
+
+                @media only screen and (max-width: utils.$mobile) {
+                    gap: 20px;
+                    .user {
+                        .img-wrapper {
+                            height: 38px;
+                            width: 38px;
+                        }
+                    }
+
+                    .message {
+                    }
+                }
             }
         }
 
         .btn {
-            padding: 10px 30px;
+            padding: 15px 50px;
             @include mixins.text(18px, 1, 300, #ffffff);
+
+            @media only screen and (max-width: utils.$desktop-large) {
+                padding: 15px 31px;
+            }
+
+            @media only screen and (max-width: utils.$tablet) {
+                font-size: 16px;
+                padding: 16px 32px;
+            }
+
+            @media only screen and (max-width: utils.$mobile) {
+                font-size: 11px;
+                padding: 13px 22px;
+            }
         }
     }
 
     &-contacts {
         .section-title {
             margin-top: 30px;
+
+            @media only screen and (max-width: utils.$desktop-large) {
+                margin-top: 32px;
+            }
+
+            @media only screen and (max-width: utils.$desktop-medium) {
+                margin-top: 28px;
+            }
+
+            @media only screen and (max-width: utils.$tablet) {
+                margin-top: 18px;
+            }
+
+            @media only screen and (max-width: utils.$mobile) {
+                margin: 0 auto;
+                margin-top: 24px;
+                max-width: 380px;
+            }
         }
         .content {
             padding: 56px 0 128px;
@@ -880,6 +1498,71 @@ dialog + .backdrop {
                     @include mixins.text(30px, 1.4, 400, #231f1f);
                 }
             }
+
+            @media only screen and (max-width: utils.$desktop-medium) {
+                padding: 42px 0 54px;
+            }
+
+            @media only screen and (max-width: utils.$tablet) {
+                gap: 16px;
+                padding: 38px 0 42px;
+                .column {
+                    gap: 18px;
+
+                    .item {
+                        .label {
+                            font-size: 18px;
+                        }
+
+                        .description {
+                            margin-top: 4px;
+                            &--small {
+                                font-size: 22px;
+                            }
+                        }
+                    }
+                }
+
+                .socials-list {
+                    gap: 13px;
+                    .social-item {
+                        width: 42px;
+                        height: 42px;
+                    }
+                }
+            }
+
+            @media only screen and (max-width: utils.$mobile) {
+                padding: 16px 0 56px;
+                max-width: 380px;
+                display: flex;
+                flex-direction: column;
+                margin: 0 auto;
+                .column {
+                    gap: 18px;
+
+                    .item {
+                        .label {
+                            font-size: 16px;
+                        }
+
+                        .description {
+                            margin-top: 6px;
+                            font-size: 22px;
+                        }
+                    }
+
+                    text-align: left;
+                }
+                .socials-list {
+                    justify-content: flex-start;
+                    gap: 20px;
+                    .social-item {
+                        width: 38px;
+                        height: 38px;
+                    }
+                }
+            }
         }
     }
 
@@ -887,12 +1570,12 @@ dialog + .backdrop {
         padding-bottom: 90px;
         height: 860px;
 
-        @media only screen and (max-width: $desktop-medium) {
+        @media only screen and (max-width: utils.$desktop-medium) {
             height: 607px;
             padding-bottom: 65px;
         }
 
-        @media only screen and (max-width: $tablet) {
+        @media only screen and (max-width: utils.$tablet) {
             height: 450px;
             padding-bottom: 20px;
         }
@@ -907,7 +1590,7 @@ dialog + .backdrop {
             align-items: center;
             gap: 60px;
 
-            @media only screen and (max-width: $tablet) {
+            @media only screen and (max-width: utils.$tablet) {
                 gap: 36px;
             }
             .carousel-next,
@@ -922,17 +1605,17 @@ dialog + .backdrop {
 
                 cursor: pointer;
 
-                @media only screen and (max-width: $desktop-large) {
+                @media only screen and (max-width: utils.$desktop-large) {
                     width: 95px;
                     background-image: url("./assets/img/slides/arrow-desktop-medium.svg");
                 }
 
-                @media only screen and (max-width: $desktop-medium) {
+                @media only screen and (max-width: utils.$desktop-medium) {
                     width: 60px;
                     background-image: url("./assets/img/slides/arrow-desktop-small.svg");
                 }
 
-                @media only screen and (max-width: $tablet) {
+                @media only screen and (max-width: utils.$tablet) {
                     background-image: url("./assets/img/slides/arrow-tablet.svg");
                     width: 39px;
                 }
@@ -950,11 +1633,11 @@ dialog + .backdrop {
             height: 677px;
             padding-left: 30px;
 
-            @media only screen and (max-width: $desktop-medium) {
+            @media only screen and (max-width: utils.$desktop-medium) {
                 height: 478px;
             }
 
-            @media only screen and (max-width: $tablet) {
+            @media only screen and (max-width: utils.$tablet) {
                 height: 369px;
             }
 
@@ -1003,11 +1686,11 @@ dialog + .backdrop {
 
         .carousel2 {
             width: 100%;
-            // @media only screen and (max-width: $tablet) {
+            // @media only screen and (max-width: utils.$tablet) {
             //     margin-top: 45px;
             // }
 
-            // @media only screen and (max-width: $mobile) {
+            // @media only screen and (max-width: utils.$mobile) {
             //     margin-top: 33px;
             // }
 
@@ -1017,7 +1700,7 @@ dialog + .backdrop {
                 // padding-left: 138px;
 
                 // padding-left: 138px;
-                // @media only screen and (max-width: $tablet) {
+                // @media only screen and (max-width: utils.$tablet) {
                 //     padding-left: 0;
                 // }
             }
@@ -1066,19 +1749,19 @@ dialog + .backdrop {
                 }
                 box-sizing: content-box;
                 &:first-child {
-                    @media only screen and (max-width: $tablet) {
+                    @media only screen and (max-width: utils.$tablet) {
                         padding-left: 68px;
                     }
-                    @media only screen and (max-width: $mobile-small) {
+                    @media only screen and (max-width: utils.$mobile-small) {
                         padding-left: 0;
                     }
                 }
                 margin: 0px 25px;
-                @media only screen and (max-width: $tablet) {
+                @media only screen and (max-width: utils.$tablet) {
                     margin: 0px 30px;
                 }
                 width: 260px !important;
-                @media only screen and (max-width: $mobile-small) {
+                @media only screen and (max-width: utils.$mobile-small) {
                     width: 100vw !important;
                     div {
                         width: 260px;
@@ -1100,7 +1783,23 @@ dialog + .backdrop {
         }
     }
     &-technical-environment {
-        padding: 68px 0;
+        padding: 56px 0 72px;
+        @media only screen and (max-width: utils.$desktop-large) {
+            padding: 68px 0;
+        }
+
+        @media only screen and (max-width: utils.$desktop-medium) {
+            padding: 64px 0 68px;
+        }
+
+        @media only screen and (max-width: utils.$tablet) {
+            padding: 42px 0 53px;
+        }
+
+        @media only screen and (max-width: utils.$mobile) {
+            padding: 32px 0;
+        }
+
         .banner {
             position: relative;
             overflow: hidden;
@@ -1109,6 +1808,27 @@ dialog + .backdrop {
             align-items: center;
             border-radius: 30px;
             padding: 150px 118px;
+
+            @media only screen and (max-width: utils.$desktop-large) {
+                padding: 150px 106px;
+            }
+
+            @media only screen and (max-width: utils.$desktop-medium) {
+                padding: 104px 74px;
+                height: 490px;
+            }
+
+            @media only screen and (max-width: utils.$tablet) {
+                padding: 75px 54px;
+                height: 356px;
+            }
+
+            @media only screen and (max-width: utils.$mobile) {
+                padding: 70px 30px 50px;
+                height: 332px;
+                border-radius: 0;
+            }
+
             .img {
                 position: absolute;
                 top: 0%;
@@ -1142,6 +1862,69 @@ dialog + .backdrop {
                     font-size: 24px;
                     padding: 13px 64px;
                 }
+
+                @media only screen and (max-width: utils.$desktop-large) {
+                    .btn {
+                        margin-top: 45px;
+                        padding: 13px 49px;
+                    }
+                }
+
+                @media only screen and (max-width: utils.$desktop-medium) {
+                    .title {
+                        font-size: 65px;
+                        line-height: 1;
+                    }
+
+                    .description {
+                        margin-top: 20px;
+                        font-size: 19px;
+                        line-height: 29px;
+                    }
+
+                    .btn {
+                        margin-top: 25px;
+                        padding: 11px 30px;
+                        font-size: 18px;
+                    }
+                }
+
+                @media only screen and (max-width: utils.$tablet) {
+                    .title {
+                        font-size: 45px;
+                    }
+
+                    .description {
+                        margin-top: 14px;
+                        font-size: 13px;
+                        line-height: 20px;
+                    }
+
+                    .btn {
+                        margin-top: 36px;
+                        padding: 6px 32px;
+                        font-size: 10px;
+                    }
+                }
+
+                @media only screen and (max-width: utils.$mobile) {
+                    .title {
+                        font-size: 27px;
+                    }
+
+                    .description {
+                        margin-top: 10px;
+                        font-size: 11px;
+                        line-height: 20px;
+                    }
+
+                    .btn {
+                        margin-top: 78px;
+                        padding: 6px 31px;
+                        font-size: 10px;
+                        max-width: 68px;
+                    }
+                }
             }
         }
     }
@@ -1149,21 +1932,53 @@ dialog + .backdrop {
 
 .footer {
     &-content {
-        max-width: $content-lg;
         margin: 0 auto;
         padding: 60px 0 40px;
         display: grid;
         grid-template-columns: 0.4fr 0.6fr;
         align-items: center;
 
+        @media only screen and (max-width: utils.$desktop-medium) {
+            display: flex;
+            width: 100%;
+        }
+
+        @media only screen and (max-width: utils.$tablet) {
+            align-items: flex-start;
+            padding-top: 40px;
+        }
+
+        &--mobile {
+            display: none;
+        }
+
+        @media only screen and (max-width: utils.$mobile) {
+            padding: 34px 30px 48px;
+            display: none;
+            &--mobile {
+                display: flex;
+            }
+        }
+
         .logo {
             width: 322px;
             height: auto;
+
+            @media only screen and (max-width: utils.$tablet) {
+                width: 217px;
+                margin-top: 32px;
+            }
+
+            @media only screen and (max-width: utils.$mobile) {
+                margin-top: 0;
+                width: 106px;
+            }
         }
 
         .content {
             display: flex;
             justify-content: space-between;
+            flex: 1;
 
             &-col {
                 flex: 1;
@@ -1171,6 +1986,12 @@ dialog + .backdrop {
 
                 .title {
                     @include mixins.text(20px, 1.2, 400, white);
+                    @media only screen and (max-width: utils.$tablet) {
+                        .title-socials {
+                            display: block;
+                            text-align: right;
+                        }
+                    }
                 }
             }
             .list {
@@ -1182,6 +2003,48 @@ dialog + .backdrop {
                     @include mixins.text(16px, 1.2, 300, white);
                 }
             }
+
+            @media only screen and (max-width: utils.$tablet) {
+                gap: 18px;
+                &-col {
+                    .title {
+                        font-size: 18px;
+                    }
+                }
+
+                .list {
+                    margin-top: 14px;
+                    &-item {
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            @media only screen and (max-width: utils.$mobile) {
+                gap: 12px;
+                &-col {
+                    text-align: left;
+                    .title {
+                        font-size: 10px;
+                        &--large {
+                            font-size: 12px;
+                        }
+                    }
+                }
+
+                .list {
+                    margin-top: 5px;
+                    &-item {
+                        font-size: 10px;
+                        &--large {
+                            font-size: 12px;
+                        }
+                        &--phone {
+                            margin: 7px 0;
+                        }
+                    }
+                }
+            }
         }
 
         .socials-list {
@@ -1190,6 +2053,21 @@ dialog + .backdrop {
             .social-item {
                 width: 36px;
                 height: 36px;
+            }
+
+            @media only screen and (max-width: utils.$tablet) {
+                gap: 7px;
+                margin-top: 14px;
+                .social-item {
+                    width: 26px;
+                    height: 26px;
+                }
+            }
+
+            @media only screen and (max-width: utils.$mobile) {
+                gap: 8px;
+                margin-top: 14px;
+                justify-content: flex-start;
             }
         }
     }
@@ -1218,14 +2096,14 @@ dialog + .backdrop {
             gap: 38px;
             z-index: 10;
             align-items: center;
-            @media only screen and (max-width: $desktop-medium) {
+            @media only screen and (max-width: utils.$desktop-medium) {
                 gap: 62px;
             }
-            @media only screen and (max-width: $tablet) {
+            @media only screen and (max-width: utils.$tablet) {
                 gap: 47px;
                 top: 42%;
             }
-            @media only screen and (max-width: $mobile) {
+            @media only screen and (max-width: utils.$mobile) {
                 gap: 33px;
                 width: 100%;
                 top: 23%;
@@ -1233,7 +2111,7 @@ dialog + .backdrop {
             .note {
                 @include mixins.text(11px, 17px, 300, rgba(255, 255, 255, 0.8));
 
-                @media only screen and (max-width: $mobile) {
+                @media only screen and (max-width: utils.$mobile) {
                     font-size: 6px;
                     line-height: 17px;
                 }
@@ -1246,10 +2124,10 @@ dialog + .backdrop {
             &--mobile {
                 display: none;
             }
-            @media only screen and (max-width: $tablet) {
+            @media only screen and (max-width: utils.$tablet) {
                 gap: 88px;
             }
-            @media only screen and (max-width: $mobile) {
+            @media only screen and (max-width: utils.$mobile) {
                 display: none;
                 gap: 30px 54px;
                 &--mobile {
@@ -1274,10 +2152,10 @@ dialog + .backdrop {
                     background-repeat: no-repeat;
                 }
 
-                @media only screen and (max-width: $tablet) {
+                @media only screen and (max-width: utils.$tablet) {
                     font-size: 20px;
                 }
-                @media only screen and (max-width: $mobile) {
+                @media only screen and (max-width: utils.$mobile) {
                     font-size: 18px;
                 }
             }
@@ -1300,18 +2178,18 @@ dialog + .backdrop {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        @media only screen and (max-width: $desktop-medium) {
+        @media only screen and (max-width: utils.$desktop-medium) {
             padding: 39px 24px 33px 33px;
         }
 
-        @media only screen and (max-width: $tablet) {
+        @media only screen and (max-width: utils.$tablet) {
             padding: 24px 20px 18px 20px;
             gap: 38px;
             justify-content: flex-start;
             align-items: flex-start;
         }
 
-        @media only screen and (max-width: $mobile) {
+        @media only screen and (max-width: utils.$mobile) {
             flex-direction: column;
             align-items: center;
             gap: 8px;
@@ -1325,11 +2203,11 @@ dialog + .backdrop {
                 width: 100%;
             }
 
-            @media only screen and (max-width: $desktop-medium) {
+            @media only screen and (max-width: utils.$desktop-medium) {
                 width: 100px;
             }
 
-            @media only screen and (max-width: $mobile) {
+            @media only screen and (max-width: utils.$mobile) {
                 width: 50px;
             }
         }
@@ -1339,13 +2217,13 @@ dialog + .backdrop {
             &-link {
                 cursor: pointer;
                 @include mixins.text(12px, 23px, 400, $gold);
-                @media only screen and (max-width: $desktop-medium) {
+                @media only screen and (max-width: utils.$desktop-medium) {
                     font-size: 9px;
                     line-height: 23px;
                 }
             }
 
-            @media only screen and (max-width: $tablet) {
+            @media only screen and (max-width: utils.$tablet) {
                 display: none;
             }
         }
@@ -1353,19 +2231,19 @@ dialog + .backdrop {
         .links-container {
             padding-top: 60px;
             padding-left: 60px;
-            @media only screen and (max-width: $desktop-large) {
+            @media only screen and (max-width: utils.$desktop-large) {
                 padding-top: 0px;
             }
-            @media only screen and (max-width: $desktop-medium) {
+            @media only screen and (max-width: utils.$desktop-medium) {
                 padding-top: 48px;
             }
-            @media only screen and (max-width: $tablet) {
+            @media only screen and (max-width: utils.$tablet) {
                 padding-left: 0;
                 padding-top: 12px;
                 gap: 12px;
             }
 
-            @media only screen and (max-width: $mobile) {
+            @media only screen and (max-width: utils.$mobile) {
                 padding-top: 8px;
                 gap: 4px;
             }
@@ -1379,44 +2257,44 @@ dialog + .backdrop {
 
             .list {
                 gap: 50px;
-                @media only screen and (max-width: $desktop-medium) {
+                @media only screen and (max-width: utils.$desktop-medium) {
                     gap: 27px;
                 }
                 .list-item a {
                     text-transform: uppercase;
                     @include mixins.text(12px, 19px, 700, $gold);
 
-                    @media only screen and (max-width: $desktop-medium) {
+                    @media only screen and (max-width: utils.$desktop-medium) {
                         font-size: 10px;
                         line-height: 18px;
                     }
 
-                    @media only screen and (max-width: $tablet-small) {
+                    @media only screen and (max-width: utils.$tablet-small) {
                         font-size: 8px;
                     }
 
-                    @media only screen and (max-width: $mobile) {
+                    @media only screen and (max-width: utils.$mobile) {
                         font-size: 6px;
                     }
 
-                    @media only screen and (max-width: $mobile-small) {
+                    @media only screen and (max-width: utils.$mobile-small) {
                         font-size: 5px;
                     }
                 }
 
-                @media only screen and (max-width: $mobile) {
+                @media only screen and (max-width: utils.$mobile) {
                     gap: 10px;
                 }
             }
             .organization-data {
                 text-align: center;
                 @include mixins.text(10px, 18px, 300, #949494);
-                @media only screen and (max-width: $tablet) {
+                @media only screen and (max-width: utils.$tablet) {
                     font-size: 7px;
                     line-height: 14px;
                 }
 
-                @media only screen and (max-width: $mobile) {
+                @media only screen and (max-width: utils.$mobile) {
                     font-size: 6px;
                     line-height: 8px;
                 }
@@ -1424,14 +2302,14 @@ dialog + .backdrop {
 
             .policy {
                 display: none;
-                @media only screen and (max-width: $tablet) {
+                @media only screen and (max-width: utils.$tablet) {
                     display: flex;
                     gap: 36px;
                     align-self: flex-start;
                     margin-left: 34px;
                 }
 
-                @media only screen and (max-width: $mobile) {
+                @media only screen and (max-width: utils.$mobile) {
                     .policy-link {
                         font-size: 7px;
                     }
@@ -1444,43 +2322,71 @@ dialog + .backdrop {
 
 .hidden-md {
     display: inline-block;
-    @media only screen and (max-width: $desktop-medium) {
+    @media only screen and (max-width: utils.$desktop-medium) {
+        display: none;
+    }
+}
+
+.hidden-tablet {
+    display: inline-block;
+    @media only screen and (max-width: utils.$tablet) {
+        display: none;
+    }
+}
+
+.hidden-sm {
+    display: inline-block;
+    @media only screen and (max-width: utils.$mobile) {
+        display: none;
+    }
+}
+
+.hidden-lg {
+    display: inline-block;
+    @media only screen and (max-width: utils.$desktop-large) {
         display: none;
     }
 }
 
 .visible-md {
     display: none;
-    @media only screen and (max-width: $desktop-medium) {
+    @media only screen and (max-width: utils.$desktop-medium) {
+        display: inline-block;
+    }
+}
+
+.visible-lg {
+    display: none;
+    @media only screen and (max-width: utils.$desktop-large) {
         display: inline-block;
     }
 }
 
 .hidden-tablet {
     display: inline-block;
-    @media only screen and (max-width: $tablet) {
+    @media only screen and (max-width: utils.$tablet) {
         display: none;
     }
 }
 
 .visible-tablet {
     display: none;
-    @media only screen and (max-width: $tablet) {
+    @media only screen and (max-width: utils.$tablet) {
         display: inline-block;
-    }
-}
-
-.hidden-sm {
-    display: inline-flex;
-    @media only screen and (max-width: $mobile) {
-        display: none;
     }
 }
 
 .visible-sm {
     display: none;
-    @media only screen and (max-width: $mobile) {
+    @media only screen and (max-width: utils.$mobile) {
         display: inline-block;
+    }
+}
+
+.hidden-sm {
+    display: inline-block;
+    @media only screen and (max-width: utils.$mobile) {
+        display: none;
     }
 }
 
@@ -1494,7 +2400,7 @@ dialog + .backdrop {
         cursor: pointer;
         display: block;
         color: white;
-        @media only screen and (max-width: $mobile) {
+        @media only screen and (max-width: utils.$mobile) {
             color: black;
             right: 16px;
         }

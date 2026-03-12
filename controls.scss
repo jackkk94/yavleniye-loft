@@ -1,7 +1,43 @@
 @use "mixins.scss";
-@use "utils.scss";
+@use "utils.scss" as utils;
 
-$radio-width: 18px;
+:root {
+    --radio-width: 18px;
+    --radio-outline-width: 5px;
+    --radio-label-font-size: 20px;
+    --checkbox-label-font-size: 20px;
+    --radio-gap: 10px;
+    --ui-range-height: 88px;
+    --ui-range-output-font-size: 16px;
+    --ui-range-thumb-width: 24px;
+
+    @media only screen and (max-width: utils.$desktop-medium) {
+        --radio-width: 12px;
+        --radio-outline-width: 6px;
+        --radio-label-font-size: 18px;
+        --radio-gap: 11px;
+        --ui-range-height: 78px;
+        --ui-range-thumb-width: 22px;
+    }
+
+    @media only screen and (max-width: utils.$tablet) {
+        --radio-label-font-size: 14px;
+        --radio-gap: 7px;
+        --checkbox-label-font-size: 16px;
+        --ui-range-height: 70px;
+        --ui-range-output-font-size: 12px;
+        --ui-range-thumb-width: 16px;
+    }
+
+    @media only screen and (max-width: utils.$mobile) {
+        outline-width: 5px;
+        --radio-label-font-size: 12px;
+        --checkbox-label-font-size: 12px;
+        --radio-gap: 5px;
+        --ui-range-height: 62px;
+        --ui-range-thumb-width: 14px;
+    }
+}
 
 input[type="text"],
 input[type="tel"],
@@ -25,11 +61,28 @@ textarea {
     &::placeholder {
         @include mixins.text(20px, 1.2, 300, #a7a7a7);
     }
+
+    @media only screen and (max-width: utils.$desktop-medium) {
+        font-size: 16px;
+        padding: 5px 11px;
+    }
 }
 
 textarea {
     resize: none;
     padding: 12px 10px;
+
+    &,
+    &::placeholder {
+        font-size: 19px;
+    }
+    @media only screen and (max-width: utils.$desktop-medium) {
+        padding: 9px 12px;
+        &,
+        &::placeholder {
+            font-size: 14px;
+        }
+    }
 }
 
 .form-row {
@@ -43,35 +96,41 @@ textarea {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: calc(var(--radio-gap) + var(--radio-outline-width));
 
     &-label {
-        @include mixins.text(20px, 1.2, 300, #231f1f);
+        @include mixins.text(var(--radio-label-font-size), 1.2, 300, #231f1f);
         user-select: none;
     }
 }
 
 .checkbox {
     gap: 20px;
+
+    &-label {
+        @include mixins.text(var(--checkbox-label-font-size), 1.2, 300, #231f1f);
+        user-select: none;
+    }
 }
 
 input[type="radio"] {
-    width: $radio-width;
-    height: $radio-width;
+    width: var(--radio-width);
+    height: var(--radio-width);
 
     appearance: none;
     position: relative;
     border-radius: 50%;
-    outline: 5px solid #0000ff;
+    outline: var(--radio-outline-width) solid #0000ff;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     &::after {
         content: "";
         display: block;
         background-color: #0000ff;
-        width: calc($radio-width + 1px);
-        height: calc($radio-width + 1px);
+        width: calc(var(--radio-width) + 1px);
+        height: calc(var(--radio-width) + 1px);
     }
 
     &:checked {
@@ -111,10 +170,21 @@ input[type="checkbox"] {
     &:disabled {
         opacity: 0.3;
     }
+
+    @media only screen and (max-width: utils.$mobile) {
+        width: 18px;
+        height: 18px;
+        gap: 22px;
+
+        &:checked::after {
+            width: 12px;
+            height: 9px;
+        }
+    }
 }
 
 .ui-range {
-    height: 88px;
+    height: var(--ui-range-height);
     position: relative;
     display: grid;
     width: 100%;
@@ -134,13 +204,28 @@ input[type="checkbox"] {
     background: none;
     margin-top: -15px;
     cursor: pointer;
+
+    @media only screen and (max-width: utils.$desktop-medium) {
+        height: 22px;
+        margin-top: -14px;
+    }
+
+    @media only screen and (max-width: utils.$tablet) {
+        height: 18px;
+        margin-top: -15px;
+    }
+
+    @media only screen and (max-width: utils.$mobile) {
+        height: 16px;
+        margin-top: -12px;
+    }
 }
 
 .range-input::-webkit-slider-thumb {
     top: 18px;
     -webkit-appearance: none;
-    width: 24px;
-    height: 24px;
+    width: var(--ui-range-thumb-width);
+    height: var(--ui-range-thumb-width);
     border: none;
     border-radius: 50%;
     background-color: #ededed;
@@ -150,8 +235,8 @@ input[type="checkbox"] {
 
 .range-input::-moz-range-thumb {
     margin-top: 10px;
-    width: 24px;
-    height: 24px;
+    width: var(--ui-range-thumb-width);
+    height: var(--ui-range-thumb-width);
     border: none;
     border-radius: 50%;
     background-color: #ededed;
@@ -165,6 +250,19 @@ input[type="checkbox"] {
     height: 5px;
     border-radius: 10px;
     background-color: #d9d9d9;
+
+    @media only screen and (max-width: utils.$desktop-medium) {
+        height: 4px;
+        margin-top: 44px;
+    }
+
+    @media only screen and (max-width: utils.$tablet) {
+        margin-top: 34px;
+    }
+
+    @media only screen and (max-width: utils.$mobile) {
+        margin-top: 28px;
+    }
 }
 
 .range-output {
@@ -172,15 +270,25 @@ input[type="checkbox"] {
     position: absolute;
     top: 2px;
     left: calc(var(--offset-x));
-    // margin-left: var(--range-output-margin);
     padding: 8px 16px;
     background: transparent;
     border-radius: 50px;
-    @include mixins.text(16px, 1, 300, black);
+    @include mixins.text(var(--ui-range-output-font-size), 1, 300, black);
 
     user-select: none;
     transition: 100ms;
     background-color: #ffffff;
+
+    @media only screen and (max-width: utils.$desktop-medium) {
+        padding: 6px;
+    }
+
+    @media only screen and (max-width: utils.$tablet) {
+        padding: 5px 4px;
+    }
+    @media only screen and (max-width: utils.$mobile) {
+        padding: 3px 6px;
+    }
 }
 
 .tickmarks {
@@ -191,7 +299,8 @@ input[type="checkbox"] {
     flex-direction: row;
     justify-content: space-between;
 
-    &-option, option {
+    &-option,
+    option {
         @include mixins.text(16px, 1, 300, rgba(0, 0, 0, 0.4));
         position: relative;
         padding: 0;

@@ -49,14 +49,14 @@
 				</svg>
 
 			</a>
-			<ul class="navigation-list hidden-sm">
+			<ul class="navigation-list">
 				<li><a href='#photos'>фото</a></li>
 				<li><a target="_blank" href="./assets/docs/equipment.pdf">оборудование</a></li>
 				<li><a href='#calculator'>цены</a></li>
 				<li><a href='#contacts'>контакты</a></li>
 			</ul>
 
-			<a href="tel:79327101244" class='btn btn-primary t-transform-uppercase'>позвонить</a>
+			<a href="tel:79327101244" class='btn btn-primary t-transform-uppercase hidden-sm'>позвонить</a>
 
 			<span id="menuToggler" class="icon-menu visible-sm"></span>
 
@@ -70,8 +70,8 @@
 				<ul class='socials-list'>
 					<li><a href='https://t.me/+79327101244' class='social-item' target="_blank">Telegram</a></li>
 					<li><a target="_blank" href="https://vk.com/yavlenie_loft" class='social-item'>Vkontakte</a></li>
-					<li><a target="_blank" href="https://instagram.com/yavlenie_loft"
-							class='social-item'>Instagram*</a></li>
+					<li><a target="_blank" href="https://instagram.com/yavlenie_loft" class='social-item'>Instagram*</a>
+					</li>
 				</ul>
 
 				<div class="telephone">+7 932 710-12-44</div>
@@ -195,9 +195,9 @@
 					<div class="description">Когда счастливы дети, счастливы все!</div>
 				</div>
 			</div>
-			<div class="mt-36 d-flex justify-center">
-				<a target="_blank" href="https://vk.com/albums-172807041" class='btn btn-primary btn-lg'>Смотреть
-					все фотографии</a>
+			<div class="actions d-flex justify-center">
+				<a target="_blank" href="https://vk.com/albums-172807041" class='btn btn-primary btn-lg'>Смотреть&nbsp;
+					<span class="hidden-sm">все фотографии</span><span class="visible-sm">фото</span></a>
 			</div>
 		</section>
 
@@ -206,7 +206,8 @@
 				<img class="img" src='./assets/img/technical-env.png' alt='Техническое оснащение'>
 				<div class="content">
 					<h1 class='title'>Техническое<br>оснащение</h1>
-					<div class='description'>Зал оборудован всем необходимым<br>для проведения любого мероприятия</div>
+					<div class='description'>Зал оборудован всем <br class="visible-lg"> необходимым для проведения <br
+							class="visible-lg"> любого мероприятия</div>
 					<a target="_blank" href="./assets/docs/equipment.pdf" class='btn btn-primary btn-lg'>Подробнее</a>
 				</div>
 			</div>
@@ -231,7 +232,7 @@
 							</div>
 						</div>
 
-						<h4 class="calculator-title">Количество часов аренды</h4>
+						<h4 class="calculator-section-title">Количество часов аренды</h4>
 						<div class="ui-range" style="--offset-x: -16px">
 							<div class="track"></div>
 							<input name="Time" class="range-input" id="hoursRent" type="range" min="3" max="15"
@@ -246,7 +247,7 @@
 							</div>
 						</div>
 
-						<h4 class="calculator-title">Количество технических часов</h4>
+						<h4 class="calculator-section-title">Количество технических часов</h4>
 
 						<div class="ui-range" style="--offset-x: -16px">
 							<div class="track"></div>
@@ -306,10 +307,10 @@
 							</div>
 						</div>
 					</form>
-					<div class="separator"></div>
+					<div class="separator hidden-sm"></div>
 					<div class="calculator-result">
 						<div>
-							<h4 class="calculator-title">Вы выбрали</h4>
+							<h4 class="calculator-title hidden-sm">Вы выбрали</h4>
 							<div class="result-list">
 								<div class="result-item">
 									<span class="result-item-title">Количество часов: <span class="result-item-measure"
@@ -456,7 +457,7 @@
 				<div class="form-wrapper">
 					<h3 class="form-title">Оставь заявку</h3>
 					<div class="form-description">
-						Менеджер поможет выбрать тариф под ваше <br>мероприятие
+						Менеджер поможет выбрать тариф под ваше <br class="hidden-lg">мероприятие
 					</div>
 					<form class="form" id="requestForm">
 						<input type="text" id="fullName" name="fullName" placeholder="Ф.И.О" required>
@@ -470,11 +471,17 @@
 							placeholder="Какое планируется мероприятие, сколько человек, комментарии"></textarea>
 					</form>
 
-					<div class="request-policy">Оставляя заявку, вы соглашаетесь с политикой конфиденциальности <br>
+					<div class="request-policy">Оставляя заявку, вы соглашаетесь с политикой конфиденциальности <br
+							class="hidden-md">
 						и пользовательским соглашением</div>
 					<a href="#about" class='btn btn-primary btn-lg'>Отправить заявку</a>
 				</div>
 			</div>
+
+			<div class="actions visible-tablet">
+				<a href="#about" class='btn btn-primary'>Отправить заявку</a>
+			</div>
+
 		</section>
 
 		<section id="contacts" class="section section-contacts">
@@ -489,22 +496,22 @@
 					</div>
 					<div class="item">
 						<div class="label">Адрес</div>
-						<div class="description">Обуховской обороны 105,<br>
+						<div class="description description--small">Обуховской обороны 105,<br>
 							3 этаж</div>
 					</div>
 					<div class="item">
 						<div class="label">Почта</div>
-						<div class="description"><a class="link link--underlined"
+						<div class="description description--small"><a class="link link--underlined"
 								href="mailto:sales@artyavlenie.com">sales@artyavlenie.com</a></div>
 					</div>
 				</div>
 
 				<div class="column text-right">
-					<div class="item">
+					<div class="item hidden-sm">
 						<div class="label">Режим работы лофта</div>
 						<div class="description">24/7</div>
 					</div>
-					<div class="item">
+					<div class="item hidden-sm">
 						<div class="label">Режим приёма звонков</div>
 						<div class="description">9:00–19:00</div>
 					</div>
@@ -512,7 +519,8 @@
 					<div class="socials-list">
 						<a target="_blank" href="https://vk.com/yavlenie_loft" class="social-item social-item--vk"></a>
 						<a target="_blank" href="https://t.me/+79327101244" class="social-item social-item--tg"></a>
-						<a target="_blank" href="https://instagram.com/yavlenie_loft" class="social-item social-item--inst"></a>
+						<a target="_blank" href="https://instagram.com/yavlenie_loft"
+							class="social-item social-item--inst"></a>
 					</div>
 				</div>
 			</div>
@@ -521,7 +529,8 @@
 
 	<footer class='footer'>
 		<div class="footer-content">
-			<img src="./assets/img/logo-footer.png" alt="" class="logo" />
+			<img src="./assets/img/logo-footer.png" alt="" class="logo hidden-tablet visible-sm" />
+			<img src="./assets/img/logo-footer-tablet.png" alt="" class="logo visible-tablet hidden-sm" />
 			<div class="content">
 				<div class="content-col">
 					<div class="title">Навигация</div>
@@ -546,16 +555,58 @@
 					</ul>
 				</div>
 				<div class="content-col">
-					<div class="title">Социальные сети</div>
-
+					<div class="title">
+						<span class="hidden-tablet">Социальные сети</span>
+						<span class="visible-tablet title-socials">Соц. сети</span>
+					</div>
 
 					<div class="socials-list">
 						<a target="_blank" href="https://vk.com/yavlenie_loft" class="social-item social-item--vk"></a>
 						<a target="_blank" href="https://t.me/+79327101244" class="social-item social-item--tg"></a>
-						<a target="_blank" href="https://instagram.com/yavlenie_loft" class="social-item social-item--inst"></a>
+						<a target="_blank" href="https://instagram.com/yavlenie_loft"
+							class="social-item social-item--inst"></a>
 					</div>
 				</div>
 			</div>
+		</div>
+
+		<div class="footer-content footer-content--mobile">
+			<div class="content">
+				<div class="content-col">
+					<img src="./assets/img/logo-footer.png" alt="" class="logo" />
+					<ul class="list">
+						<li class="list-item list-item--large list-item--phone">Телефон для <br> связи:</li>
+						<li class="list-item"><a href="tel:79327101244">+7 932 710-12-44</a></li>
+					</ul>
+				</div>
+				<div class="content-col">
+					<div class="title"><a href="#">Главная</a></div>
+					<ul class="list">
+						<li class="list-item"><a href="#calculator">Цены</a></li>
+						<li class="list-item"><a href="#photos">Фото</a></li>
+						<li class="list-item"><a target="_blank" href="./assets/docs/equipment.pdf">Оборудование</a>
+						</li>
+						<li class="list-item"><a href="#contacts">Контакты</a></li>
+						<li class="list-item"><a href="">Документы</a></li>
+					</ul>
+				</div>
+				<div class="content-col">
+					<div class="title title--large">Адрес:</div>
+					<ul class="list">
+						<li class="list-item">Обуховской обороны<br>
+							105, 3 этаж</li>
+					</ul>
+
+					<div class="title title--large my-4">Соц. сети:</div>
+					<div class="socials-list">
+						<a target="_blank" href="https://vk.com/yavlenie_loft" class="social-item social-item--vk"></a>
+						<a target="_blank" href="https://t.me/+79327101244" class="social-item social-item--tg"></a>
+						<a target="_blank" href="https://instagram.com/yavlenie_loft"
+							class="social-item social-item--inst"></a>
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</footer>
 	<script src="https://unpkg.com/@popperjs/core@2"></script>
