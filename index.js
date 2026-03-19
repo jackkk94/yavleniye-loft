@@ -2,6 +2,7 @@
 
 const COPY_TEXT_BUTTON = document.getElementById('textToCopy');
 const MENU_TOGGLER = document.getElementById('menuToggler');
+const MENU_CLOSE = document.getElementById('closeMenu');
 const COPY_TEXT_SUCCESS_MESSAGE = 'Текст скопирован';
 const COPY_TEXT_ERROR_MESSAGE = 'Не удалось скопировать текст: ';
 const TEXT_TO_COPY = 'Пожертвование для МРГ "Явление Духа и Силы"';
@@ -76,11 +77,21 @@ document.querySelectorAll('.accordeon-item .title').forEach((el) => {
   });
 });
 
+
+const MENU_MOBILE_CLASS = 'menu-mobile';
+const MENU_OPENED_CLASS = 'body-menu-opened';
+
 MENU_TOGGLER.addEventListener('click', async () => {
-  const el = document.querySelector('.menu-mobile');
+  const el = document.querySelector(`.${MENU_MOBILE_CLASS}`);
+  document.body.classList.toggle(MENU_OPENED_CLASS);
   if (el) {
     el.classList.toggle('opened');
   }
+});
+
+MENU_CLOSE.addEventListener('click', async () => {
+  document.querySelector(`.${MENU_MOBILE_CLASS}`)?.classList?.remove?.('opened');
+  document.body.classList.remove(MENU_OPENED_CLASS);
 });
 
 const handleModalClick = ({ currentTarget, target }) => {
@@ -102,7 +113,6 @@ function openModal(id) {
   }, 0);
 }
 
-
 //** input range logic */
 function handleInputRange(event) {
   event.target.nextElementSibling.value = event.target.value + ' ч';
@@ -119,14 +129,13 @@ function handleInputRange(event) {
 }
 //** /input range logic */
 
-
 //**tooltip logic
 const showEvents = ['mouseenter', 'focus'];
 const hideEvents = ['mouseleave', 'blur'];
 
 TOOLTIP_ICONS?.forEach((icon) => {
   const tooltipId = icon.getAttribute('aria-describedby');
-  if(!tooltipId) {
+  if (!tooltipId) {
     return;
   }
 
