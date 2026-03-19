@@ -43,7 +43,7 @@ function buildPayload(form) {
   const phone = form[REQUEST_VIEW_IDS.PHONE]?.value;
   const date = form[REQUEST_VIEW_IDS.DATE]?.value;
   const comments = form[REQUEST_VIEW_IDS.COMMENTS]?.value;
-  const tags = parseUtmParameters(window.location.href);
+  const utmTags = parseUtmParameters(window.location.href);
   
   return {
     name,
@@ -51,6 +51,6 @@ function buildPayload(form) {
     date,
     comments,
     ...buildCalculatorRequestData(),
-    tags,
+    utmTags,
   };
 }
