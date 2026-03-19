@@ -224,7 +224,7 @@ dialog + .backdrop {
             opacity: 1;
         }
         background: #d9d9d9;
-        position: absolute;
+        position: fixed;
         top: 0;
         right: 0;
 
@@ -1267,7 +1267,8 @@ dialog + .backdrop {
             flex-direction: column;
             align-items: center;
 
-            &, .section-title { 
+            &,
+            .section-title {
                 margin-left: 16px;
                 margin-right: 16px;
             }
@@ -1449,7 +1450,7 @@ dialog + .backdrop {
             @media only screen and (max-width: utils.$mobile) {
                 gap: 40px;
                 padding-bottom: 52px;
-                grid-template-rows: repeat(2, 1fr);
+
                 grid-template-columns: unset;
             }
 
@@ -1534,9 +1535,12 @@ dialog + .backdrop {
                             height: 38px;
                             width: 38px;
                         }
-                    }
 
-                    .message {
+                        .name {
+                            font-size: 18px;
+                        }
+                        min-width: 94px;
+                        max-width: 94px;
                     }
                 }
             }

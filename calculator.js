@@ -9,13 +9,23 @@ const CALCULATOR_VIEW_IDS = {
   WITH_EQUIPMENT: 'WITH_EQUIPMENT',
 };
 
+const CALCULATOR_RESULT_KEYS = {
+  [CALCULATOR_VIEW_IDS.RENT_TIME]: 'rentTime',
+  [CALCULATOR_VIEW_IDS.TECH_TIME]: 'techTime',
+  [CALCULATOR_VIEW_IDS.TECHNICIAN_ON_DUTY]: 'technicianOnDuty',
+  [CALCULATOR_VIEW_IDS.LIGHT_OPERATOR]: 'lightOperator',
+  [CALCULATOR_VIEW_IDS.SOUND_ENGINEER]: 'soundEngineer',
+  [CALCULATOR_VIEW_IDS.TOTAL_PRICE]: 'totalPrice',
+  [CALCULATOR_VIEW_IDS.WITH_EQUIPMENT]: 'isTariffWithEquipment',
+};
+
 const CALCULATOR_RESULT_VIEW_META = {
   [CALCULATOR_VIEW_IDS.RENT_TIME]: {
-    time: CALCULATOR_VIEW_IDS.RENT_TIME,
+    hours: CALCULATOR_VIEW_IDS.RENT_TIME,
     price: 'RENT_TOTAL',
   },
   [CALCULATOR_VIEW_IDS.TECH_TIME]: {
-    time: CALCULATOR_VIEW_IDS.TECH_TIME,
+    hours: CALCULATOR_VIEW_IDS.TECH_TIME,
     price: 'TECH_TOTAL',
   },
   [CALCULATOR_VIEW_IDS.TECHNICIAN_ON_DUTY]: {
@@ -89,6 +99,7 @@ const getElById = (id) => document.getElementById(id);
 const FORM = getElById(CALCULATOR_VIEW_IDS.CALCULATOR_FORM);
 const tariffControl = getElById(CALCULATOR_VIEW_IDS.WITH_EQUIPMENT);
 let initialFormValue = {};
+let calculatorResultData = {};
 
 FORM?.addEventListener('input', handleCalculatorFormChange);
 
@@ -136,13 +147,13 @@ function handleCalculatorFormChange() {
   const technicCheckbox = getElById(CALCULATOR_VIEW_IDS.TECHNICIAN_ON_DUTY);
   const soundEngineerCheckbox = getElById(CALCULATOR_VIEW_IDS.SOUND_ENGINEER);
 
-  if (isTariffWithEquipment && !values.Technician && initialFormValue.Technician && !values.SoundEngineer) {// дежурный техник по-умолчанию включен, если не выбран звуковик
+  if (isTariffWithEquipment && !values.Technician && initialFormValue.Technician && !values.SoundEngineer) {
+    // дежурный техник по-умолчанию включен, если не выбран звуковик
     technicCheckbox.checked = true;
     values.Technician = 'on';
   }
 
-
-  if (initialFormValue.Tariff !== values.Tariff && isTariffWithEquipment) { 
+  if (initialFormValue.Tariff !== values.Tariff && isTariffWithEquipment) {
     technicCheckbox.checked = true;
     values.Technician = 'on';
   }
@@ -155,8 +166,8 @@ function handleCalculatorFormChange() {
     soundEngineerCheckbox.checked = false;
   }
 
-
-  if (isTariffWithEquipment && !values.SoundEngineer && initialFormValue.SoundEngineer && !values.Technician) { //Если отключить звуковика, должен включиться дежурный техник
+  if (isTariffWithEquipment && !values.SoundEngineer && initialFormValue.SoundEngineer && !values.Technician) {
+    //Если отключить звуковика, должен включиться дежурный техник
     technicCheckbox.checked = true;
     values.Technician = 'on';
   }
@@ -188,14 +199,14 @@ function handleCalculatorFormChange() {
     techTimePrice +
     Object.keys(technicsPrice).reduce((acc, key) => (acc += technicsPrice[key] ?? 0), 0);
 
-  renderCalculatorResult({
+  calculatorResultData = {
     [CALCULATOR_VIEW_IDS.RENT_TIME]: {
-      time: RentTimeNumber,
+      hours: RentTimeNumber,
       price: rentTimePrice,
     },
     [CALCULATOR_VIEW_IDS.TECH_TIME]: {
       price: techTimePrice,
-      time: TechTimeNumber,
+      hours: TechTimeNumber,
     },
     [CALCULATOR_VIEW_IDS.LIGHT_OPERATOR]: {
       price: technicsPrice[CALCULATOR_VIEW_IDS.LIGHT_OPERATOR],
@@ -209,25 +220,46 @@ function handleCalculatorFormChange() {
     [CALCULATOR_VIEW_IDS.TOTAL_PRICE]: {
       price: totalPrice,
     },
-  });
+    [CALCULATOR_VIEW_IDS.WITH_EQUIPMENT]: isTariffWithEquipment,
+  };
 
+  renderCalculatorResult(calculatorResultData);
   initialFormValue = { ...values };
 }
 
 function renderCalculatorResult(result) {
-  Object.keys(result).forEach((key) => {
-    const meta = result[key];
-    if (meta.time !== undefined && meta.time !== null) {
-      renderValueById(key, meta.time);
+  Object.keys(result)
+    .filter((k) => k !== CALCULATOR_VIEW_IDS.WITH_EQUIPMENT)
+    .forEach((key) => {
+      const meta = result[key];
+      if (meta.hours !== undefined && meta.hours !== null) {
+        renderValueById(key, meta.hours);
+      }
+
+      renderValueById(key, meta.price, true);
+    });
+}
+
+function buildCalculatorRequestData() {
+  if (!calculatorResultData) {
+    return;
+  }
+
+  return Object.keys(calculatorResultData).reduce((acc, k) => {
+    const meta = calculatorResultData[k];
+    if (!meta) {
+      return acc;
     }
 
-    renderValueById(key, meta.price, true);
-  });
+    acc[CALCULATOR_RESULT_KEYS[k]] =
+      k === CALCULATOR_VIEW_IDS.WITH_EQUIPMENT || (meta.hours !== undefined && meta.hours !== null) ? meta : meta.price;
+    return acc;
+  }, {});
 }
 
 function renderValueById(key, value, isMoney = false) {
   const meta = CALCULATOR_RESULT_VIEW_META[key];
-  const id = isMoney ? meta.price : meta.time;
+  const id = isMoney ? meta.price : meta.hours;
   const el = document.getElementById(id);
   const wrapperEl = el.closest('.result-item');
 

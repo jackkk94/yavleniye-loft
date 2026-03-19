@@ -63,7 +63,11 @@ textarea {
     }
 
     @media only screen and (max-width: utils.$desktop-medium) {
-        font-size: 16px;
+        &,
+        &::placeholder {
+            font-size: 16px;
+        }
+
         padding: 5px 11px;
     }
 }

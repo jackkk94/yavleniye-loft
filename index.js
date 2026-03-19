@@ -77,7 +77,6 @@ document.querySelectorAll('.accordeon-item .title').forEach((el) => {
   });
 });
 
-
 const MENU_MOBILE_CLASS = 'menu-mobile';
 const MENU_OPENED_CLASS = 'body-menu-opened';
 

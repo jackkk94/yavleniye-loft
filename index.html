@@ -492,27 +492,27 @@
 					<div class="form-description">
 						Менеджер поможет выбрать тариф под ваше <br class="hidden-lg">мероприятие
 					</div>
-					<form class="form" id="requestForm">
-						<input type="text" id="fullName" name="fullName" placeholder="Ф.И.О" required>
+					<form class="form" id="REQUEST_FORM">
+						<input type="text" id="REQUEST_FORM_NAME" name="name" placeholder="Ф.И.О" required>
 
-						<input type="tel" id="phone" name="phone" placeholder="+7 (___) ___ __ __" required>
+						<input type="tel" id="REQUEST_FORM_PHONE" name="phone" placeholder="+7 (___) ___ __ __" required>
 
-						<input type="date" id="date" name="date" placeholder="Выберите дату" required>
+						<input type="date" id="REQUEST_FORM_DATE" name="date" placeholder="Выберите дату" required>
 
 
-						<textarea id="comments" name="comments" rows="5" cols="40"
+						<textarea id="REQUEST_FORM_COMMENTS" name="comments" rows="5" cols="40"
 							placeholder="Какое планируется мероприятие, сколько человек, комментарии"></textarea>
 					</form>
 
 					<div class="request-policy">Оставляя заявку, вы соглашаетесь с политикой конфиденциальности <br
 							class="hidden-md">
 						и пользовательским соглашением</div>
-					<a href="#about" class='btn btn-primary btn-lg'>Отправить заявку</a>
+					<a href="#" class='btn btn-primary btn-lg' onclick="handleRequest(event)">Отправить заявку</a>
 				</div>
 			</div>
 
 			<div class="actions visible-tablet">
-				<a href="#about" class='btn btn-primary'>Отправить заявку</a>
+				<a href="#about" class='btn btn-primary' onclick="handleRequest(event)">Отправить заявку</a>
 			</div>
 
 		</section>
@@ -648,6 +648,7 @@
 	<script src="./js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
 	<script src='./index.js'></script>
 	<script src='./calculator.js'></script>
+	<script src='./request.js'></script>
 </body>
 
 </html>
