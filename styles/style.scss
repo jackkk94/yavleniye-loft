@@ -196,7 +196,7 @@ dialog + .backdrop {
             top: 0;
             .icon-menu {
                 display: inline-block;
-                background-image: url(./assets/img/icon-menu.svg);
+                background-image: url(./../assets/img/icon-menu.svg);
                 width: 30px;
                 height: 18px;
                 background-position: center;
@@ -237,7 +237,7 @@ dialog + .backdrop {
             display: block;
             width: 19px;
             height: 19px;
-            background-image: url("./assets/img/icon-close.svg");
+            background-image: url("./../assets/img/icon-close.svg");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -270,7 +270,7 @@ dialog + .backdrop {
                     display: block;
                     width: 12px;
                     height: 12px;
-                    background-image: url("./assets/img/arrow.svg");
+                    background-image: url("./../assets/img/arrow.svg");
                     background-size: cover;
                     background-position: center;
                     background-repeat: no-repeat;
@@ -516,15 +516,15 @@ dialog + .backdrop {
         background-position: center;
         background-repeat: no-repeat;
         &--tg {
-            background-image: url("./assets/img/socials/tg.svg");
+            background-image: url("./../assets/img/socials/tg.svg");
         }
 
         &--vk {
-            background-image: url("./assets/img/socials/vk.svg");
+            background-image: url("./../assets/img/socials/vk.svg");
         }
 
         &--inst {
-            background-image: url("./assets/img/socials/inst.svg");
+            background-image: url("./../assets/img/socials/inst.svg");
         }
     }
 }
@@ -1024,7 +1024,7 @@ dialog + .backdrop {
                     .icon-tooltip {
                         width: 13px;
                         height: 13px;
-                        background-image: url("./assets/img/icon-tooltip.svg");
+                        background-image: url("./../assets/img/icon-tooltip.svg");
                         background-size: contain;
                         background-position: center;
                         background-repeat: no-repeat;
@@ -1197,7 +1197,7 @@ dialog + .backdrop {
                     height: 24px;
                     margin-left: auto;
                     cursor: pointer;
-                    background-image: url("./assets/img/arrow-down.svg");
+                    background-image: url("./../assets/img/arrow-down.svg");
                     background-size: contain;
                     background-position: center;
                     background-repeat: no-repeat;
@@ -1717,7 +1717,7 @@ dialog + .backdrop {
 
             .carousel-next,
             .carousel-prev {
-                background-image: url("./assets/img/slides/arrow.svg");
+                background-image: url("./../assets/img/slides/arrow.svg");
                 background-size: contain;
                 background-position: center;
                 background-repeat: no-repeat;
@@ -1730,21 +1730,21 @@ dialog + .backdrop {
 
                 @media only screen and (max-width: utils.$desktop-large) {
                     width: 95px;
-                    background-image: url("./assets/img/slides/arrow-desktop-medium.svg");
+                    background-image: url("./../assets/img/slides/arrow-desktop-medium.svg");
                 }
 
                 @media only screen and (max-width: utils.$desktop-medium) {
                     width: 60px;
-                    background-image: url("./assets/img/slides/arrow-desktop-small.svg");
+                    background-image: url("./../assets/img/slides/arrow-desktop-small.svg");
                 }
 
                 @media only screen and (max-width: utils.$tablet) {
-                    background-image: url("./assets/img/slides/arrow-tablet.svg");
+                    background-image: url("./../assets/img/slides/arrow-tablet.svg");
                     width: 39px;
                 }
 
                 @media only screen and (max-width: utils.$mobile) {
-                    background-image: url("./assets/img/slides/arrow-mobile.svg");
+                    background-image: url("./../assets/img/slides/arrow-mobile.svg");
                 }
             }
 
@@ -2194,7 +2194,7 @@ dialog + .backdrop {
                     display: block;
                     width: 16px;
                     height: 16px;
-                    background-image: url("./assets/img/arrow.svg");
+                    background-image: url("./../assets/img/arrow.svg");
                     background-size: cover;
                     background-position: center;
                     background-repeat: no-repeat;
