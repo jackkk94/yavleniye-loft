@@ -7,29 +7,19 @@ const REQUEST_VIEW_IDS = {
 };
 const CONTROL_ERROR_CLASS = 'error';
 const REQUEST_FORM = document.getElementById('REQUEST_FORM');
-const DATE_CONTROL = document.getElementById(REQUEST_VIEW_IDS.DATE);
+const PHONE_CONTROL = document.getElementById(REQUEST_VIEW_IDS.PHONE);
+const MIN_PHONE_LENGTH = 11;
 
 $(document).on('ready', function () {
   REQUEST_FORM.addEventListener('submit', handleRequest);
 
-  DATE_CONTROL.addEventListener('change', (e) => {
+  PHONE_CONTROL.addEventListener('input', (e) => {
     const el = e?.target;
-    let date;
-    if (!el?.value?.length) {
-      el?.parentElement.classList.add(CONTROL_ERROR_CLASS);
+    if ((el?.value?.length ?? 0) < MIN_PHONE_LENGTH) {
       return;
     }
 
-    try {
-      date = new Date(el?.value);
-    } catch (e) {
-      el?.parentElement.classList.add(CONTROL_ERROR_CLASS);
-      return;
-    }
-
-    if (date) {
-      el?.parentElement.classList.remove(CONTROL_ERROR_CLASS);
-    }
+    el?.parentElement.classList.remove(CONTROL_ERROR_CLASS);
   });
 
   const today = new Date();
@@ -48,9 +38,9 @@ async function handleRequest(e) {
     return;
   }
 
-  const date = form[REQUEST_VIEW_IDS.DATE]?.value;
-  if (!date?.length) {
-    form[REQUEST_VIEW_IDS.DATE]?.parentElement?.classList?.add(CONTROL_ERROR_CLASS);
+  const phone = form[REQUEST_VIEW_IDS.PHONE]?.value;
+  if ((phone?.length ?? 0) < MIN_PHONE_LENGTH) {
+    form[REQUEST_VIEW_IDS.PHONE]?.parentElement?.classList?.add(CONTROL_ERROR_CLASS);
     return;
   }
 
