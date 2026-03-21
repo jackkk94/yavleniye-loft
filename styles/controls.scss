@@ -43,6 +43,7 @@ input[type="text"],
 input[type="tel"],
 input[type="date"],
 textarea {
+    outline: none;
     @include mixins.text(20px, 1.2, 300, #231f1f);
     width: 100%;
     padding: 8px 11px;
@@ -70,6 +71,34 @@ textarea {
 
         padding: 5px 11px;
     }
+}
+
+.ui-control {
+    position: relative;
+
+    &--required.error {
+        input {
+            border-color: red;
+        }
+        &:after {
+            content: "Поле обязательно для заполнения";
+            position: absolute;
+            bottom: -14px;
+            left: 0;
+            color: red;
+            @include mixins.text(12px, 1, 400, red);
+
+            @media only screen and (max-width: utils.$desktop-medium) {
+                bottom: -13px;
+            }
+            @media only screen and (max-width: utils.$tablet) {
+                position: static;
+            }
+        }
+    }
+}
+input[type="date"] {
+    min-height: 35px;
 }
 
 textarea {

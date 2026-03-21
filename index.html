@@ -494,27 +494,29 @@
 						Менеджер поможет выбрать тариф под ваше <br class="hidden-lg">мероприятие
 					</div>
 					<form class="form" id="REQUEST_FORM">
-						<input type="text" id="REQUEST_FORM_NAME" name="name" placeholder="Ф.И.О" required>
+						<input type="text" id="REQUEST_FORM_NAME" name="name" placeholder="Ф.И.О">
 
-						<input type="tel" id="REQUEST_FORM_PHONE" name="phone" placeholder="+7 (___) ___ __ __"
-							required>
+						<input type="tel" id="REQUEST_FORM_PHONE" name="phone" placeholder="+7 (___) ___ __ __">
 
-						<input type="date" id="REQUEST_FORM_DATE" name="date" placeholder="Выберите дату" required>
+						<div class="ui-control ui-control--required">
+							<input type="date" id="REQUEST_FORM_DATE" name="date" placeholder="Выберите дату" placeholder="yyy-mm-dd">
+						</div>
 
 
 						<textarea id="REQUEST_FORM_COMMENTS" name="comments" rows="5" cols="40"
 							placeholder="Какое планируется мероприятие, сколько человек, комментарии"></textarea>
-					</form>
 
-					<div class="request-policy">Оставляя заявку, вы соглашаетесь с политикой конфиденциальности <br
-							class="hidden-md">
-						и пользовательским соглашением</div>
-					<a href="#" class='btn btn-primary btn-lg' onclick="handleRequest(event)">Отправить заявку</a>
+
+						<div class="request-policy">Оставляя заявку, вы соглашаетесь с политикой конфиденциальности <br
+								class="hidden-md">
+							и пользовательским соглашением</div>
+						<button type="submit" class='btn btn-primary btn-lg'>Отправить заявку</button>
+					</form>
 				</div>
 			</div>
 
 			<div class="actions visible-tablet">
-				<a href="#about" class='btn btn-primary' onclick="handleRequest(event)">Отправить заявку</a>
+				<button class='btn btn-primary' onclick="handleRequest(event)">Отправить заявку</button>
 			</div>
 
 		</section>
@@ -649,9 +651,28 @@
 	<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script src="./js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
 	<script src='./js/utm.js'></script>
+	<script src='./js/tooltip.js'></script>
+	<script src='./js/carousel.js'></script>
+	<script src='./js/controls.js'></script>
 	<script src='./js/index.js'></script>
 	<script src='./js/calculator.js'></script>
+	<script src='./js/modal.js'></script>
 	<script src='./js/request.js'></script>
 </body>
 
 </html>
+
+
+<dialog id="requestSuccess" class="modal">
+	<div class="modal-wrapper">
+		<h3 class="modal-title">Заявка успешно отправлена</h3>
+		<span class="modal-close"></span>
+	</div>
+</dialog>
+
+<dialog id="requestError" class="modal">
+	<div class="modal-wrapper">
+		<h3 class="modal-title"> Произошла ошибка отправки заявки</h3>
+		<span class="modal-close"></span>
+	</div>
+</dialog>

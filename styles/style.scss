@@ -69,7 +69,7 @@ dialog + .backdrop {
 
     &-primary {
         color: white;
-
+        border: 0;
         background-color: #0000ff;
     }
 
@@ -79,7 +79,7 @@ dialog + .backdrop {
 }
 
 .main-content {
-    overflow-x: hidden;
+    overflow-x: auto;
 }
 
 .body-menu-opened {
@@ -601,6 +601,18 @@ dialog + .backdrop {
                 align-items: flex-start;
                 flex-grow: 1;
 
+                .control {
+                
+
+                    &--required {
+                        position: relative;
+                        &::after{
+                            content: '*';
+                            position: absolute;
+                            
+                        }
+                    }
+                }
                 .form-title {
                     @include mixins.text(48px, 1.2, 300, #231f1f);
                 }
@@ -2439,27 +2451,27 @@ dialog + .backdrop {
 }
 
 .modal {
-    &::before {
-        position: fixed;
-        content: "X";
-        font-size: 20px;
-        top: 28px;
-        right: 32px;
-        cursor: pointer;
-        display: block;
-        color: white;
-        @media only screen and (max-width: utils.$mobile) {
-            color: black;
-            right: 16px;
-        }
-    }
+    border-radius: 10px;
+
     width: 390px;
     max-width: 97vw;
     border: 0 !important;
 
     padding: 0;
     .modal-wrapper {
-        padding: 38px 24px;
+        padding: 28px 24px;
+        .modal-close {
+            &::before {
+                content: "X";
+            }
+            position: absolute;
+            font-size: 20px;
+            top: 12px;
+            right: 12px;
+            cursor: pointer;
+            display: block;
+            color: black;
+        }
     }
     outline: none;
     font-family: LTWave;
