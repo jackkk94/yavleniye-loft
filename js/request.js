@@ -56,8 +56,6 @@ async function handleRequest(e) {
 
   const request = buildPayload(form);
 
-  console.log(request);
-
   if (!request) {
     return;
   }
