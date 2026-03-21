@@ -9,6 +9,8 @@ const CONTROL_ERROR_CLASS = 'error';
 const REQUEST_FORM = document.getElementById('REQUEST_FORM');
 const PHONE_CONTROL = document.getElementById(REQUEST_VIEW_IDS.PHONE);
 const MIN_PHONE_LENGTH = 11;
+const REQUEST_BTN = document.getElementById('requestSubmitbtn');
+const DATE_CONTROL = document.getElementById(REQUEST_VIEW_IDS.DATE);
 
 $(document).on('ready', function () {
   REQUEST_FORM.addEventListener('submit', handleRequest);
@@ -50,6 +52,8 @@ async function handleRequest(e) {
     return;
   }
 
+  REQUEST_BTN.disabled = true;
+
   try {
     const response = await fetch('send.php', {
       method: 'POST',
@@ -59,6 +63,7 @@ async function handleRequest(e) {
       body: JSON.stringify(request),
     });
 
+    REQUEST_BTN.disabled = false;
     if (!response.ok) {
       openRequestErrorModal();
       throw new Error('Сетевая ошибка: ' + response.status);
@@ -66,7 +71,8 @@ async function handleRequest(e) {
       openRequestSuccessModal();
     }
   } catch (error) {
-    console.error('Ошибка:', error);
+    openRequestErrorModal();
+    REQUEST_BTN.disabled = undefined;
   }
 }
 
