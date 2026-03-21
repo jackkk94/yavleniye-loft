@@ -76,6 +76,12 @@ dialog + .backdrop {
     &-lg {
         font-size: 20px;
     }
+
+    &:disabled {
+        background-color: #f0f0f0;
+        color: #888;
+        cursor: default;
+    }
 }
 
 .main-content {
