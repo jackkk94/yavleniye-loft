@@ -8,7 +8,7 @@ const REQUEST_VIEW_IDS = {
 const CONTROL_ERROR_CLASS = 'error';
 const REQUEST_FORM = document.getElementById('REQUEST_FORM');
 const PHONE_CONTROL = document.getElementById(REQUEST_VIEW_IDS.PHONE);
-const MIN_PHONE_LENGTH = 11;
+const MIN_PHONE_LENGTH = 8;
 const REQUEST_BTN = document.getElementById('requestSubmitbtn');
 const DATE_CONTROL = document.getElementById(REQUEST_VIEW_IDS.DATE);
 
