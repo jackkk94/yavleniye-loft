@@ -2,6 +2,9 @@
 const MENU_TOGGLER = document.getElementById('menuToggler');
 const MENU_CLOSE = document.getElementById('closeMenu');
 const ACCORDEON_EL_OPEN_CLASS = 'active';
+const LOCATION_VIDEO_MODAL_ID = 'locationVideoModal';
+const VIDEO_CONTAINER_ID = 'locationVideo';
+const LOCATION_VIDEO_SRC = 'https://vk.com/video_ext.php?oid=-75418384&id=456240159';
 
 //**/Initialize
 
@@ -48,3 +51,15 @@ MENU_CLOSE.addEventListener('click', async () => {
   document.querySelector(`.${MENU_MOBILE_CLASS}`)?.classList?.remove?.('opened');
   document.body.classList.remove(MENU_OPENED_CLASS);
 });
+
+function openLocationVideo() {
+  openModal(LOCATION_VIDEO_MODAL_ID, { videoContainerId: VIDEO_CONTAINER_ID, videoSrc: LOCATION_VIDEO_SRC });
+}
+
+//init page logic
+$(document).on('ready', function () {
+  initCarousel();
+  listenControlsChange();
+  handleCalculatorFormChange();
+  initRequestForm();
+}); 

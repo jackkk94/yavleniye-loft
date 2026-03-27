@@ -66,7 +66,6 @@ dialog + .backdrop {
     padding: 14px 36px;
     @include mixins.text(18px, 18px, 400, black);
     cursor: pointer;
-    transition: $transition;
     display: inline-flex;
 
     &-primary {
@@ -83,6 +82,38 @@ dialog + .backdrop {
         background-color: #f0f0f0;
         color: #888;
         cursor: default;
+    }
+
+    &--loading {
+        font-size: 0 !important;
+        line-height: 0 !important;
+        cursor: default;
+        pointer-events: none;
+        &:before {
+            content: "";
+            display: flex;
+            width: 17px;
+            height: 17px;
+            border: 2px solid #fff;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+
+            @media only screen and (max-width: utils.$mobile) {
+                height: 18px;
+            }
+        }
+
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     }
 }
 
@@ -578,6 +609,7 @@ dialog + .backdrop {
             .actions {
                 margin-top: 51px;
                 .btn {
+                    width: 138px;
                     font-size: 13px;
                     padding: 9px 13px;
                 }
@@ -1253,6 +1285,7 @@ dialog + .backdrop {
 
                 .link {
                     color: $blue;
+                    cursor: pointer;
                 }
 
                 .title,
@@ -2461,12 +2494,11 @@ dialog + .backdrop {
 
 .modal {
     border-radius: 10px;
-
     width: 390px;
     max-width: 97vw;
     border: 0 !important;
-
     padding: 0;
+
     .modal-wrapper {
         padding: 28px 24px;
         .modal-close {
@@ -2482,6 +2514,7 @@ dialog + .backdrop {
             color: black;
         }
     }
+
     outline: none;
     font-family: LTWave;
     letter-spacing: 0;
@@ -2505,6 +2538,38 @@ dialog + .backdrop {
         display: block;
         padding: 0 24px 0;
         @include mixins.text(12px, 18px, 400);
+    }
+
+    &-video {
+        border-radius: 2px;
+        background-color: transparent;
+        overflow: hidden;
+        .modal-wrapper {
+            padding: 0;
+            height: 100%;
+        }
+
+        &::before {
+            position: fixed;
+            content: "X";
+            font-size: 20px;
+            top: 28px;
+            right: 32px;
+            cursor: pointer;
+            display: block;
+            color: #fff;
+            @media only screen and (max-width: utils.$desktop-medium) {
+                top: 12px;
+                right: 12px;
+            }
+        }
+        width: 90%;
+        height: 90%;
+
+        .video-frame-container {
+            height: 100%;
+            width: 100%;
+        }
     }
 }
 

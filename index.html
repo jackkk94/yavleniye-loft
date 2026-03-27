@@ -437,7 +437,7 @@
 				</div>
 				<div class="accordeon-item">
 					<div class="title">По каким ориентирам можно вас найти?</div>
-					<div class="description">Лучше один раз увидеть — вот тут классное видео-инструкция, как добраться.
+					<div class="description">Лучше один раз увидеть — вот <span class="link" onclick="openLocationVideo()">тут</span> классное видео-инструкция, как добраться.
 						А если кратко: ищите главный вход КЦ «Крупа» и вывеску «вход в крупицы». Поднимаетесь на второй
 						этаж,
 						проходите через амфитеатр и ищите нашу вывеску. По пути будут указатели — не потеряетесь!</div>
@@ -651,14 +651,15 @@
 	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script src="./js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
-	<script src='./js/utm.js'></script>
+	<script src='./js/utils.js'></script>
 	<script src='./js/tooltip.js'></script>
 	<script src='./js/carousel.js'></script>
 	<script src='./js/controls.js'></script>
-	<script src='./js/index.js'></script>
 	<script src='./js/calculator.js'></script>
+	<script src='./js/vk-video-frame.js'></script>
 	<script src='./js/modal.js'></script>
 	<script src='./js/request.js'></script>
+	<script src='./js/index.js'></script>
 </body>
 
 </html>
@@ -671,9 +672,17 @@
 	</div>
 </dialog>
 
+
 <dialog id="requestError" class="modal">
 	<div class="modal-wrapper">
 		<h3 class="modal-title"> Произошла ошибка отправки заявки</h3>
 		<span class="modal-close"></span>
+	</div>
+</dialog>
+
+
+<dialog id="locationVideoModal" class="modal modal-video">
+	<div class="modal-wrapper">
+		<div id="locationVideo" class="video-frame-container"></div>
 	</div>
 </dialog>

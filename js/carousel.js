@@ -21,8 +21,7 @@ const CAROUSEL_CONFIG = {
   ],
 };
 
-
-$(document).on('ready', function () {
+function initCarousel() {
   $('.carousel').slick(CAROUSEL_CONFIG);
 
   $('.carousel-prev, .carousel-gradient--left').on('click', function () {
@@ -32,4 +31,4 @@ $(document).on('ready', function () {
   $('.carousel-next, .carousel-gradient--right').on('click', function () {
     $('.carousel').slick('slickNext');
   });
-});
+}

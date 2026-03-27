@@ -103,10 +103,6 @@ let calculatorResultData = {};
 
 FORM?.addEventListener('input', handleCalculatorFormChange);
 
-document.addEventListener('DOMContentLoaded', function () {
-  handleCalculatorFormChange();
-});
-
 function handleCalculatorFormChange() {
   const formData = new FormData(FORM);
 

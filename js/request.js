@@ -12,7 +12,7 @@ const MIN_PHONE_LENGTH = 8;
 const REQUEST_BTN = document.getElementById('requestSubmitbtn');
 const DATE_CONTROL = document.getElementById(REQUEST_VIEW_IDS.DATE);
 
-$(document).on('ready', function () {
+function initRequestForm() {
   REQUEST_FORM.addEventListener('submit', handleRequest);
 
   PHONE_CONTROL.addEventListener('input', (e) => {
@@ -30,7 +30,7 @@ $(document).on('ready', function () {
   const day = String(today.getDate()).padStart(2, '0');
   const formattedDate = `${year}-${month}-${day}`;
   DATE_CONTROL.value = formattedDate;
-});
+}
 
 async function handleRequest(e) {
   const form = REQUEST_FORM?.elements;
@@ -53,6 +53,7 @@ async function handleRequest(e) {
   }
 
   REQUEST_BTN.disabled = true;
+  REQUEST_BTN.classList.add('btn--loading');
 
   try {
     const response = await fetch('send.php', {
@@ -64,6 +65,7 @@ async function handleRequest(e) {
     });
 
     REQUEST_BTN.disabled = false;
+    REQUEST_BTN.classList.remove('btn--loading');
     if (!response.ok) {
       openRequestErrorModal();
       throw new Error('Сетевая ошибка: ' + response.status);
@@ -72,6 +74,7 @@ async function handleRequest(e) {
     }
   } catch (error) {
     openRequestErrorModal();
+    REQUEST_BTN.classList.remove('btn--loading');
     REQUEST_BTN.disabled = undefined;
   }
 }
