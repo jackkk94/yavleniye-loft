@@ -4,7 +4,7 @@ const MENU_CLOSE = document.getElementById('closeMenu');
 const ACCORDEON_EL_OPEN_CLASS = 'active';
 const LOCATION_VIDEO_MODAL_ID = 'locationVideoModal';
 const VIDEO_CONTAINER_ID = 'locationVideo';
-const LOCATION_VIDEO_SRC = 'https://vk.com/clip_ext.php?oid=-172807041&id=456239045&autoplay=1';
+const LOCATION_VIDEO_SRC = 'https://vk.com/clip_ext.php?oid=-172807041&id=456239045';
 
 //**/Initialize
 

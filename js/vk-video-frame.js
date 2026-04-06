@@ -1,4 +1,4 @@
-function createVkIframe(src, autoplay = false) {
+function createVkIframe(src, autoplay = true) {
   const autoplayParam = autoplay ? '1' : '0';
   const iframe = document.createElement('iframe');
   iframe.setAttribute('src', `${src}&autoplay=${autoplayParam}`);
