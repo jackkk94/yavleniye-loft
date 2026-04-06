@@ -1,11 +1,12 @@
-function createVkIframe(src, autoplay = true, width = 'auto') {
+function createVkIframe(src, autoplay = false, width = 'auto') {
   const autoplayParam = autoplay ? '1' : '0';
   const iframe = document.createElement('iframe');
   iframe.setAttribute('src', `${src}&autoplay=${autoplayParam}`);
   iframe.setAttribute('allow', 'autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;');
   iframe.setAttribute('allowfullscreen', 'true');
+  iframe.setAttribute('muted', 'true');
   iframe.style.width = width;
-  iframe.style.height = '100%';
+  iframe.style.height = '100vh';
   iframe.style.backgroundColor = '#000';
   iframe.frameBorder = '0';
   return iframe;
