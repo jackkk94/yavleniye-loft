@@ -6,7 +6,7 @@ function createVkIframe(src, autoplay = false, width = 'auto') {
   iframe.setAttribute('allowfullscreen', 'true');
   iframe.setAttribute('muted', 'true');
   iframe.style.width = width;
-  iframe.style.height = '100vh';
+  iframe.style.height = '100%';
   iframe.style.backgroundColor = '#000';
   iframe.frameBorder = '0';
   return iframe;
