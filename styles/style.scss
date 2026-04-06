@@ -2544,7 +2544,6 @@ dialog + .backdrop {
         border-radius: 2px;
         background-color: transparent;
         overflow: hidden;
-        width: max-content;
         .modal-wrapper {
             padding: 0;
             height: 100%;
@@ -2571,7 +2570,7 @@ dialog + .backdrop {
                 right: 12px;
             }
         }
-        width: 90%;
+        width: max-content;
         height: 90%;
 
         .video-frame-container {
