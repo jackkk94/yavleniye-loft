@@ -660,12 +660,12 @@ dialog + .backdrop {
                 }
 
                 .request-policy {
-                    margin-top: 18px;
+                    margin-top: 14px;
                     @include mixins.text(14px, 1.2, 300, $grey-dark);
 
                     display: flex;
                     flex-direction: column;
-                    gap: 10px;
+                    gap: 8px;
 
                     .checkbox{
                         align-items: flex-start;
