@@ -662,6 +662,18 @@ dialog + .backdrop {
                 .request-policy {
                     margin-top: 18px;
                     @include mixins.text(14px, 1.2, 300, $grey-dark);
+
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+
+                    .checkbox{
+                        align-items: flex-start;
+                    }
+
+                    .link {
+                        color: $blue;
+                    }
                 }
 
                 .form {
@@ -2552,7 +2564,7 @@ dialog + .backdrop {
         iframe {
             width: auto;
             max-width: 100%;
-            max-height: 100%; 
+            max-height: 100%;
             aspect-ratio: 1 / 2;
         }
 

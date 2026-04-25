@@ -510,10 +510,23 @@
 							placeholder="Какое планируется мероприятие, сколько человек, комментарии"></textarea>
 
 
-						<div class="request-policy">Оставляя заявку, вы соглашаетесь с политикой конфиденциальности <br
-								class="hidden-md">
-							и пользовательским соглашением</div>
-						<button id="requestSubmitbtn" type="submit" class='btn btn-primary btn-lg'>Отправить
+						<div class="request-policy">
+							<div class="checkbox">
+								<input name="Policy" type="checkbox" id="POLICY_AGREEPMENT">
+								<label class="checkbox-label" for="POLICY_AGREEPMENT">Я даю согласие на обработку моих
+									персональных данных в соответствии с <a target="_blank"
+										href="./assets/docs/policy.pdf"
+										class='link'> Политикой конфиденциальности</a></label>
+							</div>
+
+							<div class="checkbox">
+								<input name="Technician" type="checkbox" id="EMAIL_AGREEPMENT">
+								<label class="checkbox-label" for="EMAIL_AGREEPMENT">Я согласен получать информационные
+									и рекламные рассылки</label>
+							</div>
+
+						</div>
+						<button id="requestSubmitbtn" type="submit" class='btn btn-primary btn-lg' disabled>Отправить
 							заявку</button>
 					</form>
 				</div>
@@ -582,7 +595,7 @@
 						<li class="list-item"><a target="_blank" href="./assets/docs/equipment.pdf">Оборудование</a>
 						</li>
 						<li class="list-item"><a href="#contacts">Контакты</a></li>
-						<li class="list-item"><a href="">Документы</a></li>
+						<li class="list-item"><a href="">Документы сайта</a></li>
 					</ul>
 				</div>
 				<div class="content-col">
@@ -628,7 +641,7 @@
 						<li class="list-item"><a target="_blank" href="./assets/docs/equipment.pdf">Оборудование</a>
 						</li>
 						<li class="list-item"><a href="#contacts">Контакты</a></li>
-						<li class="list-item"><a href="">Документы</a></li>
+						<li class="list-item"><a href="./assets/docs/policy.pdf">Документы</a></li>
 					</ul>
 				</div>
 				<div class="content-col">

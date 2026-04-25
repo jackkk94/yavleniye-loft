@@ -176,6 +176,7 @@ input[type="radio"] {
 
 input[type="checkbox"] {
     accent-color: #0000ff;
+    flex-shrink: 0;
     width: 25px;
     height: 25px;
     appearance: none;

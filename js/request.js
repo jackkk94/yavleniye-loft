@@ -8,6 +8,8 @@ const REQUEST_VIEW_IDS = {
 const CONTROL_ERROR_CLASS = 'error';
 const REQUEST_FORM = document.getElementById('REQUEST_FORM');
 const PHONE_CONTROL = document.getElementById(REQUEST_VIEW_IDS.PHONE);
+const POLICY_AGREEPMENT_CHECKBOX = document.getElementById('POLICY_AGREEPMENT');
+const EMAIL_AGREEPMENT_CHECKBOX = document.getElementById('EMAIL_AGREEPMENT');
 const MIN_PHONE_LENGTH = 8;
 const REQUEST_BTN = document.getElementById('requestSubmitbtn');
 const DATE_CONTROL = document.getElementById(REQUEST_VIEW_IDS.DATE);
@@ -24,6 +26,10 @@ function initRequestForm() {
     el?.parentElement.classList.remove(CONTROL_ERROR_CLASS);
   });
 
+  POLICY_AGREEPMENT_CHECKBOX.addEventListener('change', function () {
+    REQUEST_BTN.disabled = !this.checked;
+  });
+
   const today = new Date();
   const year = today.getFullYear();
   const month = String(today.getMonth() + 1).padStart(2, '0');
@@ -36,7 +42,7 @@ async function handleRequest(e) {
   const form = REQUEST_FORM?.elements;
   e.preventDefault();
 
-  if (!form) {
+  if (!form || !POLICY_AGREEPMENT_CHECKBOX.checked) {
     return;
   }
 
@@ -85,6 +91,7 @@ function buildPayload(form) {
   const date = form[REQUEST_VIEW_IDS.DATE]?.value;
   const comments = form[REQUEST_VIEW_IDS.COMMENTS]?.value;
   const utmTags = parseUtmParameters(window.location.href);
+  const enableMailing = EMAIL_AGREEPMENT_CHECKBOX.checked;
 
   return {
     name,
@@ -93,6 +100,7 @@ function buildPayload(form) {
     comments,
     ...buildCalculatorRequestData(),
     utmTags,
+    enableMailing
   };
 }
 
