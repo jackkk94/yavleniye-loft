@@ -2,37 +2,29 @@ const MODAL_REQUEST_SUCCESS_ID = 'requestSuccess';
 const MODAL_REQUEST_ERROR_ID = 'requestError';
 const MODAL_CLOSE_CLASS = 'modal-close';
 
-const handleModalClick = ({ currentTarget, target }, videoFrame) => {
+const handleModalClick = ({ currentTarget, target }, videoContainer) => {
   const isClickedOnBackdrop = target === currentTarget;
 
   if (isClickedOnBackdrop || target?.className === MODAL_CLOSE_CLASS) {
-    if (videoFrame) {
-      videoFrame.innerHTML = '';
-      videoFrame.remove?.();
+    if (videoContainer) {
+      videoContainer.currentTime = 0;
+      videoContainer.pause();
     }
 
     currentTarget.close();
   }
 };
 
-function openModal(id, videoMeta) {
+function openModal(id, videoId) {
   if (!id) return;
   const modal = document.getElementById(id);
   if (!modal) return;
 
-  let videoFrame;
-
-  if (videoMeta) {
-    const { videoContainerId, videoSrc } = videoMeta;
-    const videoContainer = document.getElementById(videoContainerId);
-    if (videoContainer && videoSrc) {
-      videoFrame = renderVideoPlayer(videoContainer, videoSrc);
-    }
-  }
+  const videoContainer = videoId ? document.getElementById(videoId) : null;
 
   modal.showModal();
 
   setTimeout(() => {
-    modal.addEventListener('click', (event) => handleModalClick(event, videoFrame));
+    modal.addEventListener('click', (event) => handleModalClick(event, videoContainer));
   }, 0);
 }

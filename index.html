@@ -515,8 +515,8 @@
 								<input name="Policy" type="checkbox" id="POLICY_AGREEPMENT">
 								<label class="checkbox-label" for="POLICY_AGREEPMENT">Я даю согласие на обработку моих
 									персональных данных в соответствии с <a target="_blank"
-										href="./assets/docs/policy.pdf"
-										class='link'> Политикой конфиденциальности</a></label>
+										href="./assets/docs/policy.pdf" class='link'> Политикой
+										конфиденциальности</a></label>
 							</div>
 
 							<div class="checkbox">
@@ -672,7 +672,6 @@
 	<script src='./js/carousel.js'></script>
 	<script src='./js/controls.js'></script>
 	<script src='./js/calculator.js'></script>
-	<script src='./js/vk-video-frame.js'></script>
 	<script src='./js/modal.js'></script>
 	<script src='./js/request.js'></script>
 	<script src='./js/index.js'></script>
@@ -697,7 +696,13 @@
 
 
 <dialog id="locationVideoModal" class="modal modal-video">
+
+
 	<div class="modal-wrapper">
-		<div id="locationVideo" class="video-frame-container"></div>
+		<div  class="video-frame-container">
+			<video id="videoPlayer" controls>
+				<source src="assets/video/placement.mp4" type="video/mp4">
+			</video>
+		</div>
 	</div>
 </dialog>
