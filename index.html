@@ -526,14 +526,14 @@
 							</div>
 
 						</div>
-						<button id="requestSubmitbtn" type="submit" class='btn btn-primary btn-lg' disabled>Отправить
+						<button type="submit" class='btn btn-primary btn-lg btn-request-submit' disabled>Отправить
 							заявку</button>
 					</form>
 				</div>
 			</div>
 
 			<div class="actions visible-tablet">
-				<button class='btn btn-primary' onclick="handleRequest(event)">Отправить заявку</button>
+				<button class='btn btn-primary btn-request-submit' onclick="handleRequest(event)" disabled>Отправить заявку</button>
 			</div>
 
 		</section>
@@ -696,8 +696,6 @@
 
 
 <dialog id="locationVideoModal" class="modal modal-video">
-
-
 	<div class="modal-wrapper">
 		<div  class="video-frame-container">
 			<video id="videoPlayer" poster="assets/video/placement.png" controls>

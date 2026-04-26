@@ -82,6 +82,7 @@ dialog + .backdrop {
         background-color: #f0f0f0;
         color: #888;
         cursor: default;
+        pointer-events: none;
     }
 
     &--loading {
