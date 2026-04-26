@@ -26,7 +26,7 @@ function initRequestForm() {
     el?.parentElement.classList.remove(CONTROL_ERROR_CLASS);
   });
 
-  POLICY_AGREEPMENT_CHECKBOX.addEventListener('change', function () {
+  POLICY_AGREEPMENT_CHECKBOX.addEventListener('click', function () {
     REQUEST_BTNS?.forEach((btn) => (btn.disabled = !this.checked));
   });
 
