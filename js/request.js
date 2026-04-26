@@ -27,7 +27,7 @@ function initRequestForm() {
   });
 
   POLICY_AGREEPMENT_CHECKBOX.addEventListener('click', function () {
-    REQUEST_BTNS?.forEach((btn) => (btn.disabled = !this.checked));
+    REQUEST_BTNS?.forEach((btn) => (btn.disabled = !POLICY_AGREEPMENT_CHECKBOX.checked));
   });
 
   const today = new Date();
