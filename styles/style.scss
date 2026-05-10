@@ -258,6 +258,7 @@ dialog + .backdrop {
         white-space: nowrap;
         border-top-left-radius: 30px;
         border-bottom-left-radius: 30px;
+        height: 100%;
         &.opened {
             width: 276px;
             padding: 39px 32px 60px;
