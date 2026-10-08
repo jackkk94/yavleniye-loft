@@ -2134,7 +2134,7 @@ dialog + .backdrop {
     background-color: white;
     display: none;
     z-index: 1000;
-    width: 720px;
+    width: 776px;
     border-radius: 4px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
     @include mixins.text(13px, 1.4, 400, $grey-dark);
