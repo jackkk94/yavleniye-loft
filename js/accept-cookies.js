@@ -72,5 +72,5 @@ const addBtnClickListener = (btnId, fn) => {
   });
 };
 
-addBtnClickListener(COOCKIES_BLOCK_BTN_IDS.ACCEPT, () => alert(1));
+addBtnClickListener(COOCKIES_BLOCK_BTN_IDS.ACCEPT);
 addBtnClickListener(COOCKIES_BLOCK_BTN_IDS.NECESSARY);
