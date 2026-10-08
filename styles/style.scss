@@ -32,6 +32,27 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    &.body-documents {
+        min-height: 100vh;
+
+        .main-content {
+            flex: 1;
+        }
+
+        .header {
+            @media only screen and (max-width: utils.$tablet) {
+                height: 96px;
+                margin-bottom: 12px;
+                background-color: $grey-dark;
+            }
+        }
+
+        .menu-mobile {
+            .navigation-list {
+                display: none;
+            }
+        }
+    }
 }
 
 * {
@@ -151,6 +172,11 @@ dialog + .backdrop {
     @media only screen and (max-width: utils.$mobile) {
         max-width: $content-xxs;
     }
+}
+
+.y-paragraph {
+    margin: 12px 0;
+    line-height: 1.3;
 }
 
 .header {
@@ -273,7 +299,6 @@ dialog + .backdrop {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-      
 
         .icon-close {
             display: block;
@@ -567,6 +592,19 @@ dialog + .backdrop {
 
         &--inst {
             background-image: url("./../assets/img/socials/inst.svg");
+            position: relative;
+            &:before {
+                content: "*";
+                display: block;
+                position: absolute;
+                top: -7px;
+                right: 0px;
+                @include mixins.text(25px, 1, 300, $grey-dark);
+
+                @media only screen and (max-width: utils.$tablet) {
+                    font-size: 20px;
+                }
+            }
         }
     }
 }
@@ -581,6 +619,46 @@ dialog + .backdrop {
         color: $grey-dark;
         &--underlined {
             text-decoration: underline;
+        }
+    }
+    &-policy {
+        @media only screen and (max-width: utils.$tablet) {
+            border-top: 0;
+        }
+
+        .section-subtitle {
+            @include mixins.text(20px, 1.4, 500, $grey-dark);
+            margin-bottom: 8px;
+
+            @media only screen and (max-width: utils.$tablet) {
+                font-size: 16px;
+                line-height: 1.2;
+            }
+        }
+
+        .section-title {
+            @include mixins.text(40px, 1.4, 400, $grey-dark);
+            margin-bottom: 20px;
+            @media only screen and (max-width: utils.$desktop-medium) {
+                font-size: 30px;
+            }
+
+            @media only screen and (max-width: utils.$tablet) {
+                font-size: 22px;
+                line-height: 1.2;
+            }
+        }
+
+        .content {
+            font-weight: 300;
+            .content-list {
+                display: block;
+                padding: 0 18px;
+                list-style-type: disc;
+                li {
+                    padding: 2px 0;
+                }
+            }
         }
     }
     &-request {
@@ -670,7 +748,7 @@ dialog + .backdrop {
                     flex-direction: column;
                     gap: 8px;
 
-                    .checkbox{
+                    .checkbox {
                         align-items: flex-start;
                     }
 
@@ -2047,6 +2125,56 @@ dialog + .backdrop {
     }
 }
 
+.cookies-banner {
+    gap: 12px;
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+    padding: 14px 20px;
+    background-color: white;
+    display: none;
+    z-index: 1000;
+    width: 720px;
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    @include mixins.text(13px, 1.4, 400, $grey-dark);
+    @media only screen and (max-width: utils.$tablet) {
+        right: 4px;
+        left: 4px;
+        width: calc(100% - 8px);
+    }
+
+    @media only screen and (max-width: utils.$mobile) {
+        flex-direction: column;
+    }
+    .link {
+        color: $blue;
+        bottom: 20px;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        .cookies-banner__button {
+            background-color: $blue;
+            color: white;
+            cursor: pointer;
+            text-transform: uppercase;
+            border-radius: 2px;
+            padding: 8px;
+            flex-shrink: 0;
+            white-space: nowrap;
+            border: 0;
+
+            &--outline {
+                padding: 0;
+                color: $grey-dark;
+                background-color: transparent;
+            }
+        }
+    }
+}
 .footer {
     &-content {
         margin: 0 auto;
@@ -2065,6 +2193,17 @@ dialog + .backdrop {
             padding-top: 40px;
         }
 
+        .meta-info {
+            display: flex;
+            justify-content: flex-end;
+            text-align: right;
+            margin-top: 12px;
+            @include mixins.text(11px, 1.2, 400, white);
+            @media only screen and (max-width: utils.$tablet) {
+                font-size: 9px;
+            }
+        }
+
         &--mobile {
             display: none;
         }
@@ -2074,6 +2213,11 @@ dialog + .backdrop {
             display: none;
             &--mobile {
                 display: flex;
+                flex-direction: column;
+
+                .content {
+                    width: 100%;
+                }
             }
         }
 
@@ -2118,6 +2262,9 @@ dialog + .backdrop {
                 gap: 5px;
                 &-item {
                     @include mixins.text(16px, 1.2, 300, white);
+                    &--small {
+                        font-size: 13px;
+                    }
                 }
             }
 
@@ -2133,6 +2280,10 @@ dialog + .backdrop {
                     margin-top: 14px;
                     &-item {
                         font-size: 14px;
+
+                        &--small {
+                            font-size: 12px;
+                        }
                     }
                 }
             }
@@ -2170,6 +2321,18 @@ dialog + .backdrop {
             .social-item {
                 width: 36px;
                 height: 36px;
+
+                &--inst {
+                    &::before {
+                        top: -8px;
+                        right: -2px;
+                        @include mixins.text(22px, 1, 200, white);
+                        @media only screen and (max-width: utils.$tablet) {
+                            font-size: 18px;
+                            top: -6px;
+                        }
+                    }
+                }
             }
 
             @media only screen and (max-width: utils.$tablet) {
@@ -2569,7 +2732,7 @@ dialog + .backdrop {
             max-width: 100%;
             max-height: 100%;
             aspect-ratio: 284 / 504;
-            border: 0!important;
+            border: 0 !important;
         }
 
         &::before {

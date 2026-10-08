@@ -58,6 +58,8 @@ function openLocationVideo() {
 //init page logic
 $(document).on('ready', function () {
   initCarousel();
+  initCookiesBanner();
+  initCookiesBannerLinkListener();
   listenControlsChange();
   handleCalculatorFormChange();
   initRequestForm();

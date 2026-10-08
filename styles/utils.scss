@@ -23,6 +23,7 @@ $displayProps: (
 );
 $alignments: ("center", "space-between", "space-around", "space-evenly", "flex-start", "flex-end");
 $spaceAmounts: (2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 36, auto);
+$cursorVariants: ("pointer", "default");
 $text-alignment: ("right", "left", "center");
 $textTransforms: ("uppercase", "none");
 
@@ -61,6 +62,13 @@ $textTransforms: ("uppercase", "none");
     .content-#{$align} {
         align-content: #{$align};
     }
+}
+
+
+@each $variant in $cursorVariants {
+     .cursor-#{$variant} {
+        cursor: #{$variant};
+     }
 }
 
 @each $space in $spaceAmounts {
@@ -156,3 +164,5 @@ $textTransforms: ("uppercase", "none");
         }
     }
 }
+
+

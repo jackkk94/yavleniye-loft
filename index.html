@@ -15,7 +15,7 @@
 <body>
 	<header class='header'>
 		<nav class='navigation'>
-			<a href='#' class="logo">
+			<a href='/' class="logo">
 				<svg class="logo-img" width="34" height="34" viewBox="0 0 34 34" fill="none"
 					xmlns="http://www.w3.org/2000/svg">
 					<path
@@ -455,11 +455,9 @@
 			<div class="content">
 				<div class="item">
 					<div class="user">
-						<div class="name">Виктория<br>Ланина</div>
+						<div class="name">Виктория</div>
 						<div class="meta">Знаток города 6 уровня</div>
-						<div class="img-wrapper">
-							<img src='./assets/img/reviews/review-1.png' class='img' alt=''>
-						</div>
+						
 					</div>
 					<div class="message">Лучший зал для мероприятий любого формата! Обожаю их и всем знакомым советую.
 						И день рождения и свадьба на любое количество человек. Все будет комфортно и душевно.
@@ -468,11 +466,9 @@
 
 				<div class="item">
 					<div class="user">
-						<div class="name">705541<br>Барбарош</div>
+						<div class="name">Барбарош</div>
 						<div class="meta">Знаток города 4 уровня</div>
-						<div class="img-wrapper">
-							<img src='./assets/img/reviews/review-2.png' class='img' alt=''>
-						</div>
+						
 					</div>
 					<div class="message">Очень интересный дизайн помещения. Была на презентации новинок фирмы LAMARTI.
 						Парковка большая. Вкусный фуршет)))</div>
@@ -504,25 +500,24 @@
 
 						<input type="date" id="REQUEST_FORM_DATE" name="date" placeholder="Выберите дату">
 
-
-
 						<textarea id="REQUEST_FORM_COMMENTS" name="comments" rows="5" cols="40"
 							placeholder="Какое планируется мероприятие, сколько человек, комментарии"></textarea>
-
 
 						<div class="request-policy">
 							<div class="checkbox">
 								<input name="Policy" type="checkbox" id="POLICY_AGREEPMENT">
-								<label class="checkbox-label" for="POLICY_AGREEPMENT">Я даю согласие на обработку моих
-									персональных данных в соответствии с <a target="_blank"
-										href="./assets/docs/policy.pdf" class='link'> Политикой
-										конфиденциальности</a></label>
+								<label class="checkbox-label" for="POLICY_AGREEPMENT">Я даю <a target="_blank"
+										href="/consent.html" class='link'>согласие на обработку
+										персональных данных</a> и ознакомлен(а) с <a target="_blank"
+										href="/privacy.html" class='link'>Политикой обработки персональных
+										данных</a></label>
 							</div>
 
 							<div class="checkbox">
 								<input name="Technician" type="checkbox" id="EMAIL_AGREEPMENT">
-								<label class="checkbox-label" for="EMAIL_AGREEPMENT">Я согласен получать информационные
-									и рекламные рассылки</label>
+								<label class="checkbox-label" for="EMAIL_AGREEPMENT">Я даю <a target="_blank"
+										href="/consent-ads.html" class='link'>согласие на получение информационных и
+										рекламных рассылок</a></label>
 							</div>
 
 						</div>
@@ -533,7 +528,8 @@
 			</div>
 
 			<div class="actions visible-tablet">
-				<button class='btn btn-primary btn-request-submit' onclick="handleRequest(event)" disabled>Отправить заявку</button>
+				<button class='btn btn-primary btn-request-submit' onclick="handleRequest(event)" disabled>Отправить
+					заявку</button>
 			</div>
 
 		</section>
@@ -545,7 +541,7 @@
 			<div class="content">
 				<div class="column">
 					<div class="item">
-						<div class="label">Контактный телефон</div>
+						<div class="label">Телефон для связи</div>
 						<div class="description"><a class="link" href="tel:79327101244">+7 932 710-12-44</a></div>
 					</div>
 					<div class="item">
@@ -582,45 +578,59 @@
 	</main>
 
 	<footer class='footer'>
+
 		<div class="footer-content">
 			<img src="./assets/img/logo-footer.png" alt="" class="logo hidden-tablet visible-sm" />
 			<img src="./assets/img/logo-footer-tablet.png" alt="" class="logo visible-tablet hidden-sm" />
-			<div class="content">
-				<div class="content-col">
-					<div class="title">Навигация</div>
-					<ul class="list">
-						<li class="list-item"><a href="#">Главная</a></li>
-						<li class="list-item"><a href="#calculator">Цены</a></li>
-						<li class="list-item"><a href="#photos">Фото</a></li>
-						<li class="list-item"><a target="_blank" href="./assets/docs/equipment.pdf">Оборудование</a>
-						</li>
-						<li class="list-item"><a href="#contacts">Контакты</a></li>
-						<li class="list-item"><a href="">Документы сайта</a></li>
-					</ul>
-				</div>
-				<div class="content-col">
-					<div class="title">Контакты</div>
-					<ul class="list">
-						<li class="list-item">Контактный телефон</li>
-						<li class="list-item"><a href="tel:79327101244">+7 932 710-12-44</a></li>
-						<li class="list-item">Адрес:</li>
-						<li class="list-item">Обуховской обороны<br>
-							105, 3 этаж</li>
-					</ul>
-				</div>
-				<div class="content-col">
-					<div class="title">
-						<span class="hidden-tablet">Социальные сети</span>
-						<span class="visible-tablet title-socials">Соц. сети</span>
+			<div class="content-wrapper">
+				<div class="content">
+					<div class="content-col">
+						<div class="title">Навигация</div>
+						<ul class="list">
+							<li class="list-item"><a href="#">Главная</a></li>
+							<li class="list-item"><a href="#calculator">Цены</a></li>
+							<li class="list-item"><a href="#photos">Фото</a></li>
+							<li class="list-item"><a target="_blank" href="./assets/docs/equipment.pdf">Оборудование</a>
+							</li>
+							<li class="list-item"><a href="#contacts">Контакты</a></li>
+							<li class="list-item"><a target="_blank" href="/privacy.html">Политика обработки пдн</a></li>
+							<li class="list-item"><a target="_blank" href="/consent.html">Согласие на обработку пдн</a></li>
+						</ul>
 					</div>
+					<div class="content-col">
+						<div class="title">Контакты</div>
+						<ul class="list">
+							<li class="list-item">Телефон для связи</li>
+							<li class="list-item"><a href="tel:79327101244">+7 932 710-12-44</a></li>
+							<li class="list-item">Адрес:</li>
+							<li class="list-item">Обуховской обороны<br>
+								105, 3 этаж</li>
+							<li class="list-item">Реквизиты:</li>
+							<li class="list-item list-item--small">
+								ИП Блинов Дан Александрович,<br> ИНН 183001668199,<br> ОГРНИП 319784700338502</li>
+						</ul>
+					</div>
+					<div class="content-col">
+						<div class="title">
+							<span class="hidden-tablet">Социальные сети</span>
+							<span class="visible-tablet title-socials">Соц. сети</span>
+						</div>
 
-					<div class="socials-list">
-						<a target="_blank" href="https://vk.com/yavlenie_loft" class="social-item social-item--vk"></a>
-						<a target="_blank" href="https://t.me/+79327101244" class="social-item social-item--tg"></a>
-						<a target="_blank" href="https://instagram.com/yavlenie_loft"
-							class="social-item social-item--inst"></a>
+						<div class="socials-list">
+							<a target="_blank" href="https://vk.com/yavlenie_loft"
+								class="social-item social-item--vk"></a>
+							<a target="_blank" href="https://t.me/+79327101244" class="social-item social-item--tg"></a>
+							<a target="_blank" href="https://instagram.com/yavlenie_loft"
+								class="social-item social-item--inst"></a>
+						</div>
+						<ul class="list">
+							<li class="list-item cookie-banner-link cursor-pointer" >Настройки cookie</li>
+						</ul>
 					</div>
 				</div>
+				<div class="meta-info">* Instagram принадлежит компании Meta Platforms Inc., которая по решению суда от
+					21.03.2022 <br class="hidden-md">признана экстремистской организацией, её деятельность запрещена на
+					территории РФ.</div>
 			</div>
 		</div>
 
@@ -634,14 +644,14 @@
 					</ul>
 				</div>
 				<div class="content-col">
-					<div class="title"><a href="#">Главная</a></div>
+					<div class="title"><a href="/index.html">Главная</a></div>
 					<ul class="list">
 						<li class="list-item"><a href="#calculator">Цены</a></li>
 						<li class="list-item"><a href="#photos">Фото</a></li>
 						<li class="list-item"><a target="_blank" href="./assets/docs/equipment.pdf">Оборудование</a>
 						</li>
 						<li class="list-item"><a href="#contacts">Контакты</a></li>
-						<li class="list-item"><a href="./assets/docs/policy.pdf">Документы</a></li>
+						<li class="list-item"><a href="/privacy.html">Документы</a></li>
 					</ul>
 				</div>
 				<div class="content-col">
@@ -649,6 +659,10 @@
 					<ul class="list">
 						<li class="list-item">Обуховской обороны<br>
 							105, 3 этаж</li>
+
+						<li class="list-item">Реквизиты:</li>
+						<li class="list-item list-item--small">
+						ИП Блинов Дан Александрович,<br> ИНН 183001668199,<br> ОГРНИП 319784700338502</li>
 					</ul>
 
 					<div class="title title--large my-4">Соц. сети:</div>
@@ -658,11 +672,35 @@
 						<a target="_blank" href="https://instagram.com/yavlenie_loft"
 							class="social-item social-item--inst"></a>
 					</div>
+
+					<ul class="list">
+							<li class="list-item cursor-pointer cookie-banner-link">Настройки cookie</li>
+						</ul>
+
 				</div>
 			</div>
+			<div class="meta-info">* Instagram принадлежит компании Meta Platforms Inc., которая по решению суда от
+				21.03.2022 <br class="hidden-md">признана экстремистской организацией, её деятельность запрещена на
+				территории РФ.</div>
 
 		</div>
 	</footer>
+
+	<div class="cookies-banner" id="coockiesBanner">
+		<div class="content">
+			Мы используем файлы cookie и сервис Яндекс Метрика, чтобы сайт работал корректно и мы понимали, как его
+			улучшить. Нажимая «Принять», вы даёте согласие на обработку
+			данных cookie в соответствии с <a class="link" target="_blank" href="/privacy.html">Политикой обработки
+				персональных данных</a>. <br class="hidden-sm"> Если нажать «Только необходимые»,
+			аналитика использоваться не будет.
+		</div>
+		<div class="buttons">
+			<button type="button" id="cookiesAcceptAll" class="cookies-banner__button">Принять</button>
+			<button type="button" id="cookiesAcceptNecessary"
+				class="cookies-banner__button cookies-banner__button--outline">Только необходимые</button>
+		</div>
+	</div>
+
 	<script src="https://unpkg.com/@popperjs/core@2"></script>
 	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -674,6 +712,7 @@
 	<script src='./js/calculator.js'></script>
 	<script src='./js/modal.js'></script>
 	<script src='./js/request.js'></script>
+	<script src='./js/accept-cookies.js'></script>
 	<script src='./js/index.js'></script>
 </body>
 
@@ -697,7 +736,7 @@
 
 <dialog id="locationVideoModal" class="modal modal-video">
 	<div class="modal-wrapper">
-		<div  class="video-frame-container">
+		<div class="video-frame-container">
 			<video id="videoPlayer" poster="assets/video/placement.png" controls>
 				<source src="assets/video/placement.mp4" type="video/mp4">
 			</video>
