@@ -84,9 +84,11 @@
 
 	<main class="main-content">
 		<section class='section section-policy'>
-			<h2 class='section-title'>
-				Политика обработки персональных данных
-			</h2>
+			<div class="tab-links">
+				<a href="./privacy.html" class="tab tab--selected">Политика обработки персональных данных</a>
+				<a href="./consent.html" class="tab">Согласие на обработку персональных данных</a>
+				<a href="./consent-ads.html" class="tab">Согласие на получение рекламной рассылки</a>
+			</div>
 
 			<div class="content content--policy">
 
@@ -457,8 +459,10 @@
 							<li class="list-item"><a target="_blank" href="./assets/docs/equipment.pdf">Оборудование</a>
 							</li>
 							<li class="list-item"><a href="#contacts">Контакты</a></li>
-							<li class="list-item"><a target="_blank" href="/privacy.html">Политика обработки пдн</a></li>
-							<li class="list-item"><a target="_blank" href="/consent.html">Согласие на обработку пдн</a></li>
+							<li class="list-item"><a target="_blank" href="/privacy.html">Политика обработки пдн</a>
+							</li>
+							<li class="list-item"><a target="_blank" href="/consent.html">Согласие на обработку пдн</a>
+							</li>
 						</ul>
 					</div>
 					<div class="content-col">
@@ -488,7 +492,7 @@
 								class="social-item social-item--inst"></a>
 						</div>
 						<ul class="list">
-							<li class="list-item cookie-banner-link cursor-pointer" >Настройки cookie</li>
+							<li class="list-item cookie-banner-link cursor-pointer">Настройки cookie</li>
 						</ul>
 					</div>
 				</div>
@@ -526,7 +530,7 @@
 
 						<li class="list-item">Реквизиты:</li>
 						<li class="list-item list-item--small">
-						ИП Блинов Дан Александрович,<br> ИНН 183001668199,<br> ОГРНИП 319784700338502</li>
+							ИП Блинов Дан Александрович,<br> ИНН 183001668199,<br> ОГРНИП 319784700338502</li>
 					</ul>
 
 					<div class="title title--large my-4">Соц. сети:</div>
@@ -538,8 +542,8 @@
 					</div>
 
 					<ul class="list">
-							<li class="list-item cursor-pointer cookie-banner-link">Настройки cookie</li>
-						</ul>
+						<li class="list-item cursor-pointer cookie-banner-link">Настройки cookie</li>
+					</ul>
 
 				</div>
 			</div>
@@ -577,7 +581,21 @@
 	<script src='./js/request.js'></script>
 	<script src='./js/accept-cookies.js'></script>
 	<script src='./js/index.js'></script>
+	<!-- Yandex.Metrika counter -->
+	<script type="text/javascript">
+		(function (m, e, t, r, i, k, a) {
+			m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+			m[i].l = 1 * new Date();
+			for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+			k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+		})(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=113555078', 'ym');
 
+		ym(113555078, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce: true, trackLinks: true });
+	</script>
+	<noscript>
+		<div><img src="https://mc.yandex.ru/watch/113555078" style="position:absolute; left:-9999px;" alt="" /></div>
+	</noscript>
+	<!-- /Yandex.Metrika counter -->
 </body>
 
 </html>

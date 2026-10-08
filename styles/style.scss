@@ -622,10 +622,7 @@ dialog + .backdrop {
         }
     }
     &-policy {
-        @media only screen and (max-width: utils.$tablet) {
-            border-top: 0;
-        }
-
+        border-top: 0;
         .section-subtitle {
             @include mixins.text(20px, 1.4, 500, $grey-dark);
             margin-bottom: 8px;
@@ -633,6 +630,40 @@ dialog + .backdrop {
             @media only screen and (max-width: utils.$tablet) {
                 font-size: 16px;
                 line-height: 1.2;
+            }
+        }
+
+        .tab-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            overflow-x: auto;
+
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            @media only screen and (max-width: utils.$mobile) {
+                margin-right: -16px;
+            }
+
+            .tab {
+                min-width: 242px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                @include mixins.text(18px, 1.2, 400, $grey-dark);
+                @media only screen and (max-width: utils.$mobile) {
+                    font-size: 16px;
+                }
+
+                padding: 18px 16px;
+                border-bottom: 1px solid #eee;
+
+                &--selected {
+                    border-bottom-color: $grey-dark;
+                }
             }
         }
 
@@ -651,6 +682,7 @@ dialog + .backdrop {
 
         .content {
             font-weight: 300;
+            margin-top: 32px;
             .content-list {
                 display: block;
                 padding: 0 18px;
