@@ -74,13 +74,17 @@ const initCookiesBannerLinkListener = () => {
   }
 
   link.addEventListener('click', () => {
+    alert(1);
     const banner = document.getElementById(COOKIES_BANNER_ID);
     if (!banner) {
       return;
     }
 
+    alert(2);
+
     localStorage.removeItem(LOCAL_STORAGE_KEY);
     banner.style.display = 'flex';
+    alert(3);
     window.location?.reload?.();
   });
 };
