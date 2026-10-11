@@ -302,6 +302,7 @@ dialog + .backdrop {
 
         .icon-close {
             display: block;
+            flex-shrink: 0;
             width: 19px;
             height: 19px;
             background-image: url("./../assets/img/icon-close.svg");
