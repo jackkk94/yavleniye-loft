@@ -68,36 +68,23 @@ function initCookiesBanner() {
 }
 
 const initCookiesBannerLinkListener = () => {
-  const link = document.querySelector(`.${COOCKIES_BANNER_LINK}`);
+  const link = document.querySelectorAll(`.${COOCKIES_BANNER_LINK}`);
   if (!link) {
     return;
   }
 
-  link.addEventListener('click', () => {
-    const banner = document.getElementById(COOKIES_BANNER_ID);
-    if (!banner) {
-      return;
-    }
+  link.forEach((l) =>
+    l.addEventListener('click', () => {
+      const banner = document.getElementById(COOKIES_BANNER_ID);
+      if (!banner) {
+        return;
+      }
 
-    localStorage.removeItem(LOCAL_STORAGE_KEY);
-    banner.style.display = 'flex';
-    window.location?.reload?.();
-  });
-
-  link.addEventListener('touchend', () => {
-    alert(1);
-    const banner = document.getElementById(COOKIES_BANNER_ID);
-    if (!banner) {
-      return;
-    }
-
-    alert(2);
-
-    localStorage.removeItem(LOCAL_STORAGE_KEY);
-    banner.style.display = 'flex';
-    alert(3);
-    window.location?.reload?.();
-  });
+      localStorage.removeItem(LOCAL_STORAGE_KEY);
+      banner.style.display = 'flex';
+      window.location?.reload?.();
+    }),
+  );
 };
 
 const addBtnClickListener = (btnId, fn) => {
