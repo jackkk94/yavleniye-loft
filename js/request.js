@@ -4,6 +4,7 @@ const REQUEST_VIEW_IDS = {
   PHONE: 'REQUEST_FORM_PHONE',
   DATE: 'REQUEST_FORM_DATE',
   COMMENTS: 'REQUEST_FORM_COMMENTS',
+  EXTRA_INFO: 'REQUEST_FORM_EXTRA_INFO',
 };
 const CONTROL_ERROR_CLASS = 'error';
 const REQUEST_FORM = document.getElementById('REQUEST_FORM');
@@ -97,6 +98,7 @@ function buildPayload(form) {
   const phone = form[REQUEST_VIEW_IDS.PHONE]?.value;
   const date = form[REQUEST_VIEW_IDS.DATE]?.value;
   const comments = form[REQUEST_VIEW_IDS.COMMENTS]?.value;
+  const extraInfo = form[REQUEST_VIEW_IDS.EXTRA_INFO]?.value;
   const utmTags = parseUtmParameters(window.location.href);
   const enableMailing = EMAIL_AGREEPMENT_CHECKBOX.checked;
   const acceptPolicy = POLICY_AGREEPMENT_CHECKBOX.checked;
@@ -106,6 +108,7 @@ function buildPayload(form) {
     phone,
     date,
     comments,
+    extraInfo,
     ...buildCalculatorRequestData(),
     utmTags,
     enableMailing,
