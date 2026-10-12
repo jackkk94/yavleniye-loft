@@ -52,6 +52,10 @@ $totalPrice = $data['totalPrice']['price'] ?? $data['totalPrice'] ?? 0;
 
 $utmTags = $data['utmTags'] ?? [];
 
+$sentAt = (new DateTime('now', new DateTimeZone('Europe/Moscow')))->format('d.m.Y H:i:s') . ' (МСК)';
+$acceptPolicy = ($data['acceptPolicy'] ?? false) === true ? 'Да' : 'Нет';
+$enableMailing = ($data['enableMailing'] ?? false) === true ? 'Да' : 'Нет';
+
 $message = "📋 *Новая заявка*\n\n";
 $message .= "👤 *Имя:* {$name}\n";
 $message .= "📞 *Телефон:* {$phone}\n";
@@ -107,7 +111,10 @@ if ($emailEnabled && !empty($emailTo)) {
         $soundEngineer,
         $lightOperator,
         $totalPrice,
-        $utmTags
+        $utmTags,
+        $sentAt,
+        $acceptPolicy,
+        $enableMailing
     );
 }
 
@@ -145,7 +152,7 @@ function formatPrice($price) {
     return number_format($price, 0, '', ' ') . ' ₽';
 }
 
-function sendEmail($to, $from, $fromName, $name, $phone, $date, $comments, $tariff, $rentTime, $techTime, $technicianOnDuty, $soundEngineer, $lightOperator, $totalPrice, $utmTags) {
+function sendEmail($to, $from, $fromName, $name, $phone, $date, $comments, $tariff, $rentTime, $techTime, $technicianOnDuty, $soundEngineer, $lightOperator, $totalPrice, $utmTags, $sentAt, $acceptPolicy, $enableMailing) {
     $subject = "=?UTF-8?B?" . base64_encode("Новая заявка от {$name}") . "?=";
     
     $utmHtml = '';
@@ -222,6 +229,24 @@ function sendEmail($to, $from, $fromName, $name, $phone, $date, $comments, $tari
         
         <div style='padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); text-align: center;'>
             <p style='color: white; font-size: 24px; margin: 0;'><strong>Итого: " . formatPrice($totalPrice) . "</strong></p>
+        </div>
+        
+        <div style='padding: 20px; background: white;'>
+            <h2 style='color: #667eea; margin-top: 0;'>Согласия</h2>
+            <table style='width: 100%; border-collapse: collapse;'>
+                <tr>
+                    <td style='padding: 10px 0; border-bottom: 1px solid #eee; width: 60%;'><strong>Дата и время отправки</strong></td>
+                    <td style='padding: 10px 0; border-bottom: 1px solid #eee;'>{$sentAt}</td>
+                </tr>
+                <tr>
+                    <td style='padding: 10px 0; border-bottom: 1px solid #eee;'><strong>Согласие на обработку персональных данных</strong></td>
+                    <td style='padding: 10px 0; border-bottom: 1px solid #eee;'>{$acceptPolicy}</td>
+                </tr>
+                <tr>
+                    <td style='padding: 10px 0; border-bottom: 1px solid #eee;'><strong>Согласие на получение рассылки</strong></td>
+                    <td style='padding: 10px 0; border-bottom: 1px solid #eee;'>{$enableMailing}</td>
+                </tr>
+            </table>
         </div>
         
         " . (!empty($utmTags) ? "
