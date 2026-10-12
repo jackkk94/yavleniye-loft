@@ -2,6 +2,10 @@
 
 header('Content-Type: application/json');
 
+const RATE_LIMIT_MAX_REQUESTS = 5;
+const RATE_LIMIT_WINDOW_SECONDS = 600;
+const MAX_UTM_TAGS = 20;
+
 $configPath = __DIR__ . '/config.php';
 if (!file_exists($configPath)) {
     http_response_code(500);
@@ -27,62 +31,86 @@ if (empty($botToken) || empty($chatIds)) {
 $input = file_get_contents('php://input');
 $data = json_decode($input, true);
 
-if (!$data) {
+if (!is_array($data)) {
     http_response_code(400);
     echo json_encode(['error' => 'Invalid JSON']);
     exit;
 }
 
-$name = htmlspecialchars($data['name'] ?? '');
-$phone = htmlspecialchars($data['phone'] ?? '');
-$date = htmlspecialchars($data['date'] ?? '');
-$comments = htmlspecialchars($data['comments'] ?? '');
+// Honeypot: поле скрыто от людей, заполняют его только боты
+if (!empty($data['extraInfo'])) {
+    echo json_encode(['success' => true]);
+    exit;
+}
+
+if (isRateLimited($_SERVER['REMOTE_ADDR'] ?? 'unknown', RATE_LIMIT_MAX_REQUESTS, RATE_LIMIT_WINDOW_SECONDS)) {
+    http_response_code(429);
+    echo json_encode(['error' => 'Too many requests']);
+    exit;
+}
+
+$name = escapeText($data['name'] ?? '', 100);
+$phone = escapeText($data['phone'] ?? '', 30);
+$date = escapeText($data['date'] ?? '', 20);
+$comments = escapeText($data['comments'] ?? '', 1000);
 
 $isTariffWithEquipment = $data['isTariffWithEquipment'] ?? false;
 $tariff = $isTariffWithEquipment ? 'С оборудованием' : 'Без оборудования';
 
-$rentTime = $data['rentTime'] ?? ['hours' => 0, 'price' => 0];
-$techTime = $data['techTime'] ?? ['hours' => 0, 'price' => 0];
+$rentTime = ['hours' => toNumber($data['rentTime']['hours'] ?? 0)];
+$techTime = ['hours' => toNumber($data['techTime']['hours'] ?? 0)];
 
-$technicianOnDuty = $data['technicianOnDuty'] ?? null;
-$soundEngineer = $data['soundEngineer'] ?? null;
-$lightOperator = $data['lightOperator'] ?? null;
+$technicianOnDuty = toNumber($data['technicianOnDuty'] ?? 0);
+$soundEngineer = toNumber($data['soundEngineer'] ?? 0);
+$lightOperator = toNumber($data['lightOperator'] ?? 0);
 
-$totalPrice = $data['totalPrice']['price'] ?? $data['totalPrice'] ?? 0;
+$totalPrice = toNumber($data['totalPrice']['price'] ?? $data['totalPrice'] ?? 0);
 
-$utmTags = $data['utmTags'] ?? [];
+$utmTags = [];
+$rawUtmTags = $data['utmTags'] ?? [];
+foreach (array_slice(is_array($rawUtmTags) ? $rawUtmTags : [], 0, MAX_UTM_TAGS) as $tag) {
+    if (!is_array($tag)) {
+        continue;
+    }
+    $tagName = escapeText($tag['name'] ?? '', 50);
+    if ($tagName === '') {
+        continue;
+    }
+    $utmTags[] = [
+        'name' => $tagName,
+        'value' => escapeText($tag['value'] ?? '', 200),
+    ];
+}
 
 $sentAt = (new DateTime('now', new DateTimeZone('Europe/Moscow')))->format('d.m.Y H:i:s') . ' (МСК)';
 $acceptPolicy = ($data['acceptPolicy'] ?? false) === true ? 'Да' : 'Нет';
 $enableMailing = ($data['enableMailing'] ?? false) === true ? 'Да' : 'Нет';
 
-$message = "📋 *Новая заявка*\n\n";
-$message .= "👤 *Имя:* {$name}\n";
-$message .= "📞 *Телефон:* {$phone}\n";
-$message .= "📅 *Дата:* {$date}\n";
-$message .= "💬 *Комментарий:* " . ($comments ?: '—') . "\n\n";
+$message = "📋 <b>Новая заявка</b>\n\n";
+$message .= "👤 <b>Имя:</b> {$name}\n";
+$message .= "📞 <b>Телефон:</b> {$phone}\n";
+$message .= "📅 <b>Дата:</b> {$date}\n";
+$message .= "💬 <b>Комментарий:</b> " . ($comments ?: '—') . "\n\n";
 
 $message .= "━━━━━━━━━━━━━━━\n\n";
 
-$message .= "📦 *Тариф:* {$tariff}\n";
-$message .= "⏱ *Часов аренды:* {$rentTime['hours']}\n";
-$message .= "🔧 *Технических часов:* {$techTime['hours']}\n";
+$message .= "📦 <b>Тариф:</b> {$tariff}\n";
+$message .= "⏱ <b>Часов аренды:</b> {$rentTime['hours']}\n";
+$message .= "🔧 <b>Технических часов:</b> {$techTime['hours']}\n";
 
-$message .= "👨‍🔧 *Дежурный техник:* " . ($technicianOnDuty ? formatPrice($technicianOnDuty) : '—') . "\n";
-$message .= "🎤 *Звукорежиссёр:* " . ($soundEngineer ? formatPrice($soundEngineer) : '—') . "\n";
-$message .= "💡 *Светорежиссёр:* " . ($lightOperator ? formatPrice($lightOperator) : '—') . "\n\n";
+$message .= "👨‍🔧 <b>Дежурный техник:</b> " . ($technicianOnDuty ? formatPrice($technicianOnDuty) : '—') . "\n";
+$message .= "🎤 <b>Звукорежиссёр:</b> " . ($soundEngineer ? formatPrice($soundEngineer) : '—') . "\n";
+$message .= "💡 <b>Светорежиссёр:</b> " . ($lightOperator ? formatPrice($lightOperator) : '—') . "\n\n";
 
 $message .= "━━━━━━━━━━━━━━━\n\n";
 
-$message .= "💰 *Итоговая сумма:* " . formatPrice($totalPrice) . "\n";
+$message .= "💰 <b>Итоговая сумма:</b> " . formatPrice($totalPrice) . "\n";
 
 if (!empty($utmTags)) {
     $message .= "\n━━━━━━━━━━━━━━━\n\n";
-    $message .= "📊 *UTM tags:*\n";
+    $message .= "📊 <b>UTM tags:</b>\n";
     foreach ($utmTags as $tag) {
-        $tagName = htmlspecialchars($tag['name'] ?? '');
-        $tagValue = htmlspecialchars($tag['value'] ?? '');
-        $message .= "• {$tagName}: {$tagValue}\n";
+        $message .= "• {$tag['name']}: {$tag['value']}\n";
     }
 }
 
@@ -131,7 +159,7 @@ function sendTelegramMessage($botToken, $chatId, $message) {
     $postData = [
         'chat_id' => $chatId,
         'text' => $message,
-        'parse_mode' => 'Markdown',
+        'parse_mode' => 'HTML',
     ];
     
     $ch = curl_init();
@@ -152,6 +180,55 @@ function formatPrice($price) {
     return number_format($price, 0, '', ' ') . ' ₽';
 }
 
+function escapeText($value, $maxLength) {
+    if (!is_scalar($value)) {
+        return '';
+    }
+    $value = trim((string) $value);
+    $value = function_exists('mb_substr') ? mb_substr($value, 0, $maxLength, 'UTF-8') : substr($value, 0, $maxLength);
+
+    return htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+}
+
+function toNumber($value) {
+    return is_numeric($value) ? max(0, (float) $value) : 0;
+}
+
+function isRateLimited($ip, $maxRequests, $windowSeconds) {
+    $dir = sys_get_temp_dir() . '/yavleniye-loft-rate-limit';
+    if (!is_dir($dir) && !@mkdir($dir, 0700, true) && !is_dir($dir)) {
+        return false;
+    }
+
+    $fp = @fopen($dir . '/' . hash('sha256', $ip), 'c+');
+    if (!$fp) {
+        return false;
+    }
+
+    flock($fp, LOCK_EX);
+    $now = time();
+    $timestamps = [];
+    foreach (explode("\n", (string) stream_get_contents($fp)) as $line) {
+        $timestamp = (int) $line;
+        if ($timestamp > $now - $windowSeconds) {
+            $timestamps[] = $timestamp;
+        }
+    }
+
+    $limited = count($timestamps) >= $maxRequests;
+    if (!$limited) {
+        $timestamps[] = $now;
+    }
+
+    ftruncate($fp, 0);
+    rewind($fp);
+    fwrite($fp, implode("\n", $timestamps));
+    flock($fp, LOCK_UN);
+    fclose($fp);
+
+    return $limited;
+}
+
 function sendEmail($to, $from, $fromName, $name, $phone, $date, $comments, $tariff, $rentTime, $techTime, $technicianOnDuty, $soundEngineer, $lightOperator, $totalPrice, $utmTags, $sentAt, $acceptPolicy, $enableMailing) {
     $subject = "=?UTF-8?B?" . base64_encode("Новая заявка от {$name}") . "?=";
     
@@ -159,9 +236,7 @@ function sendEmail($to, $from, $fromName, $name, $phone, $date, $comments, $tari
     if (!empty($utmTags)) {
         $utmHtml = '<tr><td colspan="2" style="padding: 15px 0 10px; border-top: 1px solid #eee;"><strong>UTM tags:</strong></td></tr>';
         foreach ($utmTags as $tag) {
-            $tagName = htmlspecialchars($tag['name'] ?? '');
-            $tagValue = htmlspecialchars($tag['value'] ?? '');
-            $utmHtml .= "<tr><td style='padding: 5px 0; color: #666;'>{$tagName}</td><td style='padding: 5px 0;'>{$tagValue}</td></tr>";
+            $utmHtml .= "<tr><td style='padding: 5px 0; color: #666;'>{$tag['name']}</td><td style='padding: 5px 0;'>{$tag['value']}</td></tr>";
         }
     }
     
