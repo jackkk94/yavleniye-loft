@@ -99,6 +99,7 @@ function buildPayload(form) {
   const comments = form[REQUEST_VIEW_IDS.COMMENTS]?.value;
   const utmTags = parseUtmParameters(window.location.href);
   const enableMailing = EMAIL_AGREEPMENT_CHECKBOX.checked;
+  const acceptPolicy = POLICY_AGREEPMENT_CHECKBOX.checked;
 
   return {
     name,
@@ -108,6 +109,7 @@ function buildPayload(form) {
     ...buildCalculatorRequestData(),
     utmTags,
     enableMailing,
+    acceptPolicy
   };
 }
 
