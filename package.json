@@ -1,0 +1,35 @@
+{
+  "name": "yavlenie-loft",
+  "version": "1.0.0",
+  "main": "webpack.config.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack  --mode production --config webpack.config.js ",
+    "start": "cross-env NODE_ENV=development webpack serve --mode development --open --config webpack.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@babel/core": "^7.29.7",
+    "@babel/preset-env": "^7.29.7",
+    "babel-loader": "^10.1.1",
+    "copy-webpack-plugin": "^14.0.0",
+    "cross-env": "^10.1.0",
+    "css-loader": "^7.1.5",
+    "html-webpack-plugin": "^5.6.8",
+    "mini-css-extract-plugin": "^2.10.2",
+    "sass": "^1.105.1",
+    "sass-loader": "^17.0.1",
+    "sass-to-string": "^1.6.4",
+    "webpack": "^5.111.1",
+    "webpack-cli": "^7.2.3"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "jquery": "^4.0.0",
+    "raw-loader": "^4.0.2",
+    "slick": "^1.12.2",
+    "slick-carousel": "^2.0.0",
+    "webpack-dev-server": "^6.0.0"
+  }
+}
