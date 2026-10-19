@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+<head>
+	<meta charset='UTF-8' />
+	<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+
+	<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+	<title>Лофт Явление</title>
+</head>
+
+<body>
+	<%= require('./templates/header.html').default %>
+
+		<main class="main-content">
+			<section id="photos" class='section section-advantages'>
+				<h2 class='section-title'>
+					Наши преимущества
+				</h2>
+
+				<div class="content">
+					<div class="item">
+						<div class="title">Вместимость</div>
+						<div class="description">До 180 человек</div>
+					</div>
+					<div class="item">
+						<div class="title">Площадь помещения</div>
+						<div class="description">240 кв.м.</div>
+					</div>
+					<div class="item">
+						<div class="title">Высокий потолок</div>
+						<div class="description">Высота 5 метров</div>
+					</div>
+					<div class="item">
+						<div class="title">Доступность</div>
+						<div class="description">24/7</div>
+					</div>
+					<div class="item">
+						<div class="title">Паркинг</div>
+						<div class="description">Охраняемая бесплатная <br> парковка на 50 машиномест</div>
+					</div>
+					<div class="item">
+						<div class="title">Зонирование</div>
+						<div class="description">Собственный санузел и <br> дополнительные помещения</div>
+					</div>
+				</div>
+
+				<div class="content content--mobile">
+					<div class="item">
+						<div class="title">Вместимость</div>
+						<div class="description">До 180 человек</div>
+					</div>
+					<div class="item">
+						<div class="title">Высота потолка</div>
+						<div class="description">Высота 5 метров</div>
+					</div>
+					<div class="item">
+						<div class="title">Доступность</div>
+						<div class="description">24/7</div>
+					</div>
+					<div class="item">
+						<div class="title">Площадь</div>
+						<div class="description">240 кв.м.</div>
+					</div>
+					<div class="item">
+						<div class="title">Зонирование</div>
+						<div class="description">Собственный санузел <br>и дополнительные<br> помещения</div>
+					</div>
+					<div class="item">
+						<div class="title">Паркинг</div>
+						<div class="description">Охраняемая бесплатная парковка на 50 мест</div>
+					</div>
+				</div>
+			</section>
+
+			<section class='d-flex section-place'>
+				<div class="carousel-wrapper">
+					<div class="carousel-gradient carousel-gradient--left"></div>
+					<div class="carousel-gradient carousel-gradient--right"></div>
+					<div class='carousel'>
+						<div class="slide-card">
+							<img src="./assets/img/slides/slide-1.jpg">
+						</div>
+						<div class="slide-card">
+							<img src="./assets/img/slides/slide-2.jpg">
+						</div>
+						<div class="slide-card">
+							<img src="./assets/img/slides/slide-3.jpg">
+						</div>
+						<div class="slide-card">
+							<img src="./assets/img/slides/slide-4.jpg">
+						</div>
+						<div class="slide-card">
+							<img src="./assets/img/slides/slide-5.jpg">
+						</div>
+						<div class="slide-card">
+							<img src="./assets/img/slides/slide-6.jpg">
+						</div>
+					</div>
+				</div>
+
+				<div class="carousel-nav">
+					<div class="carousel-prev"></div>
+					<div class="carousel-next"></div>
+				</div>
+			</section>
+
+			<section class='section section-events'>
+				<h2 class='section-title'>
+					Наши мероприятия
+				</h2>
+				<div class="content">
+					<div class="item">
+						<div class="img-wrapper">
+							<img src='./assets/img/events/event-1.png' class='img' alt=''>
+						</div>
+						<div class="title">Музыкальный вечер</div>
+						<div class="description">Сцена будет там,<br> где захотите,<br> хоть в середине зала!</div>
+					</div>
+					<div class="item">
+						<div class="img-wrapper">
+							<img src='./assets/img/events/event-2.png' class='img' alt=''>
+						</div>
+						<div class="title">Свадьба</div>
+						<div class="description">Каждая пара уникальна<br> и мы поможем сделать<br> свадьбу<br>
+							такой же уникальной!</div>
+					</div>
+					<div class="item">
+						<div class="img-wrapper">
+							<img src='./assets/img/events/event-3.png' class='img' alt=''>
+						</div>
+						<div class="title">Мастер-класс</div>
+						<div class="description">Проведите продуктивно<br> мероприятие со своей<br> аудиторией в уютном
+							месте
+						</div>
+					</div>
+					<div class="item">
+						<div class="img-wrapper">
+							<img src='./assets/img/events/event-4.png' class='img' alt=''>
+						</div>
+						<div class="title">Детский праздник</div>
+						<div class="description">Когда счастливы дети, счастливы все!</div>
+					</div>
+				</div>
+				<div class="actions d-flex justify-center">
+					<a target="_blank" href="https://vk.com/albums-172807041"
+						class='btn btn-primary btn-lg'>Смотреть&nbsp;
+						<span class="hidden-sm">все фотографии</span><span class="visible-sm">фото</span></a>
+				</div>
+			</section>
+
+			<section class="section-technical-environment">
+				<div class='banner'>
+					<img class="img" src='./assets/img/technical-env.png' alt='Техническое оснащение'>
+					<div class="content">
+						<h1 class='title'>Техническое<br>оснащение</h1>
+						<div class='description'>Зал оборудован всем <br class="visible-lg"> необходимым для проведения
+							<br class="visible-lg"> любого мероприятия</div>
+						<a target="_blank" href="./assets/docs/equipment.pdf"
+							class='btn btn-primary btn-lg'>Подробнее</a>
+					</div>
+				</div>
+			</section>
+
+			<section id="calculator" class="section section-calculator">
+				<h2 class='section-title'>Калькулятор</h2>
+				<div class="calculator-wrapper">
+					<div class="calculator">
+						<form class="calculator-config" id="CALCULATOR_FORM">
+							<h4 class="calculator-title">Желаемый тариф</h4>
+
+							<div class="form-row form-row--radio">
+								<div class="radio">
+									<input type="radio" id="WITH_EQUIPMENT" name="Tariff" value="withEquipment">
+									<label class="radio-label" for="WITH_EQUIPMENT">С аппаратурой</label>
+								</div>
+								<div class="radio">
+									<input type="radio" checked id="WithoutEquipment" name="Tariff"
+										value="withoutEquipment">
+									<label class="radio-label" for="WithoutEquipment">Без аппаратуры</label>
+								</div>
+							</div>
+
+							<h4 class="calculator-section-title">Количество часов аренды</h4>
+							<div class="ui-range" style="--offset-x: -16px">
+								<div class="track"></div>
+								<input name="Time" class="range-input" id="hoursRent" type="range" min="3" max="15"
+									value="3" step="1" aria-valuemin="3" aria-valuemax="15" list="hoursRentList">
+								<output class="range-output" id="hoursRentOutput" for="hoursRent">3 ч</output>
+								<div id="hoursRentList" class="tickmarks">
+									<span class="tickmarks-option">3</span>
+									<span class="tickmarks-option">6</span>
+									<span class="tickmarks-option">9</span>
+									<span class="tickmarks-option">12</span>
+									<span class="tickmarks-option">15</span>
+								</div>
+							</div>
+
+							<h4 class="calculator-section-title">Количество технических часов</h4>
+
+							<div class="ui-range" style="--offset-x: -16px">
+								<div class="track"></div>
+								<input name="TechTime" class="range-input" id="hoursTech" type="range" min="0" max="9"
+									value="0" step="1" aria-valuemin="0" aria-valuemax="9" list="hoursTechList">
+								<output class="range-output" id="hoursTechListOutput" for="hoursTech">0 ч</output>
+								<div id="hoursTechList" class="tickmarks">
+									<span class="tickmarks-option">0</span>
+									<span class="tickmarks-option">3</span>
+									<span class="tickmarks-option">6</span>
+									<span class="tickmarks-option">9</span>
+								</div>
+							</div>
+							<div class="additional-services">
+								<div class="checkbox-wrapper">
+									<div class="checkbox">
+										<input name="Technician" type="checkbox" id="TECHNICIAN_ON_DUTY" disabled>
+										<label class="checkbox-label" for="TECHNICIAN_ON_DUTY">Услуги дежурного
+											техника</label>
+									</div>
+									<span aria-describedby="tooltip1" class="icon-tooltip"></span>
+
+									<div id="tooltip1" class="ui-tooltip" role="tooltip">Придёте со своим
+										звукорежиссёром?
+										<br>
+										Наш дежурный техник поможет ему быстро разобраться с нашим оборудованием,
+										подключиться и
+										настроиться. А ещё проследит, чтобы с техникой обращались бережно и аккуратно.
+										Всё
+										под
+										контролем.
+									</div>
+								</div>
+								<div class="checkbox-wrapper">
+									<div class="checkbox">
+										<input name="LightOperator" type="checkbox" id="LIGHT_OPERATOR" disabled>
+										<label class="checkbox-label" for="LIGHT_OPERATOR">Услуги светорежиссёра</label>
+									</div>
+									<span aria-describedby="tooltip2" class="icon-tooltip"></span>
+
+									<div id="tooltip2" class="ui-tooltip" role="tooltip">
+										Хотите, чтобы свет «играл» под ваш
+										сценарий? Наш светорежиссёр воплотит ваши идеи: создаст световые сцены, настроит
+										цвета и
+										динамику, включит эффекты точно в нужный момент. Полное световое сопровождение
+										от
+										начала
+										до финала.</div>
+								</div>
+								<div class="checkbox-wrapper">
+									<div class="checkbox">
+										<input name="SoundEngineer" type="checkbox" id="SOUND_ENGINEER" disabled>
+										<label class="checkbox-label" for="SOUND_ENGINEER">Услуги звукорежиссёра</label>
+									</div>
+									<span aria-describedby="tooltip3" class="icon-tooltip"></span>
+
+									<div id="tooltip3" class="ui-tooltip" role="tooltip">Отвечаем за идеальный звук! Наш
+										звукорежиссёр настроит акустику под формат вашего мероприятия, чтобы голоса и
+										музыка
+										звучали чисто, мощно и без сюрпризов. Он будет с вами на протяжении всего
+										события и
+										оперативно решит любые вопросы.</div>
+								</div>
+							</div>
+						</form>
+						<div class="separator hidden-sm"></div>
+						<div class="calculator-result">
+							<div>
+								<h4 class="calculator-title hidden-sm">Вы выбрали</h4>
+								<div class="result-list">
+									<div class="result-item">
+										<span class="result-item-title">Количество часов: <span
+												class="result-item-measure" id="RENT_TIME">0</span></span>
+										<span class="result-item-price" id="RENT_TOTAL">0 ₽</span>
+									</div>
+									<div class="result-item">
+										<span class="result-item-title">Технические часы: <span
+												class="result-item-measure" id="TECH_TIME">0</span></span>
+										<span class="result-item-price" id="TECH_TOTAL">0 ₽</span>
+									</div>
+									<div class="result-item">
+										<span class="result-item-title">Услуги дежурного техника</span>
+										<span class="result-item-price" id="TECHNICIAN_ON_DUTY_TOTAL">0 ₽</span>
+									</div>
+									<div class="result-item">
+										<span class="result-item-title">Услуги светооператора</span>
+										<span class="result-item-price" id="LIGHT_OPERATOR_TOTAL">0 ₽</span>
+									</div>
+									<div class="result-item">
+										<span class="result-item-title">Услуги звукорежиссёра</span>
+										<span class="result-item-price" id="SOUND_ENGINEER_TOTAL">0 ₽</span>
+									</div>
+								</div>
+							</div>
+							<div class="calculator-result-actions">
+								<div class="btn calculator-total-price" id="TOTAL_PRICE">
+									0 ₽
+								</div>
+								<a href="#reservation" class='btn btn-primary btn-lg'>Забронировать дату</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section section-questions">
+				<h2 class='section-title'>Часто задаваемые<br>вопросы:</h2>
+				<div class="accordeon">
+					<div class="accordeon-item">
+						<div class="title">Сколько минут идти от метро?</div>
+						<div class="description">Примерно 10 минут неспешным шагом от метро «Елизаровская». Успеете и
+							кофе
+							взять
+							по дороге, и настроиться на мероприятие.</div>
+					</div>
+					<div class="accordeon-item">
+						<div class="title">Есть парковка?</div>
+						<div class="description">Да, конечно. Прямо напротив главного входа в КЦ «Крупа» есть парковка —
+							места
+							хватит на 30–40 автомобилей. Должны вписаться все.</div>
+					</div>
+					<div class="accordeon-item">
+						<div class="title">В чём разница в тарифах?</div>
+						<div class="description">Разница только в том, какое оборудование вы сможете использовать. Чтобы
+							не
+							запутать цифрами, вот <a class="link" target="_blank"
+								href="./assets/docs/equipment.pdf">тут</a>
+							перечень оборудования.</div>
+					</div>
+					<div class="accordeon-item">
+						<div class="title">Есть комнаты для организаторов?</div>
+						<div class="description">Да, у нас есть две организаторские. И одна из них очень легко
+							превращается
+							в
+							детскую комнату. Так что если планируете мероприятие с детьми — это прям идеальный вариант.
+						</div>
+					</div>
+					<div class="accordeon-item">
+						<div class="title">Как забронировать дату?</div>
+						<div class="description">Всё по-взрослому, но без лишнего пафоса: заключаем договор и вносим
+							предоплату
+							50%. И дата ваша.</div>
+					</div>
+					<div class="accordeon-item">
+						<div class="title">У нас будет громкая вечеринка, шуметь можно?</div>
+						<div class="description">Шуметь — можно! Главное, чтобы это было в рамках закона. Единственная
+							просьба к
+							организаторам: следите, пожалуйста, чтобы дверь в амфитеатр была закрыта, тогда звук
+							остается
+							внутри
+							и всем комфортно.</div>
+					</div>
+					<div class="accordeon-item">
+						<div class="title">До скольки можно проводить мероприятие?</div>
+						<div class="description">Ограничений по времени у нас нет. Единственный момент: если засидитесь
+							допоздна, выход гостей будет организован всем вместе, в сопровождении администратора. Это
+							требование
+							Культурного центра.</div>
+					</div>
+					<div class="accordeon-item">
+						<div class="title">Какое у вас есть оборудование?</div>
+						<div class="description">Сразу всё и не перечислишь. Вот <a class="link" target="_blank"
+								href="./assets/docs/equipment.pdf">тут</a> полный список — там и фото, и
+							характеристики.</div>
+					</div>
+					<div class="accordeon-item">
+						<div class="title">По каким ориентирам можно вас найти?</div>
+						<div class="description">Лучше один раз увидеть — вот <span id="openLocationVideo" class="link">тут</span> классное видео-инструкция, как добраться.
+							А если кратко: ищите главный вход КЦ «Крупа» и вывеску «вход в крупицы». Поднимаетесь на
+							второй
+							этаж,
+							проходите через амфитеатр и ищите нашу вывеску. По пути будут указатели — не потеряетесь!
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section section-reviews">
+				<h2 class='section-title d-flex justify-space-between'>
+					<span>Отзывы на Яндекс</span>
+					<span class="counter">5,0</span>
+				</h2>
+				<div class="content">
+					<div class="item">
+						<div class="user">
+							<div class="name">Виктория</div>
+							<div class="meta">Знаток города 6 уровня</div>
+
+						</div>
+						<div class="message">Лучший зал для мероприятий любого формата! Обожаю их и всем знакомым
+							советую.
+							И день рождения и свадьба на любое количество человек. Все будет комфортно и душевно.
+							Администраторы — просто супер! Спасибо за отличную работу и красивый зал!</div>
+					</div>
+
+					<div class="item">
+						<div class="user">
+							<div class="name">Барбарош</div>
+							<div class="meta">Знаток города 4 уровня</div>
+
+						</div>
+						<div class="message">Очень интересный дизайн помещения. Была на презентации новинок фирмы
+							LAMARTI.
+							Парковка большая. Вкусный фуршет)))</div>
+					</div>
+				</div>
+				<div class="mt-2 d-flex justify-center">
+					<a target="_blank"
+						href="https://yandex.ru/maps/org/yavleniye/126556948307/reviews/?ll=30.434078%2C59.895227&z=16"
+						class='btn btn-primary btn-lg'>Смотреть отзывы</a>
+				</div>
+			</section>
+
+			<section id="reservation" class="section section-request">
+				<div class="content">
+					<div class="img-wrapper">
+						<img src='./assets/img/request/bg.png' class='img' alt=''>
+					</div>
+					<div class="form-wrapper">
+						<h3 class="form-title">Оставь заявку</h3>
+						<div class="form-description">
+							Менеджер поможет выбрать тариф под ваше <br class="hidden-lg">мероприятие
+						</div>
+						<form class="form" id="REQUEST_FORM">
+							<input type="text" id="REQUEST_FORM_NAME" name="name" placeholder="Ф.И.О">
+
+							<div class="ui-control ui-control--required">
+								<input type="tel" id="REQUEST_FORM_PHONE" name="phone" placeholder="+7 (___) ___ __ __">
+							</div>
+
+							<input type="date" id="REQUEST_FORM_DATE" name="date" placeholder="Выберите дату">
+
+							<textarea id="REQUEST_FORM_COMMENTS" name="comments" rows="5" cols="40"
+								placeholder="Какое планируется мероприятие, сколько человек, комментарии"></textarea>
+
+							<div style="position: absolute; left: -9999px;" aria-hidden="true">
+								<input type="text" id="REQUEST_FORM_EXTRA_INFO" name="extraInfo" tabindex="-1"
+									autocomplete="off">
+							</div>
+
+							<div class="request-policy">
+								<div class="checkbox">
+									<input name="Policy" type="checkbox" id="POLICY_AGREEPMENT">
+									<label class="checkbox-label" for="POLICY_AGREEPMENT">Я даю <a target="_blank"
+											href="/consent.html" class='link'>согласие на обработку
+											персональных данных</a> и ознакомлен(а) с <a target="_blank"
+											href="/privacy.html" class='link'>Политикой обработки персональных
+											данных</a></label>
+								</div>
+
+								<div class="checkbox">
+									<input name="Technician" type="checkbox" id="EMAIL_AGREEPMENT">
+									<label class="checkbox-label" for="EMAIL_AGREEPMENT">Я даю <a target="_blank"
+											href="/consent-ads.html" class='link'>согласие на получение информационных и
+											рекламных рассылок</a></label>
+								</div>
+
+							</div>
+							<button type="submit" class='btn btn-primary btn-lg btn-request-submit' disabled>Отправить
+								заявку</button>
+						</form>
+					</div>
+				</div>
+
+				<div class="actions visible-tablet">
+					<button class='btn btn-primary btn-request-submit' onclick="handleRequest(event)" disabled>Отправить
+						заявку</button>
+				</div>
+
+			</section>
+
+			<section id="contacts" class="section section-contacts">
+				<h2 class='section-title'>
+					Контакты
+				</h2>
+				<div class="content">
+					<div class="column">
+						<div class="item">
+							<div class="label">Телефон для связи**</div>
+							<div class="description"><a class="link" href="tel:79327101244">+7 932 710-12-44</a></div>
+						</div>
+						<div class="item">
+							<div class="label">Адрес</div>
+							<div class="description description--small">Обуховской обороны 105,<br>
+								3 этаж</div>
+						</div>
+						<div class="item">
+							<div class="label">Почта</div>
+							<div class="description description--small"><a class="link link--underlined"
+									href="mailto:sales@artyavlenie.ru">sales@artyavlenie.ru</a></div>
+						</div>
+					</div>
+
+					<div class="column text-right">
+						<div class="item hidden-sm">
+							<div class="label">Режим работы лофта</div>
+							<div class="description">24/7</div>
+						</div>
+						<div class="item hidden-sm">
+							<div class="label">Режим приёма звонков</div>
+							<div class="description">9:00–19:00</div>
+						</div>
+
+						<div class="socials-list">
+							<a target="_blank" href="https://vk.com/yavlenie_loft"
+								class="social-item social-item--vk"></a>
+							<a target="_blank" href="https://t.me/+79327101244" class="social-item social-item--tg"></a>
+							<a target="_blank" href="https://instagram.com/yavlenie_loft"
+								class="social-item social-item--inst"></a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<%= require('./templates/footer.html').default %>
+
+		<div class="cookies-banner" id="coockiesBanner">
+			<div class="content">
+				Мы используем файлы cookie и сервис Яндекс Метрика, чтобы сайт работал корректно и мы понимали, как его
+				улучшить. Нажимая «Принять», вы даёте согласие на обработку
+				данных cookie в соответствии с <a class="link" target="_blank" href="/privacy.html">Политикой обработки
+					персональных данных</a>. <br class="hidden-sm"> Если нажать «Только необходимые»,
+				аналитика использоваться не будет.
+			</div>
+			<div class="buttons">
+				<button type="button" id="cookiesAcceptAll" class="cookies-banner__button">Принять</button>
+				<button type="button" id="cookiesAcceptNecessary"
+					class="cookies-banner__button cookies-banner__button--outline">Только необходимые</button>
+			</div>
+		</div>
+
+		<!-- Yandex.Metrika counter -->
+		<noscript>
+			<div><img src="https://mc.yandex.ru/watch/113555078" style="position:absolute; left:-9999px;" alt="" />
+			</div>
+		</noscript>
+		<!-- /Yandex.Metrika counter -->
+
+</body>
+
+</html>
+<dialog id="requestSuccess" class="modal">
+	<div class="modal-wrapper">
+		<h3 class="modal-title">Заявка успешно отправлена</h3>
+		<span class="modal-close"></span>
+	</div>
+</dialog>
+
+
+<dialog id="requestError" class="modal">
+	<div class="modal-wrapper">
+		<h3 class="modal-title"> Произошла ошибка отправки заявки</h3>
+		<span class="modal-close"></span>
+	</div>
+</dialog>
+
+
+<dialog id="locationVideoModal" class="modal modal-video">
+	<div class="modal-wrapper">
+		<div class="video-frame-container">
+			<video id="videoPlayer" poster="assets/video/placement.png" controls>
+				<source src="assets/video/placement.mp4" type="video/mp4">
+			</video>
+		</div>
+	</div>
+</dialog>

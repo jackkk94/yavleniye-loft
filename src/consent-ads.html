@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+	<meta charset='UTF-8' />
+	<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+
+	<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+	<title>Лофт Явление</title>
+</head>
+<body class="body-documents">
+	<%= require('./templates/header.html').default %>
+	<main class="main-content">
+		<section class='section section-policy'>
+			<div class="tab-links">
+				<a href="./privacy.html" class="tab">Политика обработки персональных данных</a>
+				<a href="./consent.html" class="tab">Согласие на обработку персональных данных</a>
+				<a href="./consent-ads.html" class="tab tab--selected">Согласие на получение рекламной рассылки</a>
+			</div>
+
+			<div class="content">
+				<p class="y-paragraph">Я, отмечая чекбокс «Я даю согласие на получение информационных и рекламных
+					рассылок» на сайте
+					<a class="link link--underlined" target="_blank"
+						href="https://artyavlenie.ru">https://artyavlenie.ru</a>, действуя свободно, своей волей и в
+					своём интересе,
+					даю согласие индивидуальному предпринимателю <b>Блинову Дану Александровичу</b> (ИНН 183001668199,
+					ОГРНИП
+					319784700338502) на:
+				</p>
+				<p class="y-paragraph">1. <b>Получение рекламы</b> — информации об услугах, акциях, специальных
+					предложениях и мероприятиях лофта
+					«Явление» следующими способами: звонки и SMS на указанный
+					номер телефона; письма на указанный адрес электронной почты; сообщения в мессенджерах.
+				</p>
+				<p class="y-paragraph">2. <b>Обработку для этой цели</b> моих имени, номера телефона и адреса
+					электронной почты: сбор, запись,
+					систематизация, накопление, хранение, уточнение, извлечение,
+					использование, блокирование, удаление, уничтожение, с использованием средств автоматизации и без
+					них.
+				</p>
+				<p class="y-paragraph">3. <b>Срок действия</b>: до отзыва согласия.
+				</p>
+				<p class="y-paragraph">4. <b>Отзыв</b>: отказаться от рассылки можно в любой момент — написав на <a
+						class="link link--underlined" href="mailto:sales@artyavlenie.ru"
+						target="_blank">sales@artyavlenie.ru</a>, ответив на
+					сообщение словом «Стоп» или перейдя по ссылке «Отписаться» в письме.
+					Данные уничтожаются в течение 30 дней после отзыва.
+				</p>
+				<p class="y-paragraph">5. Согласие является добровольным и не является условием для отправки заявки.</p>
+			</div>
+		</section>
+	</main>
+
+	<%= require('./templates/footer.html').default %>
+
+	<!-- Yandex.Metrika counter -->
+	<noscript>
+		<div><img src="https://mc.yandex.ru/watch/113555078" style="position:absolute; left:-9999px;" alt="" /></div>
+	</noscript>
+	<!-- /Yandex.Metrika counter -->
+</body>
+</html>
