@@ -29,6 +29,16 @@ jobs:
       - name: Remove source maps
         run: find dist -name '*.map' -delete
 
+      # Repository variable MAINTENANCE=true выкладывает заглушку вместо сайта
+      - name: Replace site with maintenance page
+        if: vars.MAINTENANCE == 'true'
+        run: |
+          rm -rf dist
+          cp -r maintenance dist
+          mkdir -p dist/assets/fonts
+          cp src/assets/favicon.ico src/assets/favicon.svg dist/assets/
+          cp src/assets/fonts/LTWave-Light.otf dist/assets/fonts/
+
       - name: Set up SSH
         run: |
           mkdir -p ~/.ssh
